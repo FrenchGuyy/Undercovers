@@ -1,7 +1,7 @@
 /* Undercover : service worker.
    Réseau d'abord : à chaque lancement avec internet, la dernière version publiée est récupérée.
    Sans internet : la dernière version déjà téléchargée est utilisée. */
-const V="undercover-v20";
+const V="undercover-v21";
 const SHELL=["./","index.html","duos.json","manifest.webmanifest","icon-192.png","icon-512.png"];
 const key=u=>new Request(u.origin+u.pathname);
 

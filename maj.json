@@ -23,6 +23,10 @@
  ],
  "news": [
   {
+   "v": "2.17",
+   "d": "Animé : 20 nouveaux duos (Demon Slayer et Fullmetal Alchemist). Les anciens codes hors-ligne Animé ne marchent plus."
+  },
+  {
    "v": "2.16",
    "d": "« Jouer en ligne » ouvre toujours l’accueil (compte, classement, créer ou rejoindre) ; un bouton permet de reprendre son salon en cours."
   },
