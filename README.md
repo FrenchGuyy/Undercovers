@@ -37,3 +37,11 @@ Le jeu s'installe sur le téléphone (icône sur l'écran d'accueil, plein écra
 
 Code publié sous licence [MIT](LICENSE). Les noms de personnages et d'œuvres
 appartiennent à leurs ayants droit ; ce projet de fan n'est pas affilié aux séries citées.
+
+## Nouveautés (version améliorée)
+- **Vote par éliminations** (mode 1 téléphone, réglable) : si le groupe se trompe, le joueur désigné est éliminé et la partie continue jusqu'à 2 joueurs.
+- **« Comment jouer ? »** : écran de règles dans le menu.
+- **Réglages mémorisés** (nombre de joueurs, mode, type de vote).
+- **Code hors ligne partageable** (bouton « Partager le code »).
+- **En ligne** : si l'hôte quitte, le salon passe au joueur suivant au lieu de se fermer.
+- Accessibilité : messages d'erreur et tchat annoncés aux lecteurs d'écran.

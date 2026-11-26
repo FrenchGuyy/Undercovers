@@ -288,6 +288,10 @@ button:focus-visible,.nm:focus-visible{outline:2px solid #fff;outline-offset:3px
 #cem.lock{opacity:.35}
 #cem,#cwarn,.cfm,.chd{flex:none}
 #clist{min-height:22vh}
+
+.rl{text-align:left;margin:12px 0 0;padding-left:22px;line-height:1.5;font-size:.93rem}
+.rl li{margin:9px 0}
+.rl b,.rule b{color:#fff}
 </style>
 </head>
 <body>
@@ -319,7 +323,7 @@ function level(p){return p[2];}
 function pairs(){return DATA.t[THEME]||[];}
 function levelOld(p){var k=p[0]+"|"+p[1];if(EXT[k]){return 3;}if(WORK[p[0]]===WORK[p[1]]){return 2;}return FAC[k]?0:1;}
 var LEVELS=[{n:"Facile",d:"Univers très différents"},{n:"Moyen",d:"Œuvres différentes, même genre"},{n:"Difficile",d:"Même œuvre, personnages différents"},{n:"Extrême",d:"Même œuvre, personnages très proches"}];
-var mode=0,bag=[],lastT=-1,recent=[],SC=Z(),tmr=0,lt=0,CUS=false,GAMES=[],MP=false,MPG=null;function Z(){var a=[],i;for(i=0;i<20;i++){a.push(0);}return a;}
+var NB='\u00a0',ELIM=true,mode=0,bag=[],lastT=-1,recent=[],SC=Z(),tmr=0,lt=0,CUS=false,GAMES=[],MP=false,MPG=null;function Z(){var a=[],i;for(i=0;i<20;i++){a.push(0);}return a;}
 var N=4, app=document.getElementById("app"), game=null, lastPair=-1;
 
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
@@ -393,7 +397,8 @@ function menu0(){
   var T=DATA.t,dz=function(n){return n+(n>1?" duos":" duo");},meta=[{n:"Animé",s:dz(T[0].length)},{n:"Films",s:"Marvel · "+dz(T[1].length)},{n:"Jeux vidéo",s:T[2].length?dz(T[2].length):"Bientôt"}];
   var h="";
   meta.forEach(function(m,i){h+='<button type="button" class="tile t'+i+'" data-t="'+i+'"><span class="idx">0'+(i+1)+'</span><span class="ln"></span><span class="tn">'+m.n+'</span><span class="ts">'+m.s+'</span></button>';});
-  show('<div class="chip">Nouvelle partie</div><h2>Choisis une catégorie</h2><div class="sub">Quel univers pour cette partie ?</div><div class="tiles" id="tiles">'+h+'</div><button id="ol" type="button">Jouer en ligne</button><button class="sec" id="jn" type="button">Rejoindre un code hors ligne</button>');document.getElementById("jn").onclick=function(){goTo(joinScreen);};
+  show('<div class="chip">Nouvelle partie</div><h2>Choisis une catégorie</h2><div class="sub">Quel univers pour cette partie ?</div><div class="tiles" id="tiles">'+h+'</div><button id="ol" type="button">Jouer en ligne</button><button class="sec" id="jn" type="button">Rejoindre un code hors ligne</button><button class="sec" id="rl" type="button">Comment jouer ?</button>');document.getElementById("jn").onclick=function(){goTo(joinScreen);};
+  document.getElementById("rl").onclick=function(){goTo(rules);};
   document.getElementById("ol").onclick=function(){goTo(function(){if(window.startOnline){startOnline();}else{hm(true);show('<div class="chip">En ligne</div><h2>Connexion impossible</h2><div class="sub">Le mode en ligne a besoin d’internet. Vérifie ta connexion puis réessaie.</div>');}});};
   document.querySelector("#app h2").onclick=function(){var n=Date.now();adm5=(n-adm5t>3000)?1:adm5+1;adm5t=n;if(adm5>=5){adm5=0;goTo(admPin);}};
   each(app.querySelectorAll(".tile"),function(b){b.onclick=function(){pick(+b.getAttribute("data-t"),b);};});
@@ -417,12 +422,13 @@ function fillPlayers(){
   h+='<button type="button" class="'+(cus?'on':'')+'" data-c="1">Perso</button></div>';
   if(cus){h+='<div class="step"><button type="button" class="sb" data-d="-1" aria-label="Moins de joueurs">−</button><div class="sv">'+N+'</div><button type="button" class="sb" data-d="1" aria-label="Plus de joueurs">+</button></div>';}
   h+='<div class="rule">'+(N-1)+' Civils ont le même personnage, 1 Undercover en a un autre.</div>';
-  if(!MP){h+='<div class="label">Pseudos (facultatif)</div><div class="names">';
+  if(!MP){h+='<div class="label">Vote</div><div class="seg el"><button type="button" class="'+(!ELIM?'on':'')+'" data-e="0">Un seul tour</button><button type="button" class="'+(ELIM?'on':'')+'" data-e="1">Éliminations</button></div><div class="rule">'+(ELIM?'Si le groupe se trompe, le joueur désigné est éliminé et la partie continue jusqu’à ce qu’il reste 2 joueurs.':'Un seul vote décide de la partie.')+'</div>';h+='<div class="label">Pseudos (facultatif)</div><div class="names">';
   for(var k=0;k<N;k++){h+='<input class="nm" type="text" maxlength="14" autocomplete="off" data-i="'+k+'" placeholder="Joueur '+(k+1)+'" value="'+esc(NAMES[k]||"")+'">';}
   h+='</div>';}
   box.innerHTML=h;
-  function setN(v){if(v!==N){N=v;bag=[];lastT=-1;SC=Z();}fillPlayers();}
-  each(box.querySelectorAll(".pl button"),function(b){b.onclick=function(){if(b.getAttribute("data-c")){CUS=true;fillPlayers();}else{CUS=false;setN(+b.getAttribute("data-n"));}};});
+  function setN(v){if(v!==N){N=v;bag=[];lastT=-1;SC=Z();}saveCfg();fillPlayers();}
+  each(box.querySelectorAll(".el button"),function(b){b.onclick=function(){ELIM=b.getAttribute("data-e")==="1";saveCfg();fillPlayers();};});
+  each(box.querySelectorAll(".pl button"),function(b){b.onclick=function(){if(b.getAttribute("data-c")){CUS=true;saveCfg();fillPlayers();}else{CUS=false;setN(+b.getAttribute("data-n"));}};});
   each(box.querySelectorAll(".sb"),function(b){b.onclick=function(){setN(Math.max(3,Math.min(20,N+(+b.getAttribute("data-d")))));};});
   each(box.querySelectorAll(".nm"),function(inp){inp.oninput=function(){NAMES[+inp.getAttribute("data-i")]=inp.value;saveNames();};});
 }
@@ -460,7 +466,7 @@ function start(){
   if(Math.random()<0.5){pair.reverse();}
   if(!bag.length){bag=[];for(var q=0;q<N;q++){bag.push(q);}shuffle(bag);if(bag[bag.length-1]===lastT){bag.reverse();}}
   var traitor=bag.pop();lastT=traitor;
-  game={civil:pair[0],traitor:pair[1],t:traitor,i:0};
+  game={civil:pair[0],traitor:pair[1],t:traitor,i:0,out:[]};
   cover();
 }
 
@@ -479,34 +485,45 @@ function reveal(){
   };
 }
 
+function alive(){var a=[],k;for(k=0;k<N;k++){if(game.out.indexOf(k)<0){a.push(k);}}return a;}
 function ready(f){
-  var first=(f===undefined)?Math.floor(Math.random()*N):f,ord='';game.first=first;
-  for(var k=0;k<N;k++){var q=(first+k)%N;ord+='<span class="oc" style="--pc:'+PCOL[q%12]+'">'+(k+1)+' · '+nm(q)+'</span>';}
-  show(chip()+'<h1>Que le bluff commence</h1><div class="sub">À tour de rôle, dites un mot ou une courte phrase sur votre personnage, sans le nommer.</div><div class="reveal"><div class="tag">Ordre de parole</div><div class="ord">'+ord+'</div></div><button id="vote" type="button">Passer au vote</button><button class="sec" id="tm" type="button">Minuteur de débat · 60 s</button><button class="sec" id="end" type="button">Révéler sans voter</button>');
+  var al=alive(),first=(f===undefined||al.indexOf(f)<0)?al[Math.floor(Math.random()*al.length)]:f,ord='',k,c=0,q,nx=game.out.length>0;
+  game.first=first;
+  for(k=0;k<N;k++){q=(first+k)%N;if(game.out.indexOf(q)>=0){continue;}c++;ord+='<span class="oc" style="--pc:'+PCOL[q%12]+'">'+c+' · '+nm(q)+'</span>';}
+  show(chip()+(nx?'<div class="tag" style="margin-bottom:6px">Manche '+(game.out.length+1)+' · '+al.length+' joueurs en jeu</div>':'')+'<h1>Que le bluff '+(nx?'continue':'commence')+'</h1><div class="sub">À tour de rôle, dites un mot ou une courte phrase sur votre personnage, sans le nommer.</div><div class="reveal"><div class="tag">Ordre de parole</div><div class="ord">'+ord+'</div></div><button id="vote" type="button">Passer au vote</button><button class="sec" id="tm" type="button">Minuteur de débat · 60 s</button><button class="sec" id="end" type="button">Révéler sans voter</button>');
   document.getElementById("vote").onclick=vote;
   document.getElementById("end").onclick=solution;
   document.getElementById("tm").onclick=function(){
     var b=this,t=60;clearInterval(tmr);sfx("ok");b.textContent="Débat · 1:00";
     tmr=setInterval(function(){
-      t--;b.textContent=t>0?"Débat · 0:"+(t<10?"0":"")+t:"Temps écoulé !";
+      t--;b.textContent=t>0?"Débat · 0:"+(t<10?"0":"")+t:"Temps écoulé !";
       if(t<=0){clearInterval(tmr);sfx("pick");vib([60,40,60]);}else if(t<=5){sfx("tick");}
     },1000);
   };
 }
 
 function vote(){
-  var h='';
-  for(var k=0;k<N;k++){h+='<button type="button" class="pv" data-i="'+k+'" style="--pc:'+PCOL[k%12]+'"><span class="av2">'+ini(k)+'</span>'+nm(k)+'</button>';}
-  show(chip()+'<h2>Qui est l’Undercover ?</h2><div class="sub">Le groupe désigne le suspect le plus voté.</div><div class="pvs">'+h+'</div><button class="sec" id="vb" type="button">‹ Retour</button>');
+  var h='',k;
+  for(k=0;k<N;k++){if(game.out.indexOf(k)>=0){continue;}h+='<button type="button" class="pv" data-i="'+k+'" style="--pc:'+PCOL[k%12]+'"><span class="av2">'+ini(k)+'</span>'+nm(k)+'</button>';}
+  show(chip()+'<h2>Qui est l’Undercover'+NB+'?</h2><div class="sub">Le groupe désigne le suspect le plus voté.</div><div class="pvs">'+h+'</div><button class="sec" id="vb" type="button">‹ Retour</button>');
   document.getElementById("vb").onclick=function(){ready(game.first);};
   each(app.querySelectorAll(".pv"),function(b){b.onclick=function(){verdict(+b.getAttribute("data-i"));};});
 }
 
 function verdict(i){
   var ok=(i===game.t),k;
+  if(!ok&&ELIM){
+    game.out.push(i);
+    if(alive().length>2){
+      sfx("lose");vib([40,40]);
+      show(chip()+'<div class="tag">Raté</div><h1>'+nm(i)+' était un Civil</h1><div class="sub">Il est éliminé. L’Undercover est toujours parmi vous : '+alive().length+' joueurs restent en jeu.</div><button id="nx" type="button">Continuer la partie</button>');
+      document.getElementById("nx").onclick=function(){ready();};
+      return;
+    }
+  }
   for(k=0;k<N;k++){SC[k]+=ok?(k===game.t?0:1):(k===game.t?2:0);}
   sfx(ok?"win":"lose");vib(ok?[30,40,60]:[80]);if(ok){confetti();}
-  show(chip()+'<div class="tag">'+nm(i)+' est désigné</div><h1 style="color:'+(ok?'#9dffcf':'#ffc9c9')+'">'+(ok?'Les Civils gagnent !':'L’Undercover gagne !')+'</h1><div class="sub">'+nm(game.t)+(ok?' était bien l’Undercover.':' était l’Undercover et s’en sort.')+'</div><button id="sol" type="button">Voir les personnages</button>');
+  show(chip()+'<div class="tag">'+nm(i)+' est désigné</div><h1 style="color:'+(ok?'#9dffcf':'#ffc9c9')+'">'+(ok?'Les Civils gagnent'+NB+'!':'L’Undercover gagne'+NB+'!')+'</h1><div class="sub">'+nm(game.t)+(ok?' était bien l’Undercover.':' était l’Undercover et gagne la partie.')+'</div><button id="sol" type="button">Voir les personnages</button>');
   document.getElementById("sol").onclick=solution;
 }
 
@@ -552,15 +569,20 @@ function mpSet(g){MPG=g;THEME=g.th;mode=g.lv;N=g.n;setTheme(g.th);}
 function mdSet(){
   each(app.querySelectorAll(".md button"),function(b){
     b.className=((b.getAttribute("data-m")==="1")===MP)?"on":"";
-    b.onclick=function(){MP=(b.getAttribute("data-m")==="1");mdSet();fillPlayers();};
+    b.onclick=function(){MP=(b.getAttribute("data-m")==="1");saveCfg();mdSet();fillPlayers();};
   });
 }
 function host(){
   mpSet({th:THEME,lv:mode,n:N,sd:Math.floor(Math.random()*65536)});
   MPG.code=enc(MPG.th,MPG.lv,MPG.n,MPG.sd);
   hm(true);sfx("ok");vib(15);
-  show(chip()+'<h2>Partie créée</h2><div class="sub">Les autres appuient sur « Rejoindre une partie » dans le menu et tapent ce code.</div><div class="reveal"><div class="tag">Code de la partie</div><div class="big code">'+MPG.code.split("").join(" ")+'</div></div>'+(DRAFT?'<div class="rule warn">⚠ Brouillon admin actif : les autres joueurs n’ont pas tes modifications.</div>':'')+'<button id="go" type="button">Choisir mon numéro</button>');
+  show(chip()+'<h2>Partie créée</h2><div class="sub">Les autres appuient sur « Rejoindre une partie » dans le menu et tapent ce code.</div><div class="reveal"><div class="tag">Code de la partie</div><div class="big code">'+MPG.code.split("").join(" ")+'</div></div>'+(DRAFT?'<div class="rule warn">⚠ Brouillon admin actif : les autres joueurs n’ont pas tes modifications.</div>':'')+'<button id="go" type="button">Choisir mon numéro</button><button class="sec" id="shc" type="button">Partager le code</button>');
   document.getElementById("go").onclick=seats;
+  document.getElementById("shc").onclick=function(){
+    var b=this,t="Rejoins ma partie d’Undercover : ouvre le jeu, touche « Rejoindre un code hors ligne » et entre le code "+MPG.code+".",u=location.href.split("#")[0];
+    try{if(navigator.share){navigator.share({title:"Undercover",text:t,url:u}).catch(function(){});return;}}catch(e){}
+    try{navigator.clipboard.writeText(t+" "+u).then(function(){flash(b,"Copié ✓");},function(){flash(b,"Copie impossible");});}catch(e){flash(b,"Copie impossible");}
+  };
 }
 function joinScreen(){
   hm(true);setTheme(null);
@@ -707,6 +729,14 @@ if(window.addEventListener){
   window.addEventListener("load",function(){try{if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){navigator.serviceWorker.register("sw.js").catch(function(){});}}catch(e){}});
 }
 
+/* réglages mémorisés */
+function saveCfg(){try{localStorage.setItem("und_cfg",JSON.stringify({n:N,cus:CUS,mp:MP,el:ELIM}));}catch(e){}}
+(function(){try{var c=JSON.parse(localStorage.getItem("und_cfg")||"null");if(c){if(c.n>=3&&c.n<=20){N=c.n|0;}CUS=!!c.cus;MP=!!c.mp;ELIM=c.el!==false;}}catch(e){}})();
+function rules(){
+  hm(true);
+  show('<div class="topbar"><button class="back" id="back" type="button">‹ Retour</button><div class="chip">Règles</div></div><h2>Comment jouer ?</h2><ol class="rl"><li>Chaque joueur découvre <b>en secret</b> un personnage. Les <b>Civils</b> ont tous le même. <b>L’Undercover</b> en a un autre, proche, et il ne sait pas qu’il est l’Undercover.</li><li>À tour de rôle, chacun dit <b>un mot ou une courte phrase</b> sur son personnage, sans jamais le nommer.</li><li>On discute, puis on <b>vote</b> pour désigner l’Undercover.</li><li>Les Civils gagnent s’ils le démasquent. Sinon le joueur désigné est éliminé (mode éliminations) et on recommence, jusqu’à ce qu’il reste 2 joueurs : l’Undercover gagne.</li></ol><div class="label">Trois façons de jouer</div><div class="rule"><b>1 téléphone</b> : on se passe l’écran. <b>En ligne</b> : un salon, chacun sur son téléphone, avec tchat et émotes. <b>Code hors ligne</b> : chacun son téléphone, sans internet, avec un code de partie.</div><div class="label">Astuce</div><div class="rule">Sois assez précis pour que les tiens te reconnaissent, mais assez vague pour ne pas t’exposer.</div>');
+  document.getElementById("back").onclick=function(){goTo(menu);};
+}
 /* démarrage */
 var sb=document.getElementById("snd");
 var ICON_ON='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
@@ -763,7 +793,7 @@ function home(pre,msg){
 <div class="label">Ou rejoindre un salon</div>
 <input class="nm" id="cd" maxlength="4" placeholder="CODE" value="${esc(pre||"")}" style="text-transform:uppercase;text-align:center;letter-spacing:.3em">
 <button class="sec" data-a="jn">Rejoindre</button>
-<div class="rule warn" id="err">${esc(msg||"")}</div>`,"home");
+<div class="rule warn" id="err" role="alert">${esc(msg||"")}</div>`,"home");
 }
 function readName(){
   const n=($("nm").value||"").trim();
@@ -819,7 +849,12 @@ function exit(msg){
 async function quit(){
   const c=code,r=room;
   try{
-    if(r&&r.host===uid){
+    const others=r?Object.keys(r.players||{}).filter(i=>i!==uid).sort((a,b)=>r.players[a].t-r.players[b].t):[];
+    if(r&&r.host===uid&&others.length){
+      const nh=others[0],nn=(r.players[nh]||{}).name||"?",me=(r.players[uid]||{}).name||"?";
+      await update(ref(db),{[`rooms/${c}/host`]:nh,[`rooms/${c}/players/${uid}`]:null,[`roles/${c}/${uid}`]:null});
+      try{await push(ref(db,`rooms/${c}/chat`),{u:"sys",n:"Salon",t:Date.now(),m:`${me} a quitté le salon. ${nn} est le nouvel hôte.`});}catch(e){}
+    }else if(r&&r.host===uid){
       const u={};Object.keys(r.players).forEach(i=>{u[`roles/${c}/${i}`]=null;});
       u[`hostdata/${c}`]=null;u[`rooms/${c}`]=null;
       await update(ref(db),u);
@@ -845,7 +880,7 @@ function lobby(){
   }else{
     h+=`<div class="sub" style="margin-top:16px">${TH[room.theme]} · ${LEVELS[room.level].n}. En attente de l’hôte…</div>`;
   }
-  h+=`<div class="rule warn" id="err"></div><button class="sec" data-a="quit">${host?'Fermer le salon':'Quitter'}</button>`;
+  h+=`<div class="rule warn" id="err" role="alert"></div><button class="sec" data-a="quit">${host?'Fermer le salon':'Quitter'}</button>`;
   show(h,"lobby");
 }
 function pickPair(){
@@ -882,7 +917,7 @@ function play(){
 <div class="label">Ordre de parole</div>`+ord.map((i,k)=>`<div class="ol"><span class="tag">${k+1}</span>${nm(i)}</div>`).join("");
   h+=`<div class="sub" style="margin-top:14px">À tour de rôle, dites un mot ou une courte phrase sur votre personnage, sans le nommer.</div>`;
   h+=host?`<button data-a="tovote">Passer au vote</button>`:`<div class="sub">L’hôte lance le vote.</div>`;
-  h+=`<div class="rule warn" id="err"></div>`;
+  h+=`<div class="rule warn" id="err" role="alert"></div>`;
   show(h,"play");
 }
 function vote(){
@@ -891,7 +926,7 @@ function vote(){
   let h=chip()+`<h1>Qui est l’Undercover ?</h1><div class="sub">${n}/${list.length} ont voté</div>`;
   h+=list.filter(i=>i!==uid).map(i=>`<button class="sec" data-a="vote" data-id="${i}" style="${mine===i?'border-color:var(--text);color:var(--text)':''}">${mine===i?'✓ ':''}${nm(i)}</button>`).join("");
   h+=host?`<button data-a="reveal" style="margin-top:16px">Révéler la solution</button>`:`<div class="sub" style="margin-top:14px">L’hôte révélera la solution.</div>`;
-  h+=`<div class="rule warn" id="err"></div>`;
+  h+=`<div class="rule warn" id="err" role="alert"></div>`;
   show(h,"vote");
 }
 function done(){
@@ -907,7 +942,7 @@ function done(){
 <div class="label">Votes</div>`;
   h+=rows.map(i=>`<div class="ol">${nm(i)}<span class="tag" style="margin-left:auto">${cnt[i]||0}</span></div>`).join("");
   h+=host?`<button data-a="again" style="margin-top:16px">Nouvelle manche</button>`:`<div class="sub" style="margin-top:14px">L’hôte peut lancer une nouvelle manche.</div>`;
-  h+=`<div class="rule warn" id="err"></div><button class="sec" data-a="quit">Quitter</button>`;
+  h+=`<div class="rule warn" id="err" role="alert"></div><button class="sec" data-a="quit">Quitter</button>`;
   show(h,"done"+room.round);
 }
 
@@ -915,7 +950,7 @@ function done(){
 function mountChat(){
   if(chatMounted){return;}chatMounted=true;
   const d=document.createElement("div");d.id="chat";
-  d.innerHTML=`<button id="cbtn" type="button" aria-label="Ouvrir le tchat">💬<i id="cbd"></i></button><div id="cpan"><div class="chd"><b>Tchat du salon</b><button id="cx" type="button" aria-label="Fermer le tchat">✕</button></div><div id="clist"></div><div id="cem">${EMO.map((x,i)=>`<button type="button" data-e="${i}" aria-label="${x.n}">${x.s}</button>`).join("")}</div><div id="cwarn"></div><div class="cfm"><input class="nm" id="cin" type="text" maxlength="200" autocomplete="off" placeholder="Ton message…"><button id="csend" type="button">Envoyer</button></div></div>`;
+  d.innerHTML=`<button id="cbtn" type="button" aria-label="Ouvrir le tchat">💬<i id="cbd"></i></button><div id="cpan"><div class="chd"><b>Tchat du salon</b><button id="cx" type="button" aria-label="Fermer le tchat">✕</button></div><div id="clist" role="log" aria-live="polite"></div><div id="cem">${EMO.map((x,i)=>`<button type="button" data-e="${i}" aria-label="${x.n}">${x.s}</button>`).join("")}</div><div id="cwarn"></div><div class="cfm"><input class="nm" id="cin" type="text" maxlength="200" autocomplete="off" placeholder="Ton message…"><button id="csend" type="button">Envoyer</button></div></div>`;
   document.body.appendChild(d);
   $("cbtn").onclick=()=>chatToggle(!chatOpen);
   $("cx").onclick=()=>chatToggle(false);
