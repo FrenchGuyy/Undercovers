@@ -435,7 +435,7 @@ function saveNames(){try{localStorage.setItem("traitre_names",JSON.stringify(NAM
 
 /* son et vibrations */
 var SOUND=true;try{SOUND=localStorage.getItem("traitre_snd")!=="0";}catch(e){}
-var VER="2.18",VIBON=true,AWAKE=true,TMS=60,REC=true;
+var VER="2.19",VIBON=true,AWAKE=true,TMS=60,REC=true;
 try{VIBON=localStorage.getItem("und_vib")!=="0";AWAKE=localStorage.getItem("und_awk")!=="0";REC=localStorage.getItem("und_rec")!=="0";var tt=parseInt(localStorage.getItem("und_tmr"),10);if(tt===0||tt===30||tt===60||tt===90||tt===120){TMS=tt;}}catch(e){}
 function fm(t){return Math.floor(t/60)+":"+(t%60<10?"0":"")+(t%60);}
 var AC=null,picking=false;
@@ -891,6 +891,32 @@ function instBtn(){
 if(window.addEventListener){
   window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();DIP=e;instBtn();});
   window.addEventListener("appinstalled",function(){DIP=null;var b=document.getElementById("inst");if(b&&b.remove){b.remove();}});
+
+/* ===== Message de lancement (à retirer plus tard : mettre NOTICE=false) ===== */
+var NOTICE=true;
+function showNotice(){
+  if(!NOTICE||typeof document==="undefined"||!document.body||document.getElementById("nt0")){return;}
+  try{if(sessionStorage.getItem("und_nt")){return;}sessionStorage.setItem("und_nt","1");}catch(e){}
+  var st=document.createElement("style");
+  st.textContent="#nt0{position:fixed;inset:0;z-index:99999;background:rgba(8,5,18,.78);display:flex;align-items:center;justify-content:center;padding:18px}#nt0 .c{width:100%;max-width:420px;max-height:92vh;overflow:auto;background:#1c1233;border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:22px 20px;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}#nt0 h2{margin:0 0 8px;font-size:21px}#nt0 p{margin:0 0 12px;line-height:1.45;opacity:.9}#nt0 textarea,#nt0 input{width:100%;box-sizing:border-box;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;padding:11px 12px;font:inherit;margin:0 0 10px}#nt0 textarea{min-height:92px;resize:vertical}#nt0 button{width:100%;padding:13px;border-radius:12px;border:0;font:inherit;font-weight:700;cursor:pointer;margin:0 0 8px}#nt0 .ok{background:#fff;color:#1c1233}#nt0 .no{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}#nt0 .m{min-height:20px;font-size:14px;margin:0 0 8px}";
+  document.head.appendChild(st);
+  var o=document.createElement("div");o.id="nt0";o.setAttribute("role","dialog");
+  o.innerHTML='<div class="c"><h2>🚧 Jeu tout juste créé</h2><p>Undercover vient de sortir et n’est <b>pas encore optimal</b> : il peut rester des bugs ou des choses à améliorer.</p><p>Une idée, un bug, un duo à ajouter ? Écris-nous un message, on le lira.</p><textarea id="nt1" maxlength="300" placeholder="Ta suggestion (300 caractères max)"></textarea><input id="nt2" maxlength="14" placeholder="Ton pseudo (facultatif)"><div class="m" id="nt3" role="status"></div><button class="ok" id="nt4" type="button">Envoyer ma suggestion</button><button class="no" id="nt5" type="button">Fermer</button></div>';
+  document.body.appendChild(o);
+  var $=function(i){return document.getElementById(i);};
+  function close(){try{o.remove();st.remove();}catch(e){}}
+  $("nt5").onclick=close;
+  $("nt4").onclick=async function(){
+    var t=($("nt1").value||"").trim(),m=$("nt3");
+    if(t.length<3){m.textContent="Écris au moins quelques mots.";return;}
+    try{var last=+localStorage.getItem("und_idt")||0;if(Date.now()-last<30000){m.textContent="Patiente quelques secondes avant d’en envoyer une autre.";return;}}catch(e){}
+    if(typeof window.sendIdea!=="function"){m.textContent="Envoi impossible pour le moment (connexion ?). Réessaie plus tard.";return;}
+    $("nt4").disabled=true;m.textContent="Envoi…";
+    try{await window.sendIdea(t,($("nt2").value||"").trim());try{localStorage.setItem("und_idt",String(Date.now()));}catch(e){}m.textContent="Merci, c’est envoyé ! 🙌";$("nt1").value="";setTimeout(close,1800);}
+    catch(e){m.textContent="Envoi impossible pour le moment. Réessaie plus tard.";$("nt4").disabled=false;}
+  };
+}
+try{if(typeof document!=="undefined"){setTimeout(showNotice,700);}}catch(e){}
   window.addEventListener("load",function(){try{if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){navigator.serviceWorker.register("sw.js").catch(function(){});}}catch(e){}});
 }
 
@@ -1661,6 +1687,10 @@ async function initPresence(){
   }catch(e){}
 }
 let uP=null;
+window.sendIdea=async function(text,name){
+  const u=await getUser();
+  await push(ref(db,"ideas"),{t:String(text).slice(0,300),n:String(name||"").slice(0,14),v:VER,u:u.uid,ts:serverTimestamp()});
+};
 function getUser(){
   if(uP){return uP;}
   uP=(async()=>{

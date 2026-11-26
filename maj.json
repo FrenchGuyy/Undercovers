@@ -23,6 +23,10 @@
  ],
  "news": [
   {
+   "v": "2.19",
+   "d": "Message de lancement : le jeu est tout nouveau, tu peux envoyer tes suggestions."
+  },
+  {
    "v": "2.18",
    "d": "Animé : 20 nouveaux duos (My Hero Academia et L’Attaque des Titans). Les anciens codes hors-ligne Animé ne marchent plus."
   },
