@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#2a1b7a">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕵️%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Undercover">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Undercover</title>
 <style>
 :root{--bg:#09090c;--surface:rgba(255,255,255,.04);--text:#f3f3f6;--muted:#8d8d9b;--line:rgba(255,255,255,.1);--accent:#e5484d;--danger:#e5484d;--c0:#2fd08a;--c1:#f2b705;--c2:#ff8a3d;--c3:#e5484d;--a1:#ff4d5e;--a2:#ff8a3d;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color-scheme:dark}
@@ -247,6 +253,41 @@ button:focus-visible,.nm:focus-visible{outline:2px solid #fff;outline-offset:3px
 .ol{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(255,255,255,.12);margin-top:8px;text-align:left}
 .od{width:10px;height:10px;border-radius:50%;flex:none}
 .ol .ox{margin:0 0 0 auto;width:auto;padding:2px 11px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);font-size:1.1rem;box-shadow:none}
+
+/* tchat */
+#chat{display:none}
+#chat.on{display:block}
+#chat button{margin:0;box-shadow:none;text-shadow:none}
+#cbtn{position:fixed;z-index:7;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:54px;height:54px;padding:0;border-radius:50%;font-size:1.5rem;line-height:1;background:#fff;color:#000;box-shadow:0 10px 26px -8px rgba(0,0,0,.55)!important}
+#cbd{display:none;position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#ff3b5c;color:#fff;font:700 .72rem/22px system-ui,sans-serif;font-style:normal;text-align:center}
+#cbd.on{display:block}
+#cpan{display:none;position:fixed;z-index:8;left:0;right:0;bottom:0;max-height:72vh;max-height:72dvh;flex-direction:column;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:rgba(22,10,62,.97);border-top:1px solid rgba(255,255,255,.3);border-radius:20px 20px 0 0;box-shadow:0 -18px 40px rgba(0,0,0,.4)}
+#cpan.open{display:flex;animation:enter .3s cubic-bezier(.22,1,.36,1) both}
+.chd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+#cx{width:38px;height:38px;padding:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3)}
+#clist{flex:1;min-height:30vh;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;-webkit-user-select:text;user-select:text}
+.cm{align-self:flex-start;max-width:84%;margin:4px 0;padding:8px 12px;border-radius:14px;background:rgba(255,255,255,.14);text-align:left;font-size:.92rem;line-height:1.35;overflow-wrap:anywhere}
+.cm b{display:block;font-size:.72rem;margin-bottom:2px}
+.cm.me{align-self:flex-end;background:#fff;color:var(--ink)}
+.cfm{display:flex;gap:8px;margin-top:10px}
+.cfm .nm{flex:1}
+#csend{width:auto;padding:0 18px;border-radius:12px;background:#fff;color:var(--ink)}
+
+/* émotes dans le tchat */
+#cpan{background:#160a3e}
+#cem{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:10px 0 2px}
+#cem button{flex:none;width:48px;height:48px;padding:2px;border-radius:12px;background:rgba(255,255,255,.1);border:0}
+#cem svg,.cm.em svg{display:block;width:100%;height:100%}
+@media (hover:hover){#cem button:hover{background:rgba(255,255,255,.25)}}
+.cm.em,.cm.em.me{background:none;color:#fff;padding:2px 6px}
+.cm.em svg{width:76px;height:76px;margin-top:2px;animation:ebIn .35s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes ebIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+
+#cwarn{display:none;margin:6px 0 0;padding:7px 10px;border-radius:10px;background:rgba(255,90,110,.22);color:#ffd0d6;font-size:.8rem;text-align:center}
+#cwarn.on{display:block}
+#cem.lock{opacity:.35}
+#cem,#cwarn,.cfm,.chd{flex:none}
+#clist{min-height:22vh}
 </style>
 </head>
 <body>
@@ -346,9 +387,10 @@ function intro(){
 
 /* 2. choix de la catégorie */
 function hm(on){var h=document.getElementById("home");if(h){h.className="snd hm"+(on?" on":"");}}
-function menu(){
+function menu(){menu0();instBtn();}
+function menu0(){
   hm(false);picking=false;setTheme(null);
-  var T=DATA.t,meta=[{n:"Animé",s:T[0].length+" duos"},{n:"Films",s:"Marvel · "+T[1].length+" duos"},{n:"Jeux vidéo",s:T[2].length?T[2].length+" duos":"Bientôt"}];
+  var T=DATA.t,dz=function(n){return n+(n>1?" duos":" duo");},meta=[{n:"Animé",s:dz(T[0].length)},{n:"Films",s:"Marvel · "+dz(T[1].length)},{n:"Jeux vidéo",s:T[2].length?dz(T[2].length):"Bientôt"}];
   var h="";
   meta.forEach(function(m,i){h+='<button type="button" class="tile t'+i+'" data-t="'+i+'"><span class="idx">0'+(i+1)+'</span><span class="ln"></span><span class="tn">'+m.n+'</span><span class="ts">'+m.s+'</span></button>';});
   show('<div class="chip">Nouvelle partie</div><h2>Choisis une catégorie</h2><div class="sub">Quel univers pour cette partie ?</div><div class="tiles" id="tiles">'+h+'</div><button id="ol" type="button">Jouer en ligne</button><button class="sec" id="jn" type="button">Rejoindre un code hors ligne</button>');document.getElementById("jn").onclick=function(){goTo(joinScreen);};
@@ -645,6 +687,26 @@ function admEdit(i,k){
   };
 }
 
+/* ===== application installable (PWA) ===== */
+var DIP=null;
+function isStandalone(){try{return !!((window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true);}catch(e){return false;}}
+function instBtn(){
+  if(isStandalone()||!document.getElementById("tiles")||document.getElementById("inst")){return;}
+  var ios=/iphone|ipad|ipod/i.test(navigator.userAgent||"");
+  if(!DIP&&!ios){return;}
+  app.insertAdjacentHTML("beforeend",'<button class="sec" id="inst" type="button">Installer l’application</button>');
+  document.getElementById("inst").onclick=function(){
+    var b=this;
+    if(DIP){DIP.prompt();DIP.userChoice.then(function(){DIP=null;if(b.remove){b.remove();}});}
+    else{b.textContent="Touche Partager, puis « Sur l’écran d’accueil »";}
+  };
+}
+if(window.addEventListener){
+  window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();DIP=e;instBtn();});
+  window.addEventListener("appinstalled",function(){DIP=null;var b=document.getElementById("inst");if(b&&b.remove){b.remove();}});
+  window.addEventListener("load",function(){try{if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){navigator.serviceWorker.register("sw.js").catch(function(){});}}catch(e){}});
+}
+
 /* démarrage */
 var sb=document.getElementById("snd");
 var ICON_ON='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
@@ -662,7 +724,7 @@ intro();
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,signInAnonymously} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {getDatabase,ref,get,set,update,remove,onValue,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import {getDatabase,ref,get,set,update,remove,onValue,push,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
 const cfg={
   apiKey:"AIzaSyAiymqdSSEzn7npSMFHRlvqI1cUGTyLMMI",
@@ -677,7 +739,7 @@ const fb=initializeApp(cfg),auth=getAuth(fb),db=getDatabase(fb);
 const app=document.getElementById("app");
 const TH=THEMES.map(t=>t.n);
 const COL=["#ff5d73","#4cc9f0","#ffd166","#06d6a0","#c084fc","#fb923c","#f472b6","#a3e635","#38bdf8","#facc15"];
-let active=false,uid=null,code=null,room=null,role=null,offs=[],shown=false,lastRound=-1,key="";
+let emoTimes=[],emoLock=0,emoTimer=null,lastSig="",chatOn=false,chatOpen=false,seen=null,lastSend=0,chatMounted=false,active=false,uid=null,code=null,room=null,role=null,offs=[],shown=false,lastRound=-1,key="";
 let myName="";try{myName=localStorage.getItem("ud_name")||"";}catch(e){}
 
 const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
@@ -735,16 +797,17 @@ async function joinRoom(){
   await set(ref(db,`rooms/${c}/players/${uid}`),{name,t:(pl[uid]&&pl[uid].t)||Date.now()});
   enter(c);
 }
-function stop(){offs.forEach(f=>f());offs=[];}
+function stop(){offs.forEach(f=>f());offs=[];chatShow(false);}
 function enter(c){
-  stop();code=c;key="";
+  stop();code=c;key="";lastSig="";seen=null;mountChat();chatShow(true);
   try{localStorage.setItem("ud_room",c);history.replaceState(null,"","#"+c);}catch(e){}
   offs.push(onValue(ref(db,"rooms/"+c),s=>{
     if(!s.exists()){exit("Le salon a été fermé.");return;}
     room=s.val();
     if(!room.players||!room.players[uid]){exit("Tu n’es plus dans ce salon.");return;}
     if(room.round!==lastRound){lastRound=room.round;shown=false;}
-    render();
+    const rest=Object.assign({},room);delete rest.chat;const sg=JSON.stringify(rest);if(sg!==lastSig){lastSig=sg;render();}
+    chatUpdate();
   },()=>exit("Connexion perdue.")));
   offs.push(onValue(ref(db,`roles/${c}/${uid}`),s=>{role=s.val();render();}));
 }
@@ -846,6 +909,136 @@ function done(){
   h+=host?`<button data-a="again" style="margin-top:16px">Nouvelle manche</button>`:`<div class="sub" style="margin-top:14px">L’hôte peut lancer une nouvelle manche.</div>`;
   h+=`<div class="rule warn" id="err"></div><button class="sec" data-a="quit">Quitter</button>`;
   show(h,"done"+room.round);
+}
+
+/* ===== tchat du salon ===== */
+function mountChat(){
+  if(chatMounted){return;}chatMounted=true;
+  const d=document.createElement("div");d.id="chat";
+  d.innerHTML=`<button id="cbtn" type="button" aria-label="Ouvrir le tchat">💬<i id="cbd"></i></button><div id="cpan"><div class="chd"><b>Tchat du salon</b><button id="cx" type="button" aria-label="Fermer le tchat">✕</button></div><div id="clist"></div><div id="cem">${EMO.map((x,i)=>`<button type="button" data-e="${i}" aria-label="${x.n}">${x.s}</button>`).join("")}</div><div id="cwarn"></div><div class="cfm"><input class="nm" id="cin" type="text" maxlength="200" autocomplete="off" placeholder="Ton message…"><button id="csend" type="button">Envoyer</button></div></div>`;
+  document.body.appendChild(d);
+  $("cbtn").onclick=()=>chatToggle(!chatOpen);
+  $("cx").onclick=()=>chatToggle(false);
+  $("csend").onclick=chatSend;
+  $("cem").onclick=e=>{const b=e&&e.target&&e.target.closest&&e.target.closest("[data-e]");if(b){emoSend(+b.dataset.e);}};
+  $("cin").onkeydown=e=>{if(e&&e.key==="Enter"){e.preventDefault&&e.preventDefault();chatSend();}};
+}
+function chatShow(on){
+  chatOn=on;if(!on){chatOpen=false;}
+  const c=$("chat");if(c){c.className=on?"on":"";}
+  const p=$("cpan");if(p){p.className=chatOpen?"open":"";}
+}
+function chatToggle(o){
+  chatOpen=o;const p=$("cpan");if(p){p.className=o?"open":"";}
+  if(o){seen=chatList().length;chatRender();const i=$("cin");if(i&&i.focus){try{i.focus();}catch(e){}}}
+  chatBadge();
+}
+function chatList(){
+  const c=(room&&room.chat)||{};
+  return Object.keys(c).sort().slice(-60).map(k=>c[k]).filter(m=>m&&typeof m.m==="string"&&(m.m!==""||(typeof m.e==="number"&&EMO[m.e])));
+}
+function chatBadge(){
+  const b=$("cbd");if(!b){return;}
+  const n=(seen===null||chatOpen)?0:chatList().slice(seen).filter(m=>m.u!==uid).length;
+  b.textContent=n>9?"9+":String(n||"");b.className=n?"on":"";
+}
+function chatRender(){
+  const l=$("clist");if(!l||!room){return;}
+  const order=ids();
+  l.innerHTML=chatList().map(m=>{
+    const me=m.u===uid,k=order.indexOf(m.u);
+    const E=(typeof m.e==="number")?EMO[m.e]:null;
+    return `<div class="cm${me?' me':''}${E?' em':''}"><b style="color:${me?'inherit':(k>=0?COL[k%10]:'#ddd')}">${me?'Toi':esc(m.n||"?")}</b>${E?E.s:esc(m.m)}</div>`;
+  }).join("")||`<div class="sub">Aucun message pour le moment.</div>`;
+  l.scrollTop=l.scrollHeight;
+}
+function chatUpdate(){
+  if(!chatOn){return;}
+  const list=chatList();
+  if(seen===null){seen=list.length;}
+  else if(!chatOpen&&list.length>seen&&list[list.length-1].u!==uid&&window.sfx){sfx("tick");}
+  if(chatOpen){seen=list.length;chatRender();}
+  chatBadge();
+}
+async function chatSend(){
+  const i=$("cin");if(!i||!code||!room){return;}
+  const t=(i.value||"").replace(/\s+/g," ").trim().slice(0,200);
+  if(!t){return;}
+  const now=Date.now();if(now-lastSend<600){return;}lastSend=now;
+  i.value="";
+  const me=room.players&&room.players[uid];
+  try{await push(ref(db,`rooms/${code}/chat`),{u:uid,n:(me&&me.name)||myName||"?",t:now,m:t});}
+  catch(e){i.value=t;}
+}
+const INK="#2b1d0e";
+const base=f=>`<circle cx="50" cy="50" r="47" fill="#fff"/><circle cx="50" cy="50" r="43" fill="${f}" stroke="${INK}" stroke-width="3.5"/>`;
+const S=(n,f,inner)=>`<svg viewBox="0 0 100 100" role="img" aria-label="${n}" xmlns="http://www.w3.org/2000/svg">${base(f)}${inner}</svg>`;
+const st=(w)=>`fill="none" stroke="${INK}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"`;
+const EMO=[
+ {n:"Mdr",s:S("Mdr","#FFD23F",
+  `<path d="M23 40Q31 29 39 40M61 40Q69 29 77 40" ${st(4.5)}/>
+   <path d="M26 55Q50 92 74 55Z" fill="#7a1f2b" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"/>
+   <path d="M38 72Q50 65 62 72Q50 85 38 72Z" fill="#ff7a8a"/>
+   <path d="M18 46q-6 9 0 13q6-4 0-13zM82 46q6 9 0 13q-6-4 0-13z" fill="#6ec6ff" stroke="${INK}" stroke-width="2"/>`)},
+ {n:"Cool",s:S("Cool","#FFD23F",
+  `<path d="M14 36H86V46Q86 64 70 64Q57 64 54 49H46Q43 64 30 64Q14 64 14 46Z" fill="#1c1c28" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
+   <path d="M22 42L30 42M62 42L70 42" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+   <path d="M36 76Q52 86 68 70" ${st(4.5)}/>`)},
+ {n:"Triste",s:S("Triste","#FFD23F",
+  `<circle cx="36" cy="46" r="5.5" fill="${INK}"/><circle cx="64" cy="46" r="5.5" fill="${INK}"/>
+   <path d="M25 37L42 31M58 31L75 37" ${st(4.5)}/>
+   <path d="M36 54q-6 14 0 24M64 54q6 14 0 24" fill="none" stroke="#6ec6ff" stroke-width="6" stroke-linecap="round"/>
+   <path d="M35 76Q50 62 65 76" ${st(4.5)}/>`)},
+ {n:"Grr",s:S("Grr","#FF7A59",
+  `<path d="M24 33L45 43M76 33L55 43" ${st(5.5)}/>
+   <circle cx="36" cy="51" r="4.5" fill="${INK}"/><circle cx="64" cy="51" r="4.5" fill="${INK}"/>
+   <path d="M31 72Q50 60 69 72L65 82Q50 75 35 82Z" fill="#fff" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"/>
+   <path d="M42 67V79M50 66V77M58 67V79" ${st(2.5)}/>`)},
+ {n:"Oh !",s:S("Oh !","#FFD23F",
+  `<path d="M24 27Q34 19 44 27M56 27Q66 19 76 27" ${st(4.5)}/>
+   <circle cx="34" cy="44" r="11" fill="#fff" stroke="${INK}" stroke-width="3.5"/><circle cx="66" cy="44" r="11" fill="#fff" stroke="${INK}" stroke-width="3.5"/>
+   <circle cx="34" cy="46" r="4.5" fill="${INK}"/><circle cx="66" cy="46" r="4.5" fill="${INK}"/>
+   <ellipse cx="50" cy="73" rx="9" ry="12" fill="#7a1f2b" stroke="${INK}" stroke-width="3.5"/>`)},
+ {n:"Louche",s:S("Louche","#FFD23F",
+  `<ellipse cx="34" cy="50" rx="10" ry="8" fill="#fff" stroke="${INK}" stroke-width="3.5"/><ellipse cx="66" cy="50" rx="10" ry="8" fill="#fff" stroke="${INK}" stroke-width="3.5"/>
+   <circle cx="39" cy="51" r="4.5" fill="${INK}"/><circle cx="71" cy="51" r="4.5" fill="${INK}"/>
+   <path d="M21 46H47M53 46H79" ${st(4.5)}/>
+   <path d="M23 36L45 38M55 30Q67 19 79 29" ${st(4.5)}/>
+   <path d="M38 73Q52 72 66 66" ${st(4.5)}/>`)},
+ {n:"Innocent",s:S("Innocent","#FFD23F",
+  `<circle cx="36" cy="46" r="6.5" fill="${INK}"/><circle cx="64" cy="46" r="6.5" fill="${INK}"/>
+   <circle cx="34" cy="43.5" r="2.2" fill="#fff"/><circle cx="62" cy="43.5" r="2.2" fill="#fff"/>
+   <ellipse cx="22" cy="60" rx="7" ry="4.5" fill="#ff8fa3" opacity=".75"/><ellipse cx="78" cy="60" rx="7" ry="4.5" fill="#ff8fa3" opacity=".75"/>
+   <path d="M37 63Q50 76 63 63" ${st(4.5)}/>
+   <ellipse cx="50" cy="9" rx="22" ry="6" fill="none" stroke="#f5a300" stroke-width="5"/>`)},
+ {n:"Love",s:S("Love","#FFD23F",
+  `<path id="h" d="M34 54C19 43 23 29 34 34C45 29 49 43 34 54Z" fill="#ff3b6b" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+   <path d="M66 54C51 43 55 29 66 34C77 29 81 43 66 54Z" fill="#ff3b6b" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+   <path d="M33 64Q50 88 67 64Z" fill="#7a1f2b" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"/>`)}
+];
+
+
+const EMO_MAX=3,EMO_WINDOW=8000,EMO_LOCK=20000;
+function emoLockUI(){
+  const w=$("cwarn"),bar=$("cem");if(!w||!bar){return;}
+  clearInterval(emoTimer);
+  const tick=()=>{
+    const s=Math.ceil((emoLock-Date.now())/1000);
+    if(s<=0){clearInterval(emoTimer);w.textContent="";w.className="";bar.className="";return;}
+    w.textContent=`Trop d’émotes d’un coup ! Réessaie dans ${s} s.`;w.className="on";bar.className="lock";
+  };
+  tick();emoTimer=setInterval(tick,1000);
+}
+async function emoSend(i){
+  if(!code||!room||!EMO[i]){return;}
+  const now=Date.now();
+  if(now<emoLock){emoLockUI();return;}
+  if(now-lastSend<600){return;}
+  emoTimes=emoTimes.filter(t=>now-t<EMO_WINDOW);
+  if(emoTimes.length>=EMO_MAX){emoLock=now+EMO_LOCK;emoLockUI();return;}
+  lastSend=now;emoTimes.push(now);
+  const me=room.players&&room.players[uid];
+  try{await push(ref(db,`rooms/${code}/chat`),{u:uid,n:(me&&me.name)||myName||"?",t:now,m:"",e:i});}catch(e){}
 }
 async function act(a,b){
   const host=room&&room.host===uid;
