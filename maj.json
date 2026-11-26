@@ -1,0 +1,90 @@
+{
+ "soon": [
+  {
+   "t": "Vote par éliminations en ligne",
+   "d": "Comme en 1 téléphone : on continue la manche jusqu'à démasquer l'infiltré.",
+   "s": "Prévu"
+  },
+  {
+   "t": "Défis du tour",
+   "d": "Une règle au hasard à chaque manche, par exemple parler en 3 mots.",
+   "s": "Prévu"
+  },
+  {
+   "t": "Nouvelles catégories",
+   "d": "Séries, Disney, sport et plus encore.",
+   "s": "Idée"
+  },
+  {
+   "t": "Ambiance sonore",
+   "d": "Une musique de fond légère, avec un bouton pour la couper.",
+   "s": "Idée"
+  }
+ ],
+ "news": [
+  {
+   "v": "2.14",
+   "d": "Nouvelle catégorie Animé : 99 duos (One Piece, Dragon Ball, Naruto, Bleach, Hunter x Hunter) avec descriptions. Les anciens codes hors-ligne Animé ne marchent plus."
+  },
+  {
+   "v": "2.13",
+   "d": "Catégorie Animé vidée en attendant la nouvelle liste de personnages."
+  },
+  {
+   "v": "2.12",
+   "d": "Animé : duos réorganisés par notoriété des personnages (Facile = très connus, Extrême = niche), avec des points communs."
+  },
+  {
+   "v": "2.11",
+   "d": "Une courte description sous chaque personnage (animé, Marvel, jeux vidéo) pour jouer même sans le connaître."
+  },
+  {
+   "v": "2.10",
+   "d": "Pastille « joueurs en ligne », jeu plus fluide, réglage Animations réduites."
+  },
+  {
+   "v": "2.9",
+   "d": "Comptes facultatifs (pseudo + mot de passe), classement mondial et par pays."
+  },
+  {
+   "v": "2.8",
+   "d": "Reconnexion automatique à ton salon, historique de la soirée, sons et vibrations plus riches."
+  },
+  {
+   "v": "2.7",
+   "d": "Nouvelles couleurs pour les catégories : plus riches et plus harmonieuses."
+  },
+  {
+   "v": "2.6",
+   "d": "Couleurs personnalisables : rouge et noir (logo), bleu nuit, émeraude, violet, or, ou tes propres couleurs."
+  },
+  {
+   "v": "2.5",
+   "d": "Catégorie Animaux (terrestres, marins, aériens ou les 3) et catégorie Jeux vidéo remplie."
+  },
+  {
+   "v": "2.4",
+   "d": "Nouvelle catégorie Histoire : 40 duos de personnages historiques."
+  },
+  {
+   "v": "2.2",
+   "d": "Minuteur de débat choisi par l'hôte, avec compte à rebours partagé en ligne."
+  },
+  {
+   "v": "2.1",
+   "d": "Écran Réglages : son, vibrations, écran allumé, effacement des données."
+  },
+  {
+   "v": "2.0",
+   "d": "Mr White, classement de la soirée, avatars mémorisés, logo de l'application."
+  },
+  {
+   "v": "1.5",
+   "d": "Vote par éliminations, règles du jeu, partage du code, relais d'hôte en ligne."
+  },
+  {
+   "v": "1.0",
+   "d": "Mode en ligne avec tchat et émotes, code hors ligne, mode admin, application installable."
+  }
+ ]
+}

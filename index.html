@@ -224,7 +224,7 @@ body[data-theme="0"] .bgl.t0,body[data-theme="1"] .bgl.t1{opacity:1}
 .sb{width:52px;height:52px;padding:0;margin:0;border-radius:50%;font-size:1.6rem;line-height:1;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:none}
 .sv{min-width:64px;font-size:2.2rem;font-weight:900;text-align:center}
 .dot{flex:1 1 0;max-width:30px;min-width:3px}
-.tile.t2{--tint:rgba(255,255,255,.4);--tint2:rgba(139,92,246,.4);animation-delay:.25s;background:linear-gradient(150deg,#34d399,#0891b2);grid-column:1/-1;min-height:130px}
+.tile.t2{--tint:rgba(255,255,255,.4);--tint2:rgba(139,92,246,.4);animation-delay:.25s;background:linear-gradient(150deg,#34d399,#0891b2)}
 .bgl.t2{background:linear-gradient(160deg,#052e3a,#0e7490 55%,#22d3a0)}
 body[data-theme="2"] .bgl.t2{opacity:1}
 body[data-theme="2"]{--ink:#064e3b;--card:rgba(4,40,50,.42);--a1:#34d399;--a2:#22d3ee}
@@ -305,10 +305,78 @@ button:focus-visible,.nm:focus-visible{outline:2px solid #fff;outline-offset:3px
 .tmv{font-family:var(--mono);font-size:2.2rem;font-weight:800;text-align:center;margin:6px 0 10px}
 .tmv.low{color:#ffd166}.tmv.end{color:#ff9a9a}
 .seg.s4 button{padding:11px 2px}
+
+.mj{margin-top:10px}
+.mjl{margin-top:12px;display:flex;flex-direction:column;gap:9px;text-align:left}
+.mji{padding:12px 14px;border:1px solid rgba(255,255,255,.28);border-radius:14px;background:rgba(255,255,255,.12)}
+.mjh{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.mjh b{font-size:.98rem}
+.mjd{margin-top:5px;font-size:.85rem;opacity:.88;line-height:1.4}
+.mjs{flex:none;font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.4)}
+.mjs.s1{background:#06d6a0;color:#06281f;border-color:#06d6a0;font-weight:800}
+.mjs.s2{background:#ffd166;color:#3a2a00;border-color:#ffd166;font-weight:800}
+
+.tile.t3{--tint:rgba(255,255,255,.4);--tint2:rgba(167,139,250,.45);animation-delay:.35s;background:linear-gradient(150deg,#60a5fa,#1e40af)}
+.bgl.t3{background:linear-gradient(160deg,#0b1d4a,#1e4fb8 55%,#7cb8ff)}
+body[data-theme="3"] .bgl.t3{opacity:1}
+body[data-theme="3"]{--ink:#0b2a6b;--card:rgba(10,25,70,.42);--a1:#60a5fa;--a2:#a78bfa}
+
+.tile.t4{--tint:rgba(255,255,255,.4);--tint2:rgba(250,204,21,.45);animation-delay:.45s;background:linear-gradient(150deg,#a3e635,#15803d);grid-column:1/-1;min-height:130px}
+.bgl.t4{background:linear-gradient(160deg,#0f3d22,#15803d 55%,#bef264)}
+body[data-theme="4"] .bgl.t4{opacity:1}
+body[data-theme="4"]{--ink:#14532d;--card:rgba(8,45,25,.42);--a1:#a3e635;--a2:#22c55e}
+.seg.sbt{grid-template-columns:1.45fr 1fr 1fr 1fr}
+.seg.sbt button{padding:11px 2px;font-size:.8rem;white-space:nowrap}
+
+body[data-skin] .bgl{opacity:0!important}
+body[data-skin] .bgl.sk{opacity:1!important}
+.bgl.sk{background:linear-gradient(160deg,var(--s1,#0a0508),var(--s2,#3f0b12) 55%,var(--s3,#d0121f))}
+.skg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:6px}
+.skn{margin:0;height:62px;padding:8px 10px;border-radius:14px;border:2px solid rgba(255,255,255,.28);background:var(--g);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.65);font-size:.82rem;font-weight:700;display:flex;align-items:flex-end;justify-content:flex-start;text-align:left;box-shadow:none}
+.skn.on{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.45)}
+.cus{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.cus label{font-size:.72rem;opacity:.9;display:flex;flex-direction:column;gap:6px;align-items:center}
+.cus input{width:100%;height:46px;border:2px solid rgba(255,255,255,.4);border-radius:12px;background:transparent;padding:2px}
+
+/* palette v2.7 : couleurs des catégories */
+.tile.t0{background:linear-gradient(150deg,#ff8ad4 0%,#b43cf0 50%,#5a1fb8 100%);--tint:rgba(255,255,255,.34);--tint2:rgba(60,220,255,.28)}
+.tile.t1{background:linear-gradient(150deg,#ff9a6b 0%,#f0394b 50%,#8f1030 100%);--tint:rgba(255,255,255,.34);--tint2:rgba(255,200,80,.3)}
+.tile.t2{background:linear-gradient(150deg,#5eead4 0%,#2f7de1 50%,#3a2bb0 100%);--tint:rgba(255,255,255,.34);--tint2:rgba(190,120,255,.3)}
+.tile.t3{background:linear-gradient(150deg,#ffd979 0%,#e08a1e 50%,#8a3f0c 100%);--tint:rgba(255,255,255,.36);--tint2:rgba(255,120,60,.3)}
+.tile.t4{background:linear-gradient(150deg,#b6f26b 0%,#28b463 50%,#0b6b45 100%);--tint:rgba(255,255,255,.34);--tint2:rgba(250,220,60,.3)}
+.bgl.t0{background:linear-gradient(160deg,#1c0b4a,#6d28d9 55%,#ff6fb5)}
+.bgl.t1{background:linear-gradient(160deg,#2a0610,#b0152b 55%,#ff8a5c)}
+.bgl.t2{background:linear-gradient(160deg,#071235,#2646c9 55%,#4fd1e8)}
+.bgl.t3{background:linear-gradient(160deg,#2a1504,#b4570f 55%,#ffcf6e)}
+.bgl.t4{background:linear-gradient(160deg,#04261a,#16955b 55%,#a8ea6a)}
+body[data-theme="0"]{--a1:#ff6fb5;--a2:#8b5cf6;--ink:#4c1d95;--card:rgba(35,15,95,.38)}
+body[data-theme="1"]{--a1:#ff7a59;--a2:#e11d48;--ink:#7f1033;--card:rgba(60,8,20,.42)}
+body[data-theme="2"]{--a1:#38bdf8;--a2:#6366f1;--ink:#1e2a78;--card:rgba(8,16,60,.42)}
+body[data-theme="3"]{--a1:#fbbf24;--a2:#ea580c;--ink:#6b2f08;--card:rgba(48,24,4,.42)}
+body[data-theme="4"]{--a1:#7ee06f;--a2:#16a34a;--ink:#0b4a2d;--card:rgba(5,40,24,.42)}
+
+#net{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:70;padding:8px 14px;border-radius:999px;background:rgba(20,10,14,.9);color:#fff;font:600 13px system-ui,sans-serif;border:1px solid rgba(255,255,255,.25);display:none;white-space:nowrap}
+#net.on{display:block}#net.ok{background:rgba(10,60,35,.92)}
+.ol.hi{align-items:flex-start;gap:10px}.ol.hi .rk{min-width:26px}.ol.hi .tag{margin-left:auto;align-self:center;white-space:nowrap}.ol.hi .lbn{flex:1;min-width:0}.hi small{display:block;opacity:.75;font-size:12px;margin-top:2px}
+
+select.nm{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:34px}
+select.nm option{color:#111}
+.ol.me{border-color:var(--text)}.st3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.st3 div{text-align:center;padding:10px 4px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06)}.st3 b{display:block;font-size:22px}.st3 span{font-size:11px;opacity:.75}
+
+/* v2.10 : fluidité */
+.bgl,.tile,.enter,.leaving{will-change:auto}
+.tile::before{animation:sweep 6s ease-in-out 2 alternate}
+body.lite .bl,body.lite .tile::before,body.lite .avatar::after{animation:none!important}
+body.lite .bg::after{display:none}
+body.lite .card{box-shadow:0 6px 16px rgba(0,0,0,.35)}
+body.lite .enter{animation-duration:.25s}
+#pc{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:30;display:none;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:rgba(10,8,20,.55);border:1px solid rgba(255,255,255,.2);color:#fff;font:600 12px system-ui,sans-serif;letter-spacing:.02em;pointer-events:none}
+#pc.on{display:flex}#pc i{width:8px;height:8px;border-radius:50%;background:#34d399}
+.desc{font-size:.86rem;line-height:1.4;font-style:italic;color:rgba(255,255,255,.82);margin:10px 0 0}
 </style>
 </head>
 <body>
-<div class="bg" id="bg"><i class="bgl n"></i><i class="bgl t0"></i><i class="bgl t1"></i><i class="bgl t2"></i><i class="bl b1"></i><i class="bl b2"></i><i class="bl b3"></i></div>
+<div class="bg" id="bg"><i class="bgl n"></i><i class="bgl t0"></i><i class="bgl t1"></i><i class="bgl t2"></i><i class="bgl t3"></i><i class="bgl t4"></i><i class="bgl sk"></i><i class="bl b1"></i><i class="bl b2"></i><i class="bl b3"></i></div>
 <div id="fx"></div>
 <button class="snd" id="snd" type="button" aria-label="Activer ou couper le son"></button>
 <button class="snd hm" id="home" type="button" aria-label="Retour au menu principal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/></svg></button>
@@ -316,7 +384,7 @@ button:focus-visible,.nm:focus-visible{outline:2px solid #fff;outline-offset:3px
 <script>
 var PAIRS=[["Naruto","Luffy"],["Goku","Saitama"],["Sasuke","Itachi"],["Light Yagami","L"],["Eren Jäger","Levi"],["Tanjiro","Zenitsu"],["Gojo Satoru","Sukuna"],["Deku","Bakugo"],["Vegeta","Piccolo"],["Zoro","Sanji"],["Edward Elric","Alphonse Elric"],["Natsu","Gray"],["Ichigo","Renji"],["Kirito","Asuna"],["Spike Spiegel","Lupin III"],["Pikachu","Évoli"],["Sailor Moon","Cardcaptor Sakura"],["Meliodas","Escanor"],["Asta","Yuno"],["Mikasa","Annie"],["Goku","Naruto"],["Kakashi","Gojo Satoru"],["Levi","Zoro"],["Gon","Killua"],["Hinata Shoyo","Kageyama"],["Lelouch","Suzaku"],["Shinji Ikari","Asuka"],["Jotaro Kujo","Dio Brando"],["Denji","Power"],["Anya Forger","Yor Forger"],["Kaneki","Touka"],["Okabe","Kurisu"],["Senku","Taiju"],["Frieren","Fern"],["Guts","Griffith"],["Chihiro","Haku"],["San","Ashitaka"],["Ash","Misty"],["Mob","Reigen"],["Gon","Naruto"],["Denji","Deku"],["Jotaro Kujo","Gojo Satoru"],["Lelouch","Light Yagami"],["Senku","L"],["Seiya de Pégase","Shiryu"],["Yugi Muto","Seto Kaiba"],["Kenshiro","Raoh"],["Tsubasa Ozora","Kojiro Hyuga"],["Ryo Saeba","Kaori Makimura"],["Yusuke Urameshi","Hiei"],["Himura Kenshin","Sanosuke"],["Inuyasha","Sesshomaru"],["Ranma Saotome","Akane Tendo"],["Tai Kamiya","Matt Ishida"],["Hanamichi Sakuragi","Kaede Rukawa"],["Actarus","Alcor"],["Amuro Ray","Char Aznable"],["Seiya de Pégase","Goku"],["Yugi Muto","Yusuke Urameshi"],["Himura Kenshin","Inuyasha"],["Kenshiro","Saitama"],["Ryo Saeba","Spike Spiegel"],["Actarus","Amuro Ray"],["Hanamichi Sakuragi","Hinata Shoyo"]];
 var AOT="L’Attaque des Titans",DB="Dragon Ball",OP="One Piece",DN="Death Note",DS="Demon Slayer",JJK="Jujutsu Kaisen",MHA="My Hero Academia",FMA="Fullmetal Alchemist",FT="Fairy Tail",BL="Bleach",SAO="Sword Art Online",PK="Pokémon",SDS="Seven Deadly Sins",BC="Black Clover",NA="Naruto";
-var WORK={"Seiya de Pégase":"Les Chevaliers du Zodiaque","Shiryu":"Les Chevaliers du Zodiaque","Yugi Muto":"Yu-Gi-Oh!","Seto Kaiba":"Yu-Gi-Oh!","Kenshiro":"Ken le Survivant","Raoh":"Ken le Survivant","Tsubasa Ozora":"Olive et Tom","Kojiro Hyuga":"Olive et Tom","Ryo Saeba":"Nicky Larson","Kaori Makimura":"Nicky Larson","Yusuke Urameshi":"Yu Yu Hakusho","Hiei":"Yu Yu Hakusho","Himura Kenshin":"Kenshin le vagabond","Sanosuke":"Kenshin le vagabond","Inuyasha":"Inuyasha","Sesshomaru":"Inuyasha","Ranma Saotome":"Ranma 1/2","Akane Tendo":"Ranma 1/2","Tai Kamiya":"Digimon","Matt Ishida":"Digimon","Hanamichi Sakuragi":"Slam Dunk","Kaede Rukawa":"Slam Dunk","Actarus":"Goldorak","Alcor":"Goldorak","Amuro Ray":"Mobile Suit Gundam","Char Aznable":"Mobile Suit Gundam","Gon":"Hunter x Hunter","Killua":"Hunter x Hunter","Hinata Shoyo":"Haikyuu!!","Kageyama":"Haikyuu!!","Lelouch":"Code Geass","Suzaku":"Code Geass","Shinji Ikari":"Evangelion","Asuka":"Evangelion","Jotaro Kujo":"JoJo’s Bizarre Adventure","Dio Brando":"JoJo’s Bizarre Adventure","Denji":"Chainsaw Man","Power":"Chainsaw Man","Anya Forger":"Spy x Family","Yor Forger":"Spy x Family","Kaneki":"Tokyo Ghoul","Touka":"Tokyo Ghoul","Okabe":"Steins;Gate","Kurisu":"Steins;Gate","Senku":"Dr. Stone","Taiju":"Dr. Stone","Frieren":"Frieren","Fern":"Frieren","Guts":"Berserk","Griffith":"Berserk","Chihiro":"Le Voyage de Chihiro","Haku":"Le Voyage de Chihiro","San":"Princesse Mononoké","Ashitaka":"Princesse Mononoké","Ash":PK,"Misty":PK,"Mob":"Mob Psycho 100","Reigen":"Mob Psycho 100","Kakashi":NA,"Naruto":NA,"Luffy":OP,"Goku":DB,"Saitama":"One Punch Man","Sasuke":NA,"Itachi":NA,"Light Yagami":DN,"L":DN,"Eren Jäger":AOT,"Levi":AOT,"Mikasa":AOT,"Annie":AOT,"Tanjiro":DS,"Zenitsu":DS,"Gojo Satoru":JJK,"Sukuna":JJK,"Deku":MHA,"Bakugo":MHA,"Vegeta":DB,"Piccolo":DB,"Zoro":OP,"Sanji":OP,"Edward Elric":FMA,"Alphonse Elric":FMA,"Natsu":FT,"Gray":FT,"Ichigo":BL,"Renji":BL,"Kirito":SAO,"Asuna":SAO,"Spike Spiegel":"Cowboy Bebop","Lupin III":"Lupin III","Pikachu":PK,"Évoli":PK,"Sailor Moon":"Sailor Moon","Cardcaptor Sakura":"Cardcaptor Sakura","Meliodas":SDS,"Escanor":SDS,"Asta":BC,"Yuno":BC};
+var WORK={"Pikachu":"Pokémon","Évoli":"Pokémon","Iron Man":"Avengers","Captain America":"Avengers","Thor":"Avengers","Hulk":"Avengers","Black Widow":"Avengers","Hawkeye":"Avengers","Loki":"Avengers","Thanos":"Avengers","Scarlet Witch":"Avengers","Vision":"Avengers","Winter Soldier":"Avengers","Ultron":"Avengers","Nick Fury":"Avengers","Captain Marvel":"Avengers","Ant-Man":"Avengers","Falcon":"Avengers","Star-Lord":"Les Gardiens de la Galaxie","Gamora":"Les Gardiens de la Galaxie","Rocket":"Les Gardiens de la Galaxie","Groot":"Les Gardiens de la Galaxie","Drax":"Les Gardiens de la Galaxie","Nebula":"Les Gardiens de la Galaxie","Black Panther":"Black Panther","Killmonger":"Black Panther","Shuri":"Black Panther","Okoye":"Black Panther","Spider-Man":"Spider-Man","Bouffon Vert":"Spider-Man","Docteur Octopus":"Spider-Man","Docteur Strange":"Docteur Strange","Wong":"Docteur Strange","Wolverine":"X-Men","Magneto":"X-Men","Professeur X":"X-Men","Deadpool":"Deadpool","Napoléon Bonaparte":"Empereur des Français · 1804","Napoléon III":"Empereur des Français · Second Empire","Cléopâtre":"Dernière reine d’Égypte ptolémaïque","Néfertiti":"Reine de l’Égypte antique · XIVe s. av. J.-C.","Léonard de Vinci":"Peintre et inventeur · La Joconde","Michel-Ange":"Sculpteur · Chapelle Sixtine","Gengis Khan":"Fondateur de l’Empire mongol","Jeanne d’Arc":"Guerre de Cent Ans · Orléans","Louis XIV":"Le Roi-Soleil · Versailles","Louis XV":"Roi de France · XVIIIe siècle","Louis XVI":"Dernier roi avant la Révolution","Marie-Antoinette":"Reine de France · Révolution","Henri IV":"Roi de France · Édit de Nantes","Albert Einstein":"Physicien · Relativité","Isaac Newton":"Physicien · Gravitation","Jules César":"Général et dictateur romain","Auguste":"Premier empereur romain","Marie Curie":"Physicienne · Radioactivité","Louis Pasteur":"Chimiste · Vaccin contre la rage","Christophe Colomb":"Navigateur · Traversée de 1492","Magellan":"Navigateur · Premier tour du monde","Mozart":"Compositeur · La Flûte enchantée","Beethoven":"Compositeur · Symphonie n°9","Alexandre le Grand":"Roi de Macédoine · Conquêtes","Victor Hugo":"Écrivain · Les Misérables","Balzac":"Écrivain · La Comédie humaine","Spartacus":"Chef de la révolte des esclaves","Charlemagne":"Empereur d’Occident · An 800","Nelson Mandela":"Président sud-africain · Apartheid","Pablo Picasso":"Peintre · Cubisme","Vincent van Gogh":"Peintre · La Nuit étoilée","Claude Monet":"Peintre · Impressionnisme","Ramsès II":"Pharaon · Bataille de Qadesh","Toutânkhamon":"Pharaon · Tombe découverte en 1922","Robespierre":"Révolution · La Terreur","Danton":"Révolution · Orateur des Cordeliers","Galilée":"Astronome · Lunette astronomique","Copernic":"Astronome · Héliocentrisme","Winston Churchill":"Premier ministre britannique · 1940","Charles de Gaulle":"Appel du 18 juin · Ve République","Abraham Lincoln":"Président américain · Guerre de Sécession","George Washington":"Premier président des États-Unis","Gandhi":"Indépendance de l’Inde · Non-violence","Martin Luther King":"Droits civiques · I have a dream","Platon":"Philosophe · La République","Aristote":"Philosophe · Précepteur d’Alexandre","Socrate":"Philosophe · Procès d’Athènes","Elizabeth Ire":"Reine d’Angleterre · Époque élisabéthaine","Catherine II":"Impératrice de Russie","Molière":"Dramaturge · Le Misanthrope","William Shakespeare":"Dramaturge · Hamlet","Nikola Tesla":"Inventeur · Courant alternatif","Thomas Edison":"Inventeur · Ampoule électrique","Karl Marx":"Philosophe · Le Capital","Friedrich Engels":"Philosophe · Manifeste communiste","Hannibal":"Général carthaginois · Les Alpes","Scipion l’Africain":"Général romain · Bataille de Zama","Marc Antoine":"Général romain · Actium","Mario":"Super Mario","Luigi":"Super Mario","Bowser":"Super Mario","Wario":"Wario Land","Link":"The Legend of Zelda","Zelda":"The Legend of Zelda","Ganondorf":"The Legend of Zelda","Sonic":"Sonic the Hedgehog","Knuckles":"Sonic the Hedgehog","Tails":"Sonic the Hedgehog","Kirby":"Kirby","Yoshi":"Yoshi’s Island","Donkey Kong":"Donkey Kong","Diddy Kong":"Donkey Kong Country","Samus Aran":"Metroid","Lara Croft":"Tomb Raider","Nathan Drake":"Uncharted","Kratos":"God of War","Master Chief":"Halo","Doomguy":"Doom","Pac-Man":"Pac-Man","Steve":"Minecraft","Geralt de Riv":"The Witcher 3","Crash Bandicoot":"Crash Bandicoot","Spyro":"Spyro the Dragon","Ezio Auditore":"Assassin’s Creed II","Altaïr":"Assassin’s Creed","Solid Snake":"Metal Gear Solid","Sam Fisher":"Splinter Cell","Mega Man":"Mega Man","Cloud Strife":"Final Fantasy VII","Squall Leonhart":"Final Fantasy VIII","Sora":"Kingdom Hearts","Dante":"Devil May Cry","Bayonetta":"Bayonetta","Ryu":"Street Fighter","Ken":"Street Fighter II","Lion":"Mammifère · Roi de la savane","Tigre":"Mammifère · Félin rayé d’Asie","Éléphant":"Mammifère · Plus grand animal terrestre","Girafe":"Mammifère · Long cou","Loup":"Mammifère · Vit en meute","Chien":"Mammifère · Meilleur ami de l’homme","Chat":"Mammifère · Félin domestique","Ours brun":"Mammifère · Hiberne l’hiver","Renard":"Mammifère · Roux et rusé","Kangourou":"Marsupial · Australie","Panda":"Mammifère · Mange du bambou","Cheval":"Équidé · Se monte","Zèbre":"Équidé · Rayures noires et blanches","Âne":"Équidé · Brait","Guépard":"Mammifère · Le plus rapide sur terre","Léopard":"Mammifère · Félin tacheté","Gorille":"Primate · Forêt d’Afrique","Chimpanzé":"Primate · Très intelligent","Hérisson":"Mammifère · Piquants","Tortue":"Reptile · Carapace","Serpent":"Reptile · Sans pattes","Crocodile":"Reptile · Mâchoire puissante","Caméléon":"Reptile · Change de couleur","Souris":"Rongeur · Petit et discret","Rat":"Rongeur · Malin","Lapin":"Mammifère · Longues oreilles","Lièvre":"Mammifère · Bondit très vite","Vache":"Animal de ferme · Lait","Mouton":"Animal de ferme · Laine","Chèvre":"Animal de ferme · Cornes","Hippopotame":"Mammifère · Rivières d’Afrique","Rhinocéros":"Mammifère · Corne sur le nez","Dromadaire":"Mammifère · Une bosse","Chameau":"Mammifère · Deux bosses","Koala":"Marsupial · Mange de l’eucalyptus","Paresseux":"Mammifère · Très lent","Requin blanc":"Poisson · Grand prédateur","Requin-marteau":"Poisson · Tête en marteau","Dauphin":"Mammifère marin · Très intelligent","Baleine bleue":"Plus grand animal du monde","Cachalot":"Mammifère marin · Plongeur des abysses","Orque":"Mammifère marin · Prédateur noir et blanc","Pieuvre":"Mollusque · Huit bras","Calamar":"Mollusque · Dix bras","Méduse":"Cnidaire · Tentacules","Étoile de mer":"Échinoderme · Cinq bras","Hippocampe":"Poisson · Le mâle porte les petits","Raie manta":"Poisson · Grande envergure","Tortue de mer":"Reptile marin · Pond sur la plage","Phoque":"Pinnipède · Sans oreilles visibles","Otarie":"Pinnipède · Oreilles visibles","Morse":"Pinnipède · Longues défenses","Crabe":"Crustacé · Marche de côté","Homard":"Crustacé · Grosses pinces","Crevette":"Crustacé · Petite et rose","Poisson-clown":"Poisson · Récif corallien","Anguille":"Poisson · Forme de serpent","Murène":"Poisson · Se cache dans les rochers","Thon":"Poisson · Nageur rapide","Espadon":"Poisson · Long rostre","Narval":"Mammifère marin · Longue défense","Lamantin":"Mammifère marin · Vache de mer","Aigle royal":"Rapace · Roi des montagnes","Faucon pèlerin":"Rapace · Le plus rapide en piqué","Hibou":"Rapace nocturne · Aigrettes sur la tête","Chouette":"Rapace nocturne · Tête ronde","Perroquet":"Oiseau · Imite les voix","Colibri":"Oiseau · Le plus petit","Pigeon":"Oiseau · Vit en ville","Corbeau":"Oiseau · Noir et intelligent","Pie":"Oiseau · Attirée par ce qui brille","Cygne":"Oiseau · Élégant sur l’eau","Cigogne":"Oiseau · Migratrice","Flamant rose":"Oiseau · Pattes très longues","Mouette":"Oiseau · Bord de mer","Albatros":"Oiseau · Plus grande envergure","Pélican":"Oiseau · Grand bec","Chauve-souris":"Mammifère · Seul mammifère volant","Papillon":"Insecte · Métamorphose","Abeille":"Insecte · Fait du miel","Bourdon":"Insecte · Gros et poilu","Libellule":"Insecte · Ailes transparentes","Moustique":"Insecte · Pique","Mouche":"Insecte · Bourdonne","Coccinelle":"Insecte · Points noirs","Guêpe":"Insecte · Dard rayé","Vautour":"Rapace · Charognard","Condor":"Oiseau · Cordillère des Andes","Moineau":"Oiseau · Petit et familier","Luffy":"One Piece","Ace":"One Piece","Zoro":"One Piece","Sanji":"One Piece","Nami":"One Piece","Robin":"One Piece","Usopp":"One Piece","Chopper":"One Piece","Shanks":"One Piece","Mihawk":"One Piece","Doflamingo":"One Piece","Sir Crocodile":"One Piece","Law":"One Piece","Kid":"One Piece","Roger":"One Piece","Rayleigh":"One Piece","Garp":"One Piece","Sengoku":"One Piece","Sabo":"One Piece","Koala (One Piece)":"One Piece","Kaido":"One Piece","Big Mom":"One Piece","King":"One Piece","Queen":"One Piece","Marco":"One Piece","Joz":"One Piece","Enel":"One Piece","Katakuri":"One Piece","Smoothie":"One Piece","Franky":"One Piece","Brook":"One Piece","Jinbe":"One Piece","Fisher Tiger":"One Piece","Koby":"One Piece","Helmeppo":"One Piece","Buggy":"One Piece","Perona":"One Piece","Gecko Moria":"One Piece","Goku petit":"Dragon Ball","Bulma":"Dragon Ball","Yamcha":"Dragon Ball","Puar":"Dragon Ball","Krilin":"Dragon Ball","Tortue Géniale":"Dragon Ball","Tambourine":"Dragon Ball","Tao Pai Pai":"Dragon Ball","Général Blue":"Dragon Ball","Chichi":"Dragon Ball","Lunch":"Dragon Ball","Oolong":"Dragon Ball","Pilaf":"Dragon Ball","Tenshinhan":"Dragon Ball","Chaozu":"Dragon Ball","Nam":"Dragon Ball","Giran":"Dragon Ball","Goku":"Dragon Ball Z","Vegeta":"Dragon Ball Z","Gohan":"Dragon Ball Z","Trunks":"Dragon Ball Z","Piccolo":"Dragon Ball Z","Nail":"Dragon Ball Z","Freezer":"Dragon Ball Z","Cell":"Dragon Ball Z","C-17":"Dragon Ball Z","C-18":"Dragon Ball Z","Buu":"Dragon Ball Z","Babidi":"Dragon Ball Z","Raditz":"Dragon Ball Z","Nappa":"Dragon Ball Z","Dodoria":"Dragon Ball Z","Zarbon":"Dragon Ball Z","Dabra":"Dragon Ball Z","Kaioshin":"Dragon Ball Z","Broly":"Dragon Ball Z","Paragus":"Dragon Ball Z","Naruto":"Naruto","Sasuke":"Naruto","Sakura":"Naruto","Ino":"Naruto","Kakashi":"Naruto","Obito":"Naruto","Itachi":"Naruto","Shisui":"Naruto","Madara":"Naruto","Hashirama":"Naruto","Jiraya":"Naruto","Orochimaru":"Naruto","Tsunade":"Naruto","Shizune":"Naruto","Gaara":"Naruto","Kankuro":"Naruto","Temari":"Naruto","Shikamaru":"Naruto","Neji":"Naruto","Lee":"Naruto","Hinata":"Naruto","Hanabi":"Naruto","Deidara":"Naruto","Sasori":"Naruto","Hidan":"Naruto","Kakuzu":"Naruto","Pain":"Naruto","Konan":"Naruto","Kisame":"Naruto","Minato":"Naruto","Kushina":"Naruto","Tobirama":"Naruto","Zabuza":"Naruto","Haku":"Naruto","Kiba":"Naruto","Shino":"Naruto","Danzo":"Naruto","Hiruzen":"Naruto","Ichigo":"Bleach","Rukia":"Bleach","Renji":"Bleach","Byakuya":"Bleach","Toshiro":"Bleach","Rangiku":"Bleach","Kenpachi":"Bleach","Yachiru":"Bleach","Aizen":"Bleach","Gin":"Bleach","Ulquiorra":"Bleach","Grimmjow":"Bleach","Starrk":"Bleach","Lilynette":"Bleach","Yhwach":"Bleach","Jugram":"Bleach","Uryu":"Bleach","Ryuken":"Bleach","Kisuke":"Bleach","Yoruichi":"Bleach","Mayuri":"Bleach","Nemu":"Bleach","Shunsui":"Bleach","Jushiro":"Bleach","Soi Fon":"Bleach","Omaeda":"Bleach","Komamura":"Bleach","Tosen":"Bleach","Ikkaku":"Bleach","Yumichika":"Bleach","Nnoitra":"Bleach","Neliel":"Bleach","Barragan":"Bleach","Zommari":"Bleach","Szayelaporro":"Bleach","Aaroniero":"Bleach","Isshin":"Bleach","Masaki":"Bleach","Chad":"Bleach","Orihime":"Bleach","Gon":"Hunter x Hunter","Killua":"Hunter x Hunter","Kurapika":"Hunter x Hunter","Leolio":"Hunter x Hunter","Hisoka":"Hunter x Hunter","Illumi":"Hunter x Hunter","Chrollo":"Hunter x Hunter","Silva":"Hunter x Hunter","Zeno":"Hunter x Hunter","Feitan":"Hunter x Hunter","Phinks":"Hunter x Hunter","Meruem":"Hunter x Hunter","Neferpitou":"Hunter x Hunter","Pouf":"Hunter x Hunter","Youpi":"Hunter x Hunter","Knuckle":"Hunter x Hunter","Shoot":"Hunter x Hunter","Ging":"Hunter x Hunter","Pariston":"Hunter x Hunter","Kalluto":"Hunter x Hunter","Alluka":"Hunter x Hunter","Nobunaga":"Hunter x Hunter","Uvogin":"Hunter x Hunter","Machi":"Hunter x Hunter","Shizuku":"Hunter x Hunter","Franklin":"Hunter x Hunter","Bonolenov":"Hunter x Hunter","Kortopi":"Hunter x Hunter","Pakunoda":"Hunter x Hunter","Razor":"Hunter x Hunter","Biscuit":"Hunter x Hunter","Kite":"Hunter x Hunter","Morel":"Hunter x Hunter","Palm":"Hunter x Hunter","Knov":"Hunter x Hunter","Cheetu":"Hunter x Hunter","Leol":"Hunter x Hunter","Ikalgo":"Hunter x Hunter","Welfin":"Hunter x Hunter"};
 var FACILE=[["Pikachu","Guts"],["Luffy","Light Yagami"],["Goku","Anya Forger"],["Sailor Moon","Eren Jäger"],["Chihiro","Gojo Satoru"],["Saitama","Frieren"],["Naruto","Shinji Ikari"],["Ash","Dio Brando"],["Tanjiro","Spike Spiegel"],["Kenshiro","Cardcaptor Sakura"],["Mob","Escanor"],["Okabe","Zoro"],["Yor Forger","Pikachu"],["Deku","Kaneki"],["Hanamichi Sakuragi","Frieren"],["Actarus","Ranma Saotome"]];
 var EXTREME=["Sasuke|Itachi","Deku|Bakugo","Zoro|Sanji","Edward Elric|Alphonse Elric","Pikachu|Évoli","Asta|Yuno","Gon|Killua","Hinata Shoyo|Kageyama","Frieren|Fern","Seiya de Pégase|Shiryu","Inuyasha|Sesshomaru","Natsu|Gray","Tanjiro|Zenitsu","Mikasa|Annie"];
 var FAC={};FACILE.forEach(function(p){FAC[p[0]+"|"+p[1]]=1;});
@@ -329,13 +397,21 @@ var MARVEL=[["Iron Man","Captain America"],["Thor","Hulk"],["Black Widow","Hawke
 MFACILE.forEach(function(p){FAC[p[0]+"|"+p[1]]=1;});
 MARVEL=MARVEL.concat(MFACILE);
 ["Iron Man|Captain America","Black Widow|Hawkeye","Thor|Loki","Scarlet Witch|Vision","Captain America|Winter Soldier","Rocket|Groot","Professeur X|Magneto"].forEach(function(k){EXT[k]=1;});
-var THEMES=[{n:"Animé",s:"Animé"},{n:"Films Marvel",s:"Films"},{n:"Jeux vidéo",s:"Jeux vidéo"}];
+var THEMES=[{n:"Animé",s:"Animé"},{n:"Films Marvel",s:"Films"},{n:"Jeux vidéo",s:"Jeux vidéo"},{n:"Histoire",s:"Histoire"},{n:"Animaux",s:"Animaux"}];
 var THEME=0;
-var DATA={t:[PAIRS.map(function(p){return [p[0],p[1],levelOld(p)];}),MARVEL.map(function(p){return [p[0],p[1],levelOld(p)];}),[]],w:WORK},DRAFT=false;
+var DESC0={"Pikachu":"Petite créature jaune aux joues rouges qui lance des éclairs","Évoli":"Petite créature brune à queue touffue, capable d’évoluer en de multiples formes","Iron Man":"Milliardaire inventeur en armure rouge et or, très sûr de lui","Captain America":"Soldat des années 40 au bouclier rond, congelé puis réveillé","Thor":"Dieu blond du tonnerre, avec un marteau magique et une longue cape","Hulk":"Scientifique qui devient un géant vert surpuissant quand il se met en colère","Black Widow":"Espionne experte au combat, aux cheveux roux, ancienne agente soviétique","Hawkeye":"Archer très précis, humain sans super-pouvoir, qui a une famille","Loki":"Dieu de la ruse au casque à cornes, frère adoptif d’un autre dieu","Thanos":"Titan violet immense qui veut éliminer la moitié de l’univers avec des gemmes","Scarlet Witch":"Sorcière aux pouvoirs rouges, capable de déformer la réalité","Vision":"Être artificiel rouge aux yeux jaunes, né d’une intelligence artificielle","Winter Soldier":"Ancien soldat au bras métallique, utilisé comme arme par ses ennemis","Ultron":"Intelligence artificielle robotique qui veut détruire l’humanité","Nick Fury":"Chef d’une agence secrète, qui porte un bandeau noir sur un œil","Captain Marvel":"Pilote devenue héroïne cosmique capable de projeter de l’énergie","Ant-Man":"Ancien cambrioleur qui devient minuscule grâce à sa combinaison","Falcon":"Ancien soldat doté d’ailes mécaniques, loyal ami d’un héros au bouclier","Star-Lord":"Aventurier terrien au masque et à la musique, chef d’un groupe de marginaux de l’espace","Gamora":"Guerrière extraterrestre verte, redoutable, fille adoptive d’un tyran","Rocket":"Petit animal sarcastique, expert en armes, ancien cobaye","Groot":"Arbre humanoïde qui ne dit qu’une seule phrase","Drax":"Guerrier tatoué qui prend tout au sens littéral et cherche vengeance","Nebula":"Combattante bleue, cyborg, rivale de sa sœur adoptive","Black Panther":"Roi d’un pays africain secret, en costume noir, au vibranium","Killmonger":"Cousin du roi, soldat expérimenté, qui veut s’emparer du trône","Shuri":"Jeune princesse inventrice, génie des technologies de son pays","Okoye":"Générale du royaume, crâne rasé, experte en lance","Spider-Man":"Adolescent qui escalade les murs et lance des toiles, masque rouge et bleu","Bouffon Vert":"Homme d’affaires devenu fou, qui vole sur un planeur en lançant des bombes","Docteur Octopus":"Scientifique doté de quatre bras mécaniques qui lui servent d’armes","Docteur Strange":"Chirurgien arrogant devenu magicien, qui porte une cape rouge","Wong":"Maître de magie très sérieux, bibliothécaire de livres interdits, fidèle allié d’un sorcier","Wolverine":"Mutant râleur aux griffes métalliques qui se soigne tout seul","Magneto":"Mutant qui contrôle le métal, au casque rouge, très rancunier","Professeur X":"Mutant télépathe en fauteuil roulant, qui dirige une école spéciale","Deadpool":"Mercenaire bavard en costume rouge, qui parle au public et ne meurt pas","Mario":"Plombier moustachu à casquette rouge, qui saute pour sauver une princesse","Lara Croft":"Archéologue aventurière britannique, experte en tombes, avec deux pistolets","Sonic":"Hérisson bleu ultra rapide qui court en boule et aime les anneaux dorés","Kratos":"Guerrier spartiate à la peau blanche et aux lames enchaînées, en colère contre les dieux","Master Chief":"Soldat solitaire en armure verte, au casque doré, qui combat une alliance extraterrestre","Link":"Jeune héros vêtu de vert, qui porte une épée et un bouclier et ne parle presque pas","Pac-Man":"Rond jaune qui avale des points dans un labyrinthe en fuyant des fantômes","Steve":"Personnage carré aux cheveux bruns qui construit et mine dans un monde en cubes","Geralt de Riv":"Chasseur de monstres aux cheveux blancs, avec deux épées et des yeux de chat","Crash Bandicoot":"Marsupial orange qui tourne sur lui-même, accompagné d’un masque protecteur","Ezio Auditore":"Assassin italien de la Renaissance, qui porte une capuche blanche","Kirby":"Petite boule rose qui avale ses ennemis pour copier leurs pouvoirs","Solid Snake":"Agent d’infiltration au bandeau, qui se cache dans des boîtes en carton","Mega Man":"Petit robot bleu au canon à la place du bras, qui copie les armes de ses ennemis","Cloud Strife":"Ancien soldat blond qui manie une énorme épée, aux cheveux en pointes","Donkey Kong":"Gros gorille brun à cravate rouge, amateur de bananes","Sora":"Garçon aux cheveux en pointes qui manie une clé magique géante","Samus Aran":"Chasseuse de primes spatiale en armure orange, au canon sur le bras","Yoshi":"Petit dinosaure vert qui avale des ennemis et pond des œufs","Dante":"Chasseur de démons aux cheveux blancs, au manteau rouge, très décontracté","Nathan Drake":"Chasseur de trésors sympathique, très grimpeur, aux blagues faciles","Sam Fisher":"Agent secret vieillissant, à la vision nocturne, qui agit dans l’ombre","Altaïr":"Assassin du Moyen Âge à capuche blanche et à lame cachée","Doomguy":"Soldat silencieux en armure verte, qui combat des démons en enfer","Squall Leonhart":"Jeune mercenaire sérieux, à la cicatrice sur le front, qui manie un sabre-pistolet","Spyro":"Petit dragon violet qui crache du feu et vole","Bayonetta":"Sorcière élégante aux lunettes, qui tire avec ses talons et ses cheveux","Luigi":"Plombier vêtu de vert, grand, peureux, frère d’un héros célèbre","Zelda":"Princesse à longues oreilles, sage et magicienne, souvent enlevée","Knuckles":"Fourmilier rouge, solide et naïf, qui garde une émeraude géante","Ryu":"Combattant en kimono blanc, ceinture rouge, qui lance des boules d’énergie","Ken":"Combattant blond en kimono rouge, rival et ami d’un combattant en blanc","Tails":"Petit renard jaune à deux queues, qui vole et construit des machines","Bowser":"Roi tortue cracheur de feu, à carapace piquante, qui enlève toujours une princesse","Ganondorf":"Grand sorcier roux à la peau verte, roi des voleurs, qui veut un artefact sacré","Diddy Kong":"Petit singe à casquette rouge, qui aide son ami gorille","Wario":"Rival jaune et violet d’un plombier, gros, gourmand et cupide","Luffy":"Garçon au chapeau de paille, au corps élastique, qui veut devenir roi des pirates","Ace":"Pirate au corps de feu, torse nu et chapeau orange, frère adoptif du héros au chapeau de paille","Zoro":"Épéiste aux cheveux verts qui se bat avec trois sabres et se perd sans cesse","Sanji":"Cuisinier blond et galant qui se bat uniquement avec les jambes","Nami":"Navigatrice rousse et rusée, passionnée d’argent, qui lit la météo","Robin":"Archéologue calme et brune, capable de faire pousser des bras partout","Usopp":"Tireur au long nez, grand menteur et peureux, qui devient courageux au moment décisif","Chopper":"Petit renne médecin qui parle, mascotte de l’équipage","Shanks":"Pirate roux aux trois cicatrices sur l’œil, manchot, calme et très respecté","Mihawk":"Épéiste le plus fort du monde, au regard de rapace et au grand sabre noir","Doflamingo":"Pirate blond en manteau de plumes roses et lunettes rondes, qui manipule les gens avec des fils","Sir Crocodile":"Pirate au crochet à la place de la main, cigare aux lèvres, qui se transforme en sable","Law":"Chirurgien pirate au bonnet tacheté, qui découpe et déplace tout dans une bulle","Kid":"Pirate aux cheveux rouges dressés, qui attire les objets de métal comme un aimant","Roger":"Roi des pirates légendaire à la moustache, qui a laissé un immense trésor","Rayleigh":"Ancien second du roi des pirates, vieil homme à lunettes, rusé et très fort","Garp":"Vice-amiral costaud et farceur, grand-père du héros, qui adore les gâteaux de riz","Sengoku":"Amiral en chef portant le manteau de la justice, qui se change en bouddha géant","Sabo":"Révolutionnaire blond au chapeau haut-de-forme, frère du héros, qui manie le feu","Koala (One Piece)":"Révolutionnaire aux cheveux orange, experte des arts martiaux sous l’eau","Kaido":"Pirate immense qui se transforme en dragon, grand buveur, très difficile à tuer","Big Mom":"Pirate géante aux cheveux roses, gourmande, qui donne vie aux objets","King":"Pirate tout en noir, à ailes de feu, bras droit d’un empereur","Queen":"Pirate énorme et joyeux, scientifique, qui se transforme en dinosaure","Marco":"Pirate blond à la coupe d’ananas, qui se change en oiseau de feu bleu et soigne","Joz":"Pirate immense qui se transforme en diamant, ancien capitaine de division","Enel":"Faux dieu aux longues oreilles, qui contrôle la foudre et vit dans le ciel","Katakuri":"Pirate immense au foulard sur le visage, qui voit un peu le futur et adore les mochis","Smoothie":"Pirate très grande et mince, qui presse les gens comme des fruits pour en tirer du jus","Franky":"Charpentier cyborg aux cheveux bleus et au slip moulant, qui adore le cola","Brook":"Squelette musicien à grande coiffure afro, poli, qui plaisante sur sa propre mort","Jinbe":"Homme-poisson requin-baleine, grand et calme, pratiquant d’un art martial de l’eau","Fisher Tiger":"Homme-poisson requin-tigre libérateur d’esclaves, balafré, au grand cœur","Koby":"Jeune marin aux cheveux roses et à lunettes, devenu officier courageux","Helmeppo":"Jeune marin blond au caractère de peste, devenu un soldat respecté","Buggy":"Clown pirate au nez rouge et aux cheveux bleus, qui se coupe en morceaux volants","Perona":"Fantôme gothique aux cheveux roses, qui fait déprimer ses ennemis","Gecko Moria":"Pirate immense aux dents pointues, qui vole les ombres pour animer des cadavres","Goku petit":"Petit garçon à queue de singe et à bâton magique, naïf et très fort, qui cherche des boules magiques","Bulma":"Jeune génie aux cheveux bleus, inventrice d’un radar à boules magiques","Yamcha":"Ancien bandit du désert à cicatrices, devenu combattant, accompagné d’un petit chat bleu","Puar":"Petit chat bleu volant qui peut se transformer, compagnon d’un bandit","Krilin":"Petit moine chauve aux six points sur le front, meilleur ami du héros","Tortue Géniale":"Vieux maître d’arts martiaux à lunettes noires et à barbe blanche, farceur et pervers","Tambourine":"Petit démon vert au service d’un roi maléfique, tueur redoutable","Tao Pai Pai":"Tueur à gages en tenue chinoise, redoutable et sans pitié","Général Blue":"Général d’une armée en rouge, aux cheveux bleus et aux pouvoirs psychiques","Chichi":"Jeune femme au caractère explosif, fille d’un roi, qui devient la femme du héros","Lunch":"Jeune femme douce aux cheveux bleus qui devient blonde et violente quand elle éternue","Oolong":"Cochon qui parle et se transforme, peureux, gourmand et amateur de jolies filles","Pilaf":"Petit empereur bleu aux grandes oreilles, qui cherche les boules magiques pour dominer le monde","Tenshinhan":"Guerrier chauve à trois yeux, sérieux, d’abord rival puis ami du héros","Chaozu":"Petit mime blanc au visage poudré, qui utilise la télékinésie","Nam":"Guerrier d’un village sans eau, calme et pur, qui se bat pour rapporter de l’eau","Giran":"Monstre-lézard ailé et gluant, adversaire du héros dans un tournoi d’arts martiaux","Goku":"Guerrier extraterrestre au grand cœur, qui adore se battre et manger","Vegeta":"Prince d’un peuple de guerriers, très fier, rival éternel du héros","Gohan":"Fils du héros, garçon doux et studieux qui libère une grande puissance","Trunks":"Jeune homme aux cheveux violets venu du futur, qui manie une épée","Piccolo":"Guerrier vert venu d’une autre planète, qui s’occupe d’un jeune garçon","Nail":"Guerrier vert d’une planète lointaine, qui se sacrifie en fusionnant avec un autre","Freezer":"Tyran de l’espace blanc et violet, cruel et poli, qui détruit des planètes","Cell":"Créature artificielle verte à ailes, qui absorbe les gens pour devenir parfaite","C-17":"Cyborg aux cheveux noirs et à l’écharpe orange, frère d’une cyborg blonde","C-18":"Cyborg blonde au regard froid, sœur d’un cyborg aux cheveux noirs","Buu":"Créature rose et ronde qui adore les bonbons, très puissante et capricieuse","Babidi":"Petit sorcier à grosse tête et longues oreilles, qui contrôle l’esprit des guerriers","Raditz":"Guerrier extraterrestre aux longs cheveux, frère aîné du héros, qui vient le chercher","Nappa":"Guerrier extraterrestre chauve, massif et moustachu, qui accompagne un prince","Dodoria":"Gros soldat rose à pointes, cruel, qui sert un tyran de l’espace","Zarbon":"Beau soldat aux longs cheveux verts, vaniteux, capable de se transformer en monstre","Dabra":"Roi des démons à cape rouge, qui pétrifie ses adversaires en crachant","Kaioshin":"Petit dieu à peau violette et à oreilles pointues, protecteur de l’univers","Broly":"Guerrier colossal aux cheveux verts, à la rage destructrice, sous l’emprise de son père","Paragus":"Vieux guerrier chauve et moustachu, père d’un colosse qu’il contrôle","Naruto":"Jeune ninja blond et bruyant, porteur d’un renard géant scellé en lui","Sasuke":"Ninja solitaire et brillant, assoiffé de vengeance, aux yeux rouges","Sakura":"Kunoichi aux cheveux roses, médecin de l’équipe, qui frappe très fort","Ino":"Kunoichi blonde à longue queue de cheval, fleuriste, qui prend le contrôle des esprits","Kakashi":"Ninja masqué aux cheveux gris, qui lit toujours un livre et a un œil rouge","Obito":"Ninja au masque orange en spirale, ancien coéquipier d’un ninja masqué aux cheveux gris","Itachi":"Ninja prodige au regard rouge, qui cache un lourd secret sur sa famille","Shisui":"Prodige du clan aux yeux rouges, surnommé celui qui se téléporte","Madara":"Ancien chef du clan aux yeux rouges, aux longs cheveux noirs hérissés, rival du premier chef du village","Hashirama":"Premier chef du village des ninjas, maître du bois et de la nature, aux longs cheveux bruns","Jiraya":"Ermite aux longs cheveux blancs, écrivain de romans, maître du héros blond","Orochimaru":"Ninja à la peau blanche et aux yeux de serpent, qui cherche l’immortalité","Tsunade":"Cheffe du village, blonde et médecin hors pair, très forte mais mauvaise joueuse","Shizune":"Assistante brune de la cheffe du village, médecin discrète, accompagnée d’un petit cochon","Gaara":"Jeune ninja roux du village du sable, aux cernes noirs et à la gourde de sable protectrice","Kankuro":"Ninja du sable au maquillage violet, qui manipule des marionnettes","Temari":"Ninja du sable aux quatre couettes, qui se bat avec un énorme éventail","Shikamaru":"Ninja flemmard et génie stratège, qui manipule les ombres","Neji":"Ninja aux yeux très pâles et aux longs cheveux bruns, prodige de son clan","Lee":"Ninja en combinaison verte, aux gros sourcils et à la coupe au bol, qui n’utilise que le corps à corps","Hinata":"Jeune kunoichi timide aux yeux très pâles, amoureuse du héros blond","Hanabi":"Jeune sœur d’une kunoichi timide, aux yeux très pâles, héritière du clan","Deidara":"Criminel blond à mèche sur l’œil, qui crée des explosions avec de l’argile","Sasori":"Criminel roux qui s’est changé en marionnette, passionné d’art éternel","Hidan":"Criminel immortel aux cheveux argentés, adepte d’un culte, armé d’une faux à trois lames","Kakuzu":"Criminel cagoulé aux cinq cœurs, très avare, qui recoud ses blessures","Pain":"Chef roux couvert de piercings, aux yeux en cercles violets, qui se bat avec six corps","Konan":"Criminelle aux cheveux bleus et à la fleur en papier, qui se transforme en papillons","Kisame":"Criminel à peau bleue et aux branchies, qui porte une énorme épée couverte de bandelettes","Minato":"Quatrième chef du village, blond aux yeux bleus, surnommé l’éclair jaune","Kushina":"Femme rousse aux longs cheveux et au caractère de feu, mère du héros blond","Tobirama":"Deuxième chef du village, aux cheveux blancs et aux marques rouges sur le visage","Zabuza":"Ninja déserteur au bas du visage bandé, qui manie une immense épée","Haku":"Jeune ninja doux au visage de fille, loyal, qui crée des miroirs de glace","Kiba":"Ninja aux marques rouges sur les joues, toujours accompagné d’un grand chien blanc","Shino":"Ninja silencieux à lunettes noires et grand col, qui contrôle des insectes","Danzo":"Vieux ninja au bandage sur le visage, secret et radical","Hiruzen":"Troisième chef du village, vieux sage à la pipe, surnommé le professeur","Ichigo":"Lycéen aux cheveux orange qui voit les esprits et manie une énorme épée","Rukia":"Petite faucheuse brune à l’épée de glace blanche, qui transmet ses pouvoirs au héros","Renji":"Guerrier tatoué aux cheveux rouges, avec un sabre à lame articulée","Byakuya":"Capitaine noble aux longs cheveux noirs et à l’écharpe blanche, calme et distant","Toshiro":"Jeune capitaine aux cheveux blancs et à l’épée de glace, qui a l’air d’un enfant","Rangiku":"Lieutenante blonde et joyeuse, qui aime la fête et la boisson, dont l’épée devient de la cendre","Kenpachi":"Capitaine aux cheveux hérissés ornés de clochettes, qui adore se battre","Yachiru":"Petite fille aux cheveux roses qui rit tout le temps, assise sur l’épaule d’un capitaine","Aizen":"Ancien capitaine à lunettes, au sourire calme et manipulateur, qui trompe tout le monde","Gin":"Ancien capitaine aux cheveux argentés et au sourire de renard, aux yeux toujours fermés","Ulquiorra":"Ennemi pâle aux cheveux noirs et aux traits verts sous les yeux, froid et sans émotion","Grimmjow":"Ennemi aux cheveux bleu clair, violent et fougueux, avec une mâchoire d’os sur la joue","Starrk":"Ennemi très puissant, paresseux et solitaire, qui préfère dormir et se bat avec des pistolets","Lilynette":"Petite fille aux cheveux verts liée à un tireur paresseux, impulsive et moqueuse","Yhwach":"Roi aux longs cheveux noirs et à la grande cape, qui veut dominer tout le monde","Jugram":"Chevalier blond du roi, dévoué et strict, qui se bat avec des ailes d’énergie","Uryu":"Archer à lunettes, élégant et sarcastique, qui tire avec un arc de lumière","Ryuken":"Médecin sévère et froid, à lunettes, père d’un archer","Kisuke":"Marchand à chapeau rayé et à sandales, qui n’a l’air de rien prendre au sérieux","Yoruichi":"Femme à la peau mate qui se transforme en chat noir, très rapide","Mayuri":"Capitaine savant fou au visage peint, qui fait des expériences cruelles","Nemu":"Lieutenante silencieuse aux cheveux courts, très obéissante envers son créateur","Shunsui":"Capitaine nonchalant au chapeau de paille et au kimono rose, qui aime boire et dormir","Jushiro":"Capitaine malade aux longs cheveux blancs, doux et aimable, qui manie deux épées de foudre","Soi Fon":"Capitaine petite aux cheveux noirs en deux nattes, sérieuse et dévouée à sa maîtresse","Omaeda":"Lieutenant gros et paresseux, qui grignote et obéit à contrecœur","Komamura":"Capitaine très grand à tête de loup, loyal et honorable","Tosen":"Capitaine aveugle à la peau foncée, qui pense défendre la justice","Ikkaku":"Combattant chauve qui manie une lance à trois branches, adorant les duels","Yumichika":"Combattant élégant aux plumes sur les sourcils, obsédé par la beauté","Nnoitra":"Ennemi très grand et maigre, à bandeau sur l’œil et langue sortie, qui manie une énorme faux","Neliel":"Ancienne ennemie aux longs cheveux verts, très douce, qui peut redevenir une enfant","Barragan":"Ancien roi vieux et imposant à couronne et à cape, qui fait vieillir tout ce qu’il touche","Zommari":"Ennemi très grand, calme et moqueur, qui prend le contrôle de ce que ses yeux fixent","Szayelaporro":"Savant fou aux cheveux roses et aux lunettes, qui adore étudier ses ennemis","Aaroniero":"Ennemi étrange à bocal sur la tête, qui dévore des monstres et copie leur apparence","Isshin":"Père farceur et barbu du héros, médecin de quartier au passé secret","Masaki":"Mère douce du héros aux cheveux bruns, au sourire lumineux","Chad":"Grand lycéen costaud et silencieux, ami du héros, au bras puissant","Orihime":"Lycéenne rousse et rêveuse, aux épingles à cheveux qui soignent et protègent","Gon":"Garçon plein d’énergie, qui part sur les traces de son père, avec une canne à pêche","Killua":"Garçon aux cheveux blancs, issu d’une famille d’assassins, très rapide","Kurapika":"Jeune homme blond aux yeux qui deviennent rouges, qui se venge avec des chaînes","Leolio":"Jeune homme en costume qui veut devenir médecin pour gagner de l’argent, maladroit et gentil","Hisoka":"Magicien aux cheveux rouges et au maquillage de cartes, qui adore les combats dangereux","Illumi":"Assassin aux longs cheveux noirs et aux yeux vides, grand frère froid d’un garçon aux cheveux blancs","Chrollo":"Chef charismatique d’une troupe de voleurs, qui vole des pouvoirs avec un livre","Silva":"Assassin robuste aux cheveux gris, chef d’une famille de tueurs","Zeno":"Vieil assassin minuscule, au sourire calme, grand-père d’une famille de tueurs","Feitan":"Petit voleur au visage caché sous un col, spécialiste de la torture","Phinks":"Voleur blond aux cheveux hérissés, brutal et direct, aux poings surpuissants","Meruem":"Roi insecte à peau claire et aux antennes, génie qui apprend un jeu de plateau","Neferpitou":"Garde d’un roi insecte, à oreilles de chat, qui soigne et manipule les morts","Pouf":"Garde d’un roi insecte, à ailes de papillon, qui disperse une poudre","Youpi":"Garde d’un roi insecte à épaisse crinière, puissant et obsédé par la force","Knuckle":"Chasseur costaud à la coiffure en banane, au grand cœur, qui pleure souvent","Shoot":"Chasseur timide et anxieux, ami d’un chasseur à banane, qui détache ses mains","Ging":"Père absent du héros, grand aventurier brillant et insouciant","Pariston":"Chasseur souriant et manipulateur, qui se présente à la tête de l’association","Kalluto":"Jeune assassin masqué en kimono, petit dernier d’une famille de tueurs","Alluka":"Enfant aux cheveux noirs au pouvoir étrange, qui exauce des souhaits","Nobunaga":"Voleur en kimono armé d’un sabre, aux cheveux noirs en chignon","Uvogin":"Voleur énorme et musclé, amateur de combats à mains nues","Machi":"Voleuse aux cheveux violets, qui coud et soigne avec un fil","Shizuku":"Voleuse à lunettes, distraite et naïve, qui aspire tout avec un aspirateur invisible","Franklin":"Voleur massif à longs cheveux, dont les doigts tirent des balles","Bonolenov":"Voleur couvert de bandages, qui combat en dansant","Kortopi":"Petit voleur discret d’une célèbre troupe, dont on sait très peu de choses","Pakunoda":"Voleuse qui lit les souvenirs en touchant les gens et les transmet par balles","Razor":"Joueur imposant de ballon prisonnier, qui défie les héros dans un jeu virtuel","Biscuit":"Maîtresse du nen à l’allure d’une petite fille, passionnée de pierres précieuses","Kite":"Chasseur bienveillant, élève du père du héros, qui guide un enfant dans la nature","Morel":"Chasseur imposant aux longs cheveux blancs, qui crée de la fumée avec sa pipe","Palm":"Jeune chasseuse émotive et obsessionnelle, élève d’un chasseur discret","Knov":"Chasseur discret et prudent, qui crée des portes vers sa propre dimension","Cheetu":"Fourmi-chimère la plus rapide, qui se prend pour le roi de la vitesse","Leol":"Fourmi-chimère à allure de lion, rebelle, qui copie les pouvoirs qu’il voit","Ikalgo":"Fourmi-chimère à allure de calamar, d’abord ennemie puis alliée des humains","Welfin":"Fourmi-chimère loyale à un chef lion, qui garde ses secrets"},DESC=DESC0;
+function dsc(n){return DESC[n]?'<p class="desc">'+esc(DESC[n])+'</p>':"";}
+var ANIME2=[["Luffy","Ace",0],["Zoro","Sanji",0],["Nami","Robin",0],["Usopp","Chopper",0],["Franky","Brook",0],["Shanks","Mihawk",0],["Doflamingo","Sir Crocodile",1],["Law","Kid",1],["Roger","Rayleigh",1],["Garp","Sengoku",1],["Kaido","Big Mom",1],["Enel","Sir Crocodile",1],["Buggy","Shanks",1],["Sabo","Koala (One Piece)",2],["King","Queen",2],["Marco","Joz",2],["Jinbe","Fisher Tiger",2],["Koby","Helmeppo",2],["Perona","Gecko Moria",2],["Katakuri","Smoothie",3],["Goku petit","Bulma",0],["Krilin","Tortue Géniale",0],["Goku","Vegeta",0],["Gohan","Trunks",0],["Freezer","Cell",0],["Raditz","Nappa",0],["Buu","Babidi",0],["Yamcha","Puar",1],["Piccolo","Tambourine",1],["Chichi","Lunch",1],["Tenshinhan","Chaozu",1],["Piccolo","Nail",1],["C-17","C-18",1],["Tao Pai Pai","Général Blue",2],["Oolong","Pilaf",2],["Dodoria","Zarbon",2],["Broly","Paragus",2],["Nam","Giran",3],["Dabra","Kaioshin",3],["Naruto","Sasuke",0],["Sakura","Ino",0],["Kakashi","Obito",0],["Jiraya","Orochimaru",0],["Zabuza","Haku",0],["Madara","Hashirama",0],["Itachi","Shisui",1],["Tsunade","Shizune",1],["Gaara","Kankuro",1],["Temari","Shikamaru",1],["Neji","Lee",1],["Deidara","Sasori",1],["Pain","Konan",1],["Kisame","Itachi",1],["Minato","Kushina",1],["Hinata","Hanabi",2],["Hidan","Kakuzu",2],["Tobirama","Hashirama",2],["Kiba","Shino",2],["Danzo","Hiruzen",2],["Ichigo","Rukia",0],["Aizen","Gin",0],["Renji","Byakuya",1],["Toshiro","Rangiku",1],["Kenpachi","Yachiru",1],["Ulquiorra","Grimmjow",1],["Kisuke","Yoruichi",1],["Chad","Orihime",1],["Starrk","Lilynette",2],["Uryu","Ryuken",2],["Mayuri","Nemu",2],["Shunsui","Jushiro",2],["Ikkaku","Yumichika",2],["Isshin","Masaki",2],["Yhwach","Jugram",3],["Soi Fon","Omaeda",3],["Komamura","Tosen",3],["Nnoitra","Neliel",3],["Barragan","Zommari",3],["Szayelaporro","Aaroniero",3],["Gon","Killua",0],["Kurapika","Leolio",0],["Hisoka","Illumi",0],["Chrollo","Kurapika",1],["Meruem","Neferpitou",1],["Silva","Zeno",2],["Feitan","Phinks",2],["Pouf","Youpi",2],["Knuckle","Shoot",2],["Ging","Pariston",2],["Nobunaga","Uvogin",2],["Machi","Shizuku",2],["Kalluto","Alluka",3],["Franklin","Bonolenov",3],["Kortopi","Pakunoda",3],["Razor","Biscuit",3],["Kite","Morel",3],["Palm","Knov",3],["Cheetu","Leol",3],["Ikalgo","Welfin",3]];
+var DATA={t:[ANIME2.map(function(p){return p.slice();}),MARVEL.map(function(p){return [p[0],p[1],levelOld(p)];}),[],[],[]],w:WORK,d:DESC0},DRAFT=false;
+DATA.t[2]=[["Mario","Lara Croft",0],["Sonic","Kratos",0],["Pikachu","Master Chief",0],["Link","Pac-Man",0],["Steve","Geralt de Riv",0],["Crash Bandicoot","Ezio Auditore",0],["Kirby","Solid Snake",0],["Mega Man","Cloud Strife",0],["Donkey Kong","Sora",0],["Samus Aran","Yoshi",0],["Mario","Crash Bandicoot",1],["Sonic","Mega Man",1],["Pikachu","Kirby",1],["Link","Geralt de Riv",1],["Kratos","Dante",1],["Lara Croft","Nathan Drake",1],["Master Chief","Samus Aran",1],["Solid Snake","Sam Fisher",1],["Ezio Auditore","Altaïr",1],["Cloud Strife","Sora",1],["Mario","Link",2],["Mario","Sonic",2],["Kirby","Yoshi",2],["Master Chief","Doomguy",2],["Cloud Strife","Squall Leonhart",2],["Crash Bandicoot","Spyro",2],["Dante","Bayonetta",2],["Kratos","Geralt de Riv",2],["Pac-Man","Sonic",2],["Lara Croft","Samus Aran",2],["Mario","Luigi",3],["Link","Zelda",3],["Pikachu","Évoli",3],["Sonic","Knuckles",3],["Ryu","Ken",3],["Sonic","Tails",3],["Mario","Bowser",3],["Link","Ganondorf",3],["Donkey Kong","Diddy Kong",3],["Mario","Wario",3]];DATA.t[4]=[["Éléphant","Souris",0,0],["Girafe","Hérisson",0,0],["Lion","Tortue",0,0],["Cheval","Caméléon",0,0],["Panda","Crocodile",0,0],["Kangourou","Serpent",0,0],["Lion","Éléphant",1,0],["Chien","Cheval",1,0],["Tigre","Ours brun",1,0],["Lapin","Hérisson",1,0],["Tortue","Crocodile",1,0],["Gorille","Kangourou",1,0],["Loup","Renard",2,0],["Chat","Chien",2,0],["Cheval","Zèbre",2,0],["Vache","Mouton",2,0],["Gorille","Chimpanzé",2,0],["Panda","Ours brun",2,0],["Rhinocéros","Hippopotame",2,0],["Koala","Paresseux",2,0],["Lion","Tigre",3,0],["Chameau","Dromadaire",3,0],["Lapin","Lièvre",3,0],["Souris","Rat",3,0],["Léopard","Guépard",3,0],["Cheval","Âne",3,0],["Mouton","Chèvre",3,0],["Loup","Chien",3,0],["Baleine bleue","Crevette",0,1],["Requin blanc","Hippocampe",0,1],["Dauphin","Crabe",0,1],["Pieuvre","Phoque",0,1],["Raie manta","Orque",0,1],["Méduse","Thon",0,1],["Requin blanc","Dauphin",1,1],["Orque","Baleine bleue",1,1],["Pieuvre","Méduse",1,1],["Tortue de mer","Crabe",1,1],["Thon","Espadon",1,1],["Poisson-clown","Hippocampe",1,1],["Pieuvre","Calamar",2,1],["Dauphin","Orque",2,1],["Anguille","Murène",2,1],["Morse","Phoque",2,1],["Narval","Baleine bleue",2,1],["Étoile de mer","Méduse",2,1],["Lamantin","Dauphin",2,1],["Phoque","Otarie",3,1],["Crabe","Homard",3,1],["Crevette","Homard",3,1],["Baleine bleue","Cachalot",3,1],["Requin blanc","Requin-marteau",3,1],["Aigle royal","Papillon",0,2],["Chauve-souris","Cygne",0,2],["Pélican","Moustique",0,2],["Hibou","Libellule",0,2],["Perroquet","Guêpe",0,2],["Cigogne","Coccinelle",0,2],["Aigle royal","Perroquet",1,2],["Pigeon","Cygne",1,2],["Abeille","Papillon",1,2],["Chauve-souris","Hibou",1,2],["Flamant rose","Pélican",1,2],["Corbeau","Colibri",1,2],["Aigle royal","Vautour",2,2],["Corbeau","Pie",2,2],["Mouette","Albatros",2,2],["Abeille","Guêpe",2,2],["Papillon","Libellule",2,2],["Cigogne","Flamant rose",2,2],["Pigeon","Moineau",2,2],["Hibou","Chouette",3,2],["Mouche","Moustique",3,2],["Aigle royal","Faucon pèlerin",3,2],["Vautour","Condor",3,2],["Abeille","Bourdon",3,2],["Éléphant","Colibri",0,3],["Baleine bleue","Papillon",0,3],["Girafe","Pieuvre",0,3],["Lion","Requin blanc",1,3],["Aigle royal","Tigre",1,3],["Dauphin","Chien",1,3],["Chauve-souris","Souris",2,3],["Tortue","Tortue de mer",2,3]];Object.assign(WORK,{"Mario":"Super Mario","Luigi":"Super Mario","Bowser":"Super Mario","Wario":"Wario Land","Link":"The Legend of Zelda","Zelda":"The Legend of Zelda","Ganondorf":"The Legend of Zelda","Sonic":"Sonic the Hedgehog","Knuckles":"Sonic the Hedgehog","Tails":"Sonic the Hedgehog","Pikachu":"Pokémon","Évoli":"Pokémon","Kirby":"Kirby","Yoshi":"Yoshi’s Island","Donkey Kong":"Donkey Kong","Diddy Kong":"Donkey Kong Country","Samus Aran":"Metroid","Lara Croft":"Tomb Raider","Nathan Drake":"Uncharted","Kratos":"God of War","Master Chief":"Halo","Doomguy":"Doom","Pac-Man":"Pac-Man","Steve":"Minecraft","Geralt de Riv":"The Witcher 3","Crash Bandicoot":"Crash Bandicoot","Spyro":"Spyro the Dragon","Ezio Auditore":"Assassin’s Creed II","Altaïr":"Assassin’s Creed","Solid Snake":"Metal Gear Solid","Sam Fisher":"Splinter Cell","Mega Man":"Mega Man","Cloud Strife":"Final Fantasy VII","Squall Leonhart":"Final Fantasy VIII","Sora":"Kingdom Hearts","Dante":"Devil May Cry","Bayonetta":"Bayonetta","Ryu":"Street Fighter","Ken":"Street Fighter II","Lion":"Mammifère · Roi de la savane","Tigre":"Mammifère · Félin rayé d’Asie","Éléphant":"Mammifère · Plus grand animal terrestre","Girafe":"Mammifère · Long cou","Loup":"Mammifère · Vit en meute","Chien":"Mammifère · Meilleur ami de l’homme","Chat":"Mammifère · Félin domestique","Ours brun":"Mammifère · Hiberne l’hiver","Renard":"Mammifère · Roux et rusé","Kangourou":"Marsupial · Australie","Panda":"Mammifère · Mange du bambou","Cheval":"Équidé · Se monte","Zèbre":"Équidé · Rayures noires et blanches","Âne":"Équidé · Brait","Guépard":"Mammifère · Le plus rapide sur terre","Léopard":"Mammifère · Félin tacheté","Gorille":"Primate · Forêt d’Afrique","Chimpanzé":"Primate · Très intelligent","Hérisson":"Mammifère · Piquants","Tortue":"Reptile · Carapace","Serpent":"Reptile · Sans pattes","Crocodile":"Reptile · Mâchoire puissante","Caméléon":"Reptile · Change de couleur","Souris":"Rongeur · Petit et discret","Rat":"Rongeur · Malin","Lapin":"Mammifère · Longues oreilles","Lièvre":"Mammifère · Bondit très vite","Vache":"Animal de ferme · Lait","Mouton":"Animal de ferme · Laine","Chèvre":"Animal de ferme · Cornes","Hippopotame":"Mammifère · Rivières d’Afrique","Rhinocéros":"Mammifère · Corne sur le nez","Dromadaire":"Mammifère · Une bosse","Chameau":"Mammifère · Deux bosses","Koala":"Marsupial · Mange de l’eucalyptus","Paresseux":"Mammifère · Très lent","Requin blanc":"Poisson · Grand prédateur","Requin-marteau":"Poisson · Tête en marteau","Dauphin":"Mammifère marin · Très intelligent","Baleine bleue":"Plus grand animal du monde","Cachalot":"Mammifère marin · Plongeur des abysses","Orque":"Mammifère marin · Prédateur noir et blanc","Pieuvre":"Mollusque · Huit bras","Calamar":"Mollusque · Dix bras","Méduse":"Cnidaire · Tentacules","Étoile de mer":"Échinoderme · Cinq bras","Hippocampe":"Poisson · Le mâle porte les petits","Raie manta":"Poisson · Grande envergure","Tortue de mer":"Reptile marin · Pond sur la plage","Phoque":"Pinnipède · Sans oreilles visibles","Otarie":"Pinnipède · Oreilles visibles","Morse":"Pinnipède · Longues défenses","Crabe":"Crustacé · Marche de côté","Homard":"Crustacé · Grosses pinces","Crevette":"Crustacé · Petite et rose","Poisson-clown":"Poisson · Récif corallien","Anguille":"Poisson · Forme de serpent","Murène":"Poisson · Se cache dans les rochers","Thon":"Poisson · Nageur rapide","Espadon":"Poisson · Long rostre","Narval":"Mammifère marin · Longue défense","Lamantin":"Mammifère marin · Vache de mer","Aigle royal":"Rapace · Roi des montagnes","Faucon pèlerin":"Rapace · Le plus rapide en piqué","Hibou":"Rapace nocturne · Aigrettes sur la tête","Chouette":"Rapace nocturne · Tête ronde","Perroquet":"Oiseau · Imite les voix","Colibri":"Oiseau · Le plus petit","Pigeon":"Oiseau · Vit en ville","Corbeau":"Oiseau · Noir et intelligent","Pie":"Oiseau · Attirée par ce qui brille","Cygne":"Oiseau · Élégant sur l’eau","Cigogne":"Oiseau · Migratrice","Flamant rose":"Oiseau · Pattes très longues","Mouette":"Oiseau · Bord de mer","Albatros":"Oiseau · Plus grande envergure","Pélican":"Oiseau · Grand bec","Chauve-souris":"Mammifère · Seul mammifère volant","Papillon":"Insecte · Métamorphose","Abeille":"Insecte · Fait du miel","Bourdon":"Insecte · Gros et poilu","Libellule":"Insecte · Ailes transparentes","Moustique":"Insecte · Pique","Mouche":"Insecte · Bourdonne","Coccinelle":"Insecte · Points noirs","Guêpe":"Insecte · Dard rayé","Vautour":"Rapace · Charognard","Condor":"Oiseau · Cordillère des Andes","Moineau":"Oiseau · Petit et familier"});
+DATA.t[3]=[["Napoléon Bonaparte","Cléopâtre",0],["Léonard de Vinci","Gengis Khan",0],["Jeanne d’Arc","Louis XIV",0],["Albert Einstein","Jules César",0],["Marie Curie","Christophe Colomb",0],["Mozart","Alexandre le Grand",0],["Victor Hugo","Spartacus",0],["Charlemagne","Isaac Newton",0],["Nelson Mandela","Léonard de Vinci",0],["Pablo Picasso","Ramsès II",0],["Napoléon Bonaparte","Charlemagne",1],["Louis XIV","Henri IV",1],["Mozart","Beethoven",1],["Albert Einstein","Isaac Newton",1],["Marie Curie","Louis Pasteur",1],["Léonard de Vinci","Michel-Ange",1],["Jules César","Alexandre le Grand",1],["Cléopâtre","Néfertiti",1],["Christophe Colomb","Magellan",1],["Vincent van Gogh","Pablo Picasso",1],["Robespierre","Danton",2],["Galilée","Copernic",2],["Victor Hugo","Balzac",2],["Winston Churchill","Charles de Gaulle",2],["Abraham Lincoln","George Washington",2],["Gandhi","Martin Luther King",2],["Platon","Aristote",2],["Elizabeth Ire","Catherine II",2],["Molière","William Shakespeare",2],["Nikola Tesla","Thomas Edison",2],["Louis XIV","Louis XV",3],["Louis XVI","Marie-Antoinette",3],["Napoléon Bonaparte","Napoléon III",3],["Socrate","Platon",3],["Karl Marx","Friedrich Engels",3],["Auguste","Jules César",3],["Hannibal","Scipion l’Africain",3],["Cléopâtre","Marc Antoine",3],["Ramsès II","Toutânkhamon",3],["Claude Monet","Vincent van Gogh",3]];Object.assign(WORK,{"Napoléon Bonaparte":"Empereur des Français · 1804","Napoléon III":"Empereur des Français · Second Empire","Cléopâtre":"Dernière reine d’Égypte ptolémaïque","Néfertiti":"Reine de l’Égypte antique · XIVe s. av. J.-C.","Léonard de Vinci":"Peintre et inventeur · La Joconde","Michel-Ange":"Sculpteur · Chapelle Sixtine","Gengis Khan":"Fondateur de l’Empire mongol","Jeanne d’Arc":"Guerre de Cent Ans · Orléans","Louis XIV":"Le Roi-Soleil · Versailles","Louis XV":"Roi de France · XVIIIe siècle","Louis XVI":"Dernier roi avant la Révolution","Marie-Antoinette":"Reine de France · Révolution","Henri IV":"Roi de France · Édit de Nantes","Albert Einstein":"Physicien · Relativité","Isaac Newton":"Physicien · Gravitation","Jules César":"Général et dictateur romain","Auguste":"Premier empereur romain","Marie Curie":"Physicienne · Radioactivité","Louis Pasteur":"Chimiste · Vaccin contre la rage","Christophe Colomb":"Navigateur · Traversée de 1492","Magellan":"Navigateur · Premier tour du monde","Mozart":"Compositeur · La Flûte enchantée","Beethoven":"Compositeur · Symphonie n°9","Alexandre le Grand":"Roi de Macédoine · Conquêtes","Victor Hugo":"Écrivain · Les Misérables","Balzac":"Écrivain · La Comédie humaine","Spartacus":"Chef de la révolte des esclaves","Charlemagne":"Empereur d’Occident · An 800","Nelson Mandela":"Président sud-africain · Apartheid","Pablo Picasso":"Peintre · Cubisme","Vincent van Gogh":"Peintre · La Nuit étoilée","Claude Monet":"Peintre · Impressionnisme","Ramsès II":"Pharaon · Bataille de Qadesh","Toutânkhamon":"Pharaon · Tombe découverte en 1922","Robespierre":"Révolution · La Terreur","Danton":"Révolution · Orateur des Cordeliers","Galilée":"Astronome · Lunette astronomique","Copernic":"Astronome · Héliocentrisme","Winston Churchill":"Premier ministre britannique · 1940","Charles de Gaulle":"Appel du 18 juin · Ve République","Abraham Lincoln":"Président américain · Guerre de Sécession","George Washington":"Premier président des États-Unis","Gandhi":"Indépendance de l’Inde · Non-violence","Martin Luther King":"Droits civiques · I have a dream","Platon":"Philosophe · La République","Aristote":"Philosophe · Précepteur d’Alexandre","Socrate":"Philosophe · Procès d’Athènes","Elizabeth Ire":"Reine d’Angleterre · Époque élisabéthaine","Catherine II":"Impératrice de Russie","Molière":"Dramaturge · Le Misanthrope","William Shakespeare":"Dramaturge · Hamlet","Nikola Tesla":"Inventeur · Courant alternatif","Thomas Edison":"Inventeur · Ampoule électrique","Karl Marx":"Philosophe · Le Capital","Friedrich Engels":"Philosophe · Manifeste communiste","Hannibal":"Général carthaginois · Les Alpes","Scipion l’Africain":"Général romain · Bataille de Zama","Marc Antoine":"Général romain · Actium"});
 function level(p){return p[2];}
-function pairs(){return DATA.t[THEME]||[];}
+var SUB=3,SUBN=["Terrestres","Marins","Aériens","Les 3"];
+function pairs(th,sb){th=(th===undefined)?THEME:th;sb=(sb===undefined)?SUB:sb;var L=DATA.t[th]||[];if(th===4&&sb<3){L=L.filter(function(p){return p[3]===sb;});}return L;}
 function levelOld(p){var k=p[0]+"|"+p[1];if(EXT[k]){return 3;}if(WORK[p[0]]===WORK[p[1]]){return 2;}return FAC[k]?0:1;}
 var LEVELS=[{n:"Facile",d:"Univers très différents"},{n:"Moyen",d:"Œuvres différentes, même genre"},{n:"Difficile",d:"Même œuvre, personnages différents"},{n:"Extrême",d:"Même œuvre, personnages très proches"}];
+var ANIME_D=["Personnages que tout le monde connaît","Connus de la plupart des amateurs","Plutôt pour les fans d’animés","Personnages de niche"];
+function lvDesc(i,th){return (th===0&&ANIME_D[i])||LEVELS[i].d;}
 var NB='\u00a0',ELIM=true,MW=false,mode=0,bag=[],lastT=-1,recent=[],SC=Z(),tmr=0,lt=0,CUS=false,GAMES=[],MP=false,MPG=null;function Z(){var a=[],i;for(i=0;i<20;i++){a.push(0);}return a;}
 var N=4, app=document.getElementById("app"), game=null, lastPair=-1;
 
@@ -350,27 +426,42 @@ function saveNames(){try{localStorage.setItem("traitre_names",JSON.stringify(NAM
 
 /* son et vibrations */
 var SOUND=true;try{SOUND=localStorage.getItem("traitre_snd")!=="0";}catch(e){}
-var VER="2.2",VIBON=true,AWAKE=true,TMS=60;
-try{VIBON=localStorage.getItem("und_vib")!=="0";AWAKE=localStorage.getItem("und_awk")!=="0";var tt=parseInt(localStorage.getItem("und_tmr"),10);if(tt===0||tt===30||tt===60||tt===90||tt===120){TMS=tt;}}catch(e){}
+var VER="2.14",VIBON=true,AWAKE=true,TMS=60,REC=true;
+try{VIBON=localStorage.getItem("und_vib")!=="0";AWAKE=localStorage.getItem("und_awk")!=="0";REC=localStorage.getItem("und_rec")!=="0";var tt=parseInt(localStorage.getItem("und_tmr"),10);if(tt===0||tt===30||tt===60||tt===90||tt===120){TMS=tt;}}catch(e){}
 function fm(t){return Math.floor(t/60)+":"+(t%60<10?"0":"")+(t%60);}
 var AC=null,picking=false;
 function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){AC=null;}}if(AC&&AC.state==="suspended"){try{AC.resume();}catch(e){}}return AC;}
-function tone(f,d,t0,type,vol){
+function tone(f,d,t0,type,vol,f2){
   if(!SOUND){return;}var c=ac();if(!c){return;}
-  try{var o=c.createOscillator(),g=c.createGain(),s=c.currentTime+(t0||0);o.type=type||"sine";o.frequency.value=f;g.gain.setValueAtTime(0.0001,s);g.gain.exponentialRampToValueAtTime(vol||0.1,s+0.03);g.gain.exponentialRampToValueAtTime(0.0001,s+d);o.connect(g);g.connect(c.destination);o.start(s);o.stop(s+d+0.05);}catch(e){}
+  try{var o=c.createOscillator(),g=c.createGain(),s=c.currentTime+(t0||0);o.type=type||"sine";o.frequency.setValueAtTime(f,s);if(f2){o.frequency.exponentialRampToValueAtTime(f2,s+d);}g.gain.setValueAtTime(0.0001,s);g.gain.exponentialRampToValueAtTime(vol||0.1,s+0.03);g.gain.exponentialRampToValueAtTime(0.0001,s+d);o.connect(g);g.connect(c.destination);o.start(s);o.stop(s+d+0.05);}catch(e){}
 }
 function sfx(k){
   if(k==="tick"){tone(660,0.07,0,"triangle",0.06);}
   else if(k==="ok"){tone(523,0.12,0,"triangle",0.09);tone(784,0.2,0.09,"triangle",0.09);}
   else if(k==="pick"){tone(440,0.1,0,"square",0.04);tone(880,0.25,0.08,"square",0.04);}
-  else if(k==="win"){tone(523,.12,0,"triangle",.1);tone(659,.12,.1,"triangle",.1);tone(784,.25,.2,"triangle",.1);}
-  else if(k==="lose"){tone(392,.16,0,"triangle",.1);tone(294,.3,.14,"triangle",.1);}
+  else if(k==="win"){tone(523,.12,0,"triangle",.1);tone(659,.12,.1,"triangle",.1);tone(784,.12,.2,"triangle",.1);tone(1047,.4,.3,"triangle",.11);tone(784,.4,.3,"sine",.05);}
+  else if(k==="lose"){tone(392,.2,0,"triangle",.1,330);tone(294,.5,.18,"triangle",.1,196);}
+  else if(k==="start"){tone(392,.1,0,"triangle",.09);tone(523,.1,.09,"triangle",.09);tone(659,.1,.18,"triangle",.09);tone(784,.3,.27,"triangle",.1);}
+  else if(k==="join"){tone(600,.08,0,"sine",.07);tone(900,.14,.07,"sine",.07);}
+  else if(k==="msg"){tone(880,.06,0,"sine",.05);tone(1175,.1,.07,"sine",.05);}
+  else if(k==="vote"){tone(520,.07,0,"triangle",.08);tone(390,.12,.07,"triangle",.08);}
+  else if(k==="elim"){tone(440,.55,0,"sawtooth",.06,110);tone(110,.5,.1,"sine",.12,60);}
+  else if(k==="reveal"){tone(220,.5,0,"triangle",.08,880);tone(988,.25,.48,"triangle",.1);}
+  else if(k==="cd"){tone(880,.05,0,"square",.04);}
+  else if(k==="end"){tone(220,.22,0,"square",.06);tone(220,.3,.28,"square",.06);}
+  else if(k==="back"){tone(500,.1,0,"sine",.06,330);}
 }
+var VP={tap:12,ok:[20,30],start:[40,30,40,30,90],join:[25],msg:[12],vote:[30],elim:[80,50,160],reveal:[20,30,20,30,90],win:[40,40,40,40,200],lose:[150,60,80],end:[60,40,60,40,120],cd:[10],back:[15]};
+function vibk(k){vib(VP[k]||12);}
+function snd(k,v){try{sfx(k);vibk(v||k);}catch(e){}}
+var LITE=false;try{var lq=localStorage.getItem("und_lite");if(lq==="1"){LITE=true;}else if(lq==="0"){LITE=false;}else{LITE=(navigator.hardwareConcurrency||8)<=4||(navigator.deviceMemory||4)<=2;}}catch(e){}
+function applyLite(){try{document.body.classList.toggle("lite",LITE);}catch(e){}}
+applyLite();
 function vib(n){try{if(VIBON&&navigator.vibrate){navigator.vibrate(n);}}catch(e){}}
 
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function dots(i){var s='<div class="dots">';for(var k=0;k<N;k++){s+='<span class="dot'+(k===i?' on':(k<i?' done':''))+'"></span>';}return s+'</div>';}
-function chip(){return '<div class="chip">'+THEMES[THEME].s+' · '+LEVELS[mode].n+' · '+N+' joueurs</div>';}
+function chip(){return '<div class="chip">'+THEMES[THEME].s+(THEME===4?' · '+SUBN[SUB]:'')+' · '+LEVELS[mode].n+' · '+N+' joueurs</div>';}
 var busy=false;
 function goTo(fn){if(busy){return;}busy=true;app.className="card leaving";setTimeout(function(){busy=false;fn();},300);}
 function show(html,cls){clearInterval(tmr);
@@ -381,7 +472,7 @@ function show(html,cls){clearInterval(tmr);
   try{window.scrollTo(0,0);}catch(e){}
 }
 var PCOL=["#ff5d73","#4cc9f0","#ffd166","#06d6a0","#c084fc","#fb923c","#f472b6","#a3e635","#38bdf8","#facc15","#2dd4bf","#e879f9"];
-function setTheme(v){try{var m=document.querySelector('meta[name="theme-color"]');if(m){m.setAttribute("content",["#2b1a8c","#5a1030","#052e3a"][v]||"#2a1b7a");}if(v===null){document.body.removeAttribute("data-theme");}else{document.body.setAttribute("data-theme",String(v));}}catch(e){}}
+function setTheme(v){try{var m=document.querySelector('meta[name="theme-color"]');if(m){m.setAttribute("content",skinMeta()||["#1c0b4a","#2a0610","#071235","#2a1504","#04261a"][v]||"#2a1b7a");}if(v===null){document.body.removeAttribute("data-theme");}else{document.body.setAttribute("data-theme",String(v));}}catch(e){}}
 function confetti(){
   var fx=document.getElementById("fx");if(!fx){return;}
   var cl=["#ff4d5e","#ff8a3d","#ffd166","#06d6a0","#4cc9f0","#8b5cf6","#ff5fa2"],h="";
@@ -410,12 +501,13 @@ function hm(on){var h=document.getElementById("home");if(h){h.className="snd hm"
 function menu(){menu0();instBtn();}
 function menu0(){
   hm(false);picking=false;setTheme(null);
-  var T=DATA.t,dz=function(n){return n+(n>1?" duos":" duo");},meta=[{n:"Animé",s:dz(T[0].length)},{n:"Films",s:"Marvel · "+dz(T[1].length)},{n:"Jeux vidéo",s:T[2].length?dz(T[2].length):"Bientôt"}];
+  var T=DATA.t,dz=function(n){return n+(n>1?" duos":" duo");},meta=[{n:"Animé",s:dz(T[0].length)},{n:"Films",s:"Marvel · "+dz(T[1].length)},{n:"Jeux vidéo",s:T[2].length?dz(T[2].length):"Bientôt"},{n:"Histoire",s:T[3].length?dz(T[3].length):"Bientôt"},{n:"Animaux",s:T[4].length?dz(T[4].length):"Bientôt"}];
   var h="";
   meta.forEach(function(m,i){h+='<button type="button" class="tile t'+i+'" data-t="'+i+'"><span class="idx">0'+(i+1)+'</span><span class="ln"></span><span class="tn">'+m.n+'</span><span class="ts">'+m.s+'</span></button>';});
-  show('<div class="chip">Nouvelle partie</div><h2>Choisis une catégorie</h2><div class="sub">Quel univers pour cette partie ?</div><div class="tiles" id="tiles">'+h+'</div><button id="ol" type="button">Jouer en ligne</button><button class="sec" id="jn" type="button">Rejoindre un code hors ligne</button><button class="sec" id="rl" type="button">Comment jouer ?</button><button class="sec" id="st" type="button">Réglages</button>');document.getElementById("jn").onclick=function(){goTo(joinScreen);};
+  show('<div class="chip">Nouvelle partie</div><h2>Choisis une catégorie</h2><div class="sub">Quel univers pour cette partie ?</div><div class="tiles" id="tiles">'+h+'</div><button id="ol" type="button">Jouer en ligne</button><button class="sec" id="jn" type="button">Rejoindre un code hors ligne</button><button class="sec" id="rl" type="button">Comment jouer ?</button><button class="sec" id="st" type="button">Réglages</button><button class="sec" id="mj" type="button">Mises à jour</button>');document.getElementById("jn").onclick=function(){goTo(joinScreen);};
   document.getElementById("rl").onclick=function(){goTo(rules);};
   document.getElementById("st").onclick=function(){goTo(settings);};
+  document.getElementById("mj").onclick=function(){goTo(maj);};
   document.getElementById("ol").onclick=function(){goTo(function(){if(window.startOnline){startOnline();}else{hm(true);show('<div class="chip">En ligne</div><h2>Connexion impossible</h2><div class="sub">Le mode en ligne a besoin d’internet. Vérifie ta connexion puis réessaie.</div>');}});};
   document.querySelector("#app h2").onclick=function(){var n=Date.now();adm5=(n-adm5t>3000)?1:adm5+1;adm5t=n;if(adm5>=5){adm5=0;goTo(admPin);}};
   each(app.querySelectorAll(".tile"),function(b){b.onclick=function(){pick(+b.getAttribute("data-t"),b);};});
@@ -454,18 +546,26 @@ function fillPlayers(){
   each(box.querySelectorAll(".sb"),function(b){b.onclick=function(){setN(Math.max(3,Math.min(20,N+(+b.getAttribute("data-d")))));};});
   each(box.querySelectorAll(".nm"),function(inp){inp.oninput=function(){NAMES[+inp.getAttribute("data-i")]=inp.value;saveNames();};});
 }
+function lvOff(){each(app.querySelectorAll(".lv"),function(b){var l=+b.getAttribute("data-l"),has=pairs().some(function(p){return level(p)===l;});b.className="lv c"+l+(has?"":" off");});}
+function fillSub(){
+  var bx=document.getElementById("sbbox");if(!bx){return;}
+  if(THEME!==4){bx.innerHTML="";return;}
+  var h='<div class="label">Type d’animaux</div><div class="seg s4 sbt">';
+  SUBN.forEach(function(n,i){h+='<button type="button" class="'+(SUB===i?'on':'')+'" data-sb="'+i+'">'+n+'</button>';});
+  bx.innerHTML=h+'</div>';
+  each(bx.querySelectorAll("button"),function(b){b.onclick=function(){SUB=+b.getAttribute("data-sb");saveCfg();fillSub();lvOff();};});
+}
 function setup(){
   hm(true);
   if(!pairs().length){show('<div class="topbar"><button class="back" id="back" type="button">‹ Retour</button><div class="chip">'+THEMES[THEME].s+'</div></div><h2>Bientôt disponible</h2><div class="sub">Cette catégorie n’a pas encore de personnages.</div>');document.getElementById("back").onclick=function(){goTo(menu);};return;}
-  var h='<div class="topbar"><button class="back" id="back" type="button">‹ Retour</button><div class="chip">'+THEMES[THEME].s+'</div></div><h2>Paramètres</h2><div class="label">Mode de jeu</div><div class="seg md"><button type="button" data-m="0">1 téléphone</button><button type="button" data-m="1">Code hors ligne</button></div><div id="plbox"></div><div class="label">Difficulté</div><div class="levels">';
+  var h='<div class="topbar"><button class="back" id="back" type="button">‹ Retour</button><div class="chip">'+THEMES[THEME].s+'</div></div><h2>Paramètres</h2><div class="label">Mode de jeu</div><div class="seg md"><button type="button" data-m="0">1 téléphone</button><button type="button" data-m="1">Code hors ligne</button></div><div id="sbbox"></div><div id="plbox"></div><div class="label">Difficulté</div><div class="levels">';
   LEVELS.forEach(function(l,i){
     var p='';for(var k=0;k<4;k++){p+='<span class="pip'+(k<=i?' on':'')+'"></span>';}
-    h+='<button type="button" class="lv c'+i+'" data-l="'+i+'"><span class="pips">'+p+'</span><span class="t">'+l.n+'</span><span class="d">'+l.d+'</span></button>';
+    h+='<button type="button" class="lv c'+i+'" data-l="'+i+'"><span class="pips">'+p+'</span><span class="t">'+l.n+'</span><span class="d">'+lvDesc(i,THEME)+'</span></button>';
   });
   h+='</div>';
   show(h);
-  fillPlayers();mdSet();
-  each(app.querySelectorAll(".lv"),function(b){if(!pairs().some(function(p){return level(p)===+b.getAttribute("data-l");})){b.className+=" off";}});
+  fillPlayers();mdSet();fillSub();lvOff();
   document.getElementById("back").onclick=function(){goTo(menu);};
   each(app.querySelectorAll(".lv"),function(b){b.onclick=function(){var m=+b.getAttribute("data-l");if(!pairs().some(function(p){return level(p)===m;})){vib(40);return;}mode=m;goTo(MP?host:launch);};});
 }
@@ -501,7 +601,7 @@ function cover(){
 function reveal(){
   var ch=(game.i===game.t)?game.traitor:game.civil,isW=(game.i===game.w),big=isW?'Mr White':ch,wk=isW?'Tu n’as pas de personnage. Écoute les autres et bluffe pour ne pas te faire repérer.':WORK[ch];
   sfx("ok");vib(12);
-  show(chip()+dots(game.i)+'<div class="sub" style="margin-bottom:0"><b style="color:'+PCOL[game.i%12]+'">'+nm(game.i)+'</b>, ton personnage :</div><div class="reveal flip"><div class="big">'+big+'</div><p class="work">'+wk+'</p></div><div class="sub">'+(isW?'Retiens bien ce que diront les autres, puis cache l’écran.':'Mémorise-le, puis cache l’écran.')+'</div><button id="hide" type="button">Cacher et passer</button>');
+  show(chip()+dots(game.i)+'<div class="sub" style="margin-bottom:0"><b style="color:'+PCOL[game.i%12]+'">'+nm(game.i)+'</b>, ton personnage :</div><div class="reveal flip"><div class="big">'+big+'</div><p class="work">'+wk+'</p>'+(isW?'':dsc(ch))+'</div><div class="sub">'+(isW?'Retiens bien ce que diront les autres, puis cache l’écran.':'Mémorise-le, puis cache l’écran.')+'</div><button id="hide" type="button">Cacher et passer</button>');
   document.getElementById("hide").onclick=function(){
     game.i++;
     if(game.i>=N){ready();}else{cover();}
@@ -520,7 +620,7 @@ function ready(f){
     var b=this,t=TMS;clearInterval(tmr);sfx("ok");b.textContent="Débat · "+fm(t);
     tmr=setInterval(function(){
       t--;b.textContent=t>0?"Débat · "+fm(t):"Temps écoulé !";
-      if(t<=0){clearInterval(tmr);sfx("pick");vib([60,40,60]);}else if(t<=5){sfx("tick");}
+      if(t<=0){clearInterval(tmr);snd("end");}else if(t<=5){sfx("cd");vib(10);}
     },1000);
   };}
 }
@@ -552,7 +652,7 @@ function out(i){
   var who=i===game.t?'était l’Undercover':(i===game.w?'était Mr White':'était un Civil'),
       more=(uA&&wA)?'L’Undercover et Mr White sont toujours parmi vous.':(uA?'L’Undercover est toujours parmi vous.':'Mr White est toujours en jeu.'),
       good=(i===game.t||i===game.w);
-  sfx(good?"ok":"lose");vib([40,40]);
+  snd(good?"reveal":"elim");
   show(chip()+'<div class="tag">'+(good?'Bien vu':'Raté')+'</div><h1>'+nm(i)+' '+who+'</h1><div class="sub">Il est éliminé. '+more+' '+al.length+' joueurs restent en jeu.</div><button id="nx" type="button">Continuer la partie</button>');
   document.getElementById("nx").onclick=function(){ready();};
 }
@@ -568,7 +668,7 @@ function finish(kind,i){
   else if(uA&&wA){t='L’Undercover et Mr White gagnent'+NB+'!';sub=nm(game.t)+' (Undercover) et '+nm(game.w)+' (Mr White) gagnent la partie.';}
   else if(wA){t='Mr White gagne'+NB+'!';sub=nm(game.w)+' était Mr White et gagne la partie.';}
   else{t='L’Undercover gagne'+NB+'!';sub=nm(game.t)+' était l’Undercover et gagne la partie.';}
-  sfx(ok||kind==="w"?"win":"lose");vib(ok?[30,40,60]:[80]);if(ok){confetti();}
+  snd(ok||kind==="w"?"win":"lose");if(ok){confetti();}
   show(chip()+'<div class="tag">'+nm(i)+(kind==="w"?' est Mr White':' est désigné')+'</div><h1 style="color:'+(ok?'#9dffcf':'#ffc9c9')+'">'+t+'</h1><div class="sub">'+sub+'</div><button id="sol" type="button">Voir les personnages</button>');
   document.getElementById("sol").onclick=solution;
 }
@@ -597,18 +697,18 @@ function solution(){
 
 /* ===== mode : chacun son téléphone (code de partie) ===== */
 var AL="23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-function enc(th,lv,n,mw,sd){var v=th|(lv<<2)|((n-3)<<4)|((mw?1:0)<<9)|(sd<<10),c="",i;for(i=0;i<5;i++){c=AL.charAt(v%32)+c;v=Math.floor(v/32);}return c;}
+function enc(th,lv,n,mw,sb,sd){var v=th|(lv<<3)|(sb<<5)|((n-3)<<7)|((mw?1:0)<<12)|(sd<<13),c="",i;for(i=0;i<5;i++){c=AL.charAt(v%32)+c;v=Math.floor(v/32);}return c;}
 function dec(c){
   c=String(c).toUpperCase().replace(/[^2-9A-HJ-NP-Z]/g,"");
   if(c.length!==5){return null;}
   var v=0,i;for(i=0;i<5;i++){v=v*32+AL.indexOf(c.charAt(i));}
-  var g={th:v&3,lv:(v>>2)&3,n:((v>>4)&31)+3,mw:((v>>9)&1)===1,sd:v>>10};
-  return (g.th>2||g.n>20)?null:g;
+  var g={th:v&7,lv:(v>>3)&3,sb:(v>>5)&3,n:((v>>7)&31)+3,mw:((v>>12)&1)===1,sd:v>>13};
+  return (g.th>4||g.n>20)?null:g;
 }
 function rng(sd){var a=(sd*2654435761+12345)>>>0;return function(){a=(a+0x6D2B79F5)>>>0;var t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;};}
 function deal(g){
   THEME=g.th;
-  var R=rng(g.sd),L=pairs(),all=[];
+  var R=rng(g.sd),L=pairs(g.th,g.sb),all=[];
   L.forEach(function(p,k){if(level(p)===g.lv){all.push(k);}});
   var p=L[all[Math.floor(R()*all.length)]].slice(0,2);
   if(R()<0.5){p.reverse();}
@@ -616,8 +716,8 @@ function deal(g){
   if(g.mw&&g.n>=5){w=Math.floor(R()*(g.n-1));if(w>=t){w++;}}
   return {civil:p[0],traitor:p[1],t:t,first:f,w:w};
 }
-function okPairs(g){THEME=g.th;return pairs().some(function(p){return level(p)===g.lv;});}
-function mpSet(g){MPG=g;THEME=g.th;mode=g.lv;N=g.n;setTheme(g.th);}
+function okPairs(g){THEME=g.th;return pairs(g.th,g.sb).some(function(p){return level(p)===g.lv;});}
+function mpSet(g){MPG=g;THEME=g.th;SUB=g.sb;mode=g.lv;N=g.n;setTheme(g.th);}
 function mdSet(){
   each(app.querySelectorAll(".md button"),function(b){
     b.className=((b.getAttribute("data-m")==="1")===MP)?"on":"";
@@ -625,8 +725,8 @@ function mdSet(){
   });
 }
 function host(){
-  mpSet({th:THEME,lv:mode,n:N,mw:MW&&N>=5,sd:Math.floor(Math.random()*32768)});
-  MPG.code=enc(MPG.th,MPG.lv,MPG.n,MPG.mw,MPG.sd);
+  mpSet({th:THEME,lv:mode,n:N,mw:MW&&N>=5,sb:SUB,sd:Math.floor(Math.random()*4096)});
+  MPG.code=enc(MPG.th,MPG.lv,MPG.n,MPG.mw,MPG.sb,MPG.sd);
   hm(true);sfx("ok");vib(15);
   show(chip()+'<h2>Partie créée</h2><div class="sub">Les autres appuient sur « Rejoindre une partie » dans le menu et tapent ce code.</div><div class="reveal"><div class="tag">Code de la partie</div><div class="big code">'+MPG.code.split("").join(" ")+'</div></div>'+(MPG.mw?'<div class="rule">Mr White est activé dans cette partie.</div>':'')+(DRAFT?'<div class="rule warn">⚠ Brouillon admin actif : les autres joueurs n’ont pas tes modifications.</div>':'')+'<button id="go" type="button">Choisir mon numéro</button><button class="sec" id="shc" type="button">Partager le code</button>');
   document.getElementById("go").onclick=seats;
@@ -645,7 +745,7 @@ function joinScreen(){
   document.getElementById("jgo").onclick=function(){
     var g=dec(ip.value);
     if(!g||!okPairs(g)){document.getElementById("er").textContent="Code invalide, vérifie les 5 caractères.";vib(40);return;}
-    mpSet({th:g.th,lv:g.lv,n:g.n,mw:g.mw,sd:g.sd,code:ip.value.toUpperCase()});
+    mpSet({th:g.th,lv:g.lv,n:g.n,mw:g.mw,sb:g.sb,sd:g.sd,code:ip.value.toUpperCase()});
     sfx("ok");seats();
   };
 }
@@ -666,7 +766,7 @@ function mpCover(s){
 function mpReveal(s){
   var d=deal(MPG),ch=(s===d.t)?d.traitor:d.civil,isW=(s===d.w);
   sfx("ok");vib(12);
-  show(chip()+'<div class="sub" style="margin-bottom:0"><b style="color:'+PCOL[s%12]+'">Joueur '+(s+1)+'</b>, ton personnage :</div><div class="reveal flip"><div class="big">'+(isW?'Mr White':ch)+'</div><p class="work">'+(isW?'Tu n’as pas de personnage. Écoute les autres et bluffe pour ne pas te faire repérer.':WORK[ch])+'</p></div><div class="sub">Premier à parler : <b>Joueur '+(d.first+1)+'</b></div><button id="hide" type="button">Cacher</button>');
+  show(chip()+'<div class="sub" style="margin-bottom:0"><b style="color:'+PCOL[s%12]+'">Joueur '+(s+1)+'</b>, ton personnage :</div><div class="reveal flip"><div class="big">'+(isW?'Mr White':ch)+'</div><p class="work">'+(isW?'Tu n’as pas de personnage. Écoute les autres et bluffe pour ne pas te faire repérer.':WORK[ch])+'</p>'+(isW?'':dsc(ch))+'</div><div class="sub">Premier à parler : <b>Joueur '+(d.first+1)+'</b></div><button id="hide" type="button">Cacher</button>');
   document.getElementById("hide").onclick=function(){mpCover(s);};
 }
 function mpSol(){
@@ -679,8 +779,8 @@ function mpSol(){
 
 /* ===== mode admin : modifier les duos ===== */
 var ADMIN_PIN="7391",adm5=0,adm5t=0;
-function validData(d){return !!(d&&Array.isArray(d.t)&&d.t.length===3&&d.t.every(function(a){return Array.isArray(a)&&a.every(function(p){return Array.isArray(p)&&typeof p[0]==="string"&&typeof p[1]==="string"&&p[2]>=0&&p[2]<=3;});})&&d.w&&typeof d.w==="object");}
-function applyData(d){DATA=d;WORK=d.w;}
+function validData(d){return !!(d&&Array.isArray(d.t)&&d.t.length>=3&&d.t.length<=5&&d.t.every(function(a){return Array.isArray(a)&&a.every(function(p){return Array.isArray(p)&&typeof p[0]==="string"&&typeof p[1]==="string"&&p[2]>=0&&p[2]<=3&&(p[3]===undefined||(p[3]>=0&&p[3]<=3));});})&&d.w&&typeof d.w==="object");}
+function applyData(d){while(d.t.length<5){d.t.push([]);}DESC=Object.assign({},DESC0,d.d||{});d.d=DESC;DATA=d;WORK=d.w;}
 function admSave(){try{localStorage.setItem("und_draft",JSON.stringify(DATA));}catch(e){}DRAFT=true;}
 function twice(b,fn,lab){var t=b.textContent;if(b.getAttribute("data-w")){fn();return;}b.setAttribute("data-w","1");b.textContent=lab||"Confirmer ?";setTimeout(function(){b.removeAttribute("data-w");b.textContent=t;},2500);}
 function flash(b,t){var o=b.textContent;b.textContent=t;setTimeout(function(){b.textContent=o;},1800);}
@@ -704,7 +804,7 @@ function admPin(){
 function admHome(){
   hm(true);
   var h='',i,n;
-  for(i=0;i<3;i++){n=DATA.t[i].length;h+='<button type="button" class="ac" data-i="'+i+'">'+THEMES[i].n+' · '+n+' duo'+(n>1?'s':'')+'</button>';}
+  for(i=0;i<5;i++){n=DATA.t[i].length;h+='<button type="button" class="ac" data-i="'+i+'">'+THEMES[i].n+' · '+n+' duo'+(n>1?'s':'')+'</button>';}
   show(admTop("Menu","Admin")+'<h2>Personnages</h2><div class="sub">'+(DRAFT?'Brouillon actif sur ce téléphone : les autres joueurs ne voient pas tes changements tant que tu ne les as pas publiés.':'Aucune modification en cours.')+'</div>'+h+'<div class="label">Publier sur GitHub</div><button id="dl" type="button">Télécharger duos.json</button><button class="sec" id="cp" type="button">Copier le contenu</button><button class="sec" id="im" type="button">Importer un duos.json</button><button class="sec" id="rs" type="button">Effacer mon brouillon</button><input type="file" id="fi" accept=".json,application/json" hidden>');
   document.getElementById("back").onclick=function(){goTo(menu);};
   each(app.querySelectorAll(".ac"),function(b){b.onclick=function(){admCat(+b.getAttribute("data-i"));};});
@@ -727,7 +827,7 @@ function admHome(){
 function admCat(i){
   var L=DATA.t[i],h='',k;
   for(k=0;k<L.length;k++){
-    h+='<div class="arow" data-s="'+esc((L[k][0]+" "+L[k][1]).toLowerCase())+'"><div class="at">'+esc(L[k][0])+' · '+esc(L[k][1])+'<div class="al">'+LEVELS[L[k][2]].n+'</div></div><button type="button" class="ib" data-e="'+k+'" aria-label="Modifier">✎</button><button type="button" class="ib" data-d="'+k+'" aria-label="Supprimer">✕</button></div>';
+    h+='<div class="arow" data-s="'+esc((L[k][0]+" "+L[k][1]).toLowerCase())+'"><div class="at">'+esc(L[k][0])+' · '+esc(L[k][1])+'<div class="al">'+LEVELS[L[k][2]].n+(i===4&&L[k][3]!==undefined?' · '+['Terrestre','Marin','Aérien','Mixte'][L[k][3]]:'')+'</div></div><button type="button" class="ib" data-e="'+k+'" aria-label="Modifier">✎</button><button type="button" class="ib" data-d="'+k+'" aria-label="Supprimer">✕</button></div>';
   }
   show(admTop("Admin",THEMES[i].n)+'<h2>'+THEMES[i].n+'</h2><input class="nm" id="q" type="text" autocomplete="off" placeholder="Rechercher…"><button id="add" type="button">+ Ajouter un duo</button><div class="alist">'+(h||'<div class="sub">Aucun duo pour le moment.</div>')+'</div>');
   document.getElementById("back").onclick=admHome;
@@ -740,14 +840,17 @@ function admCat(i){
   };});
 }
 function admEdit(i,k){
-  var d=(k<0)?["","",1]:DATA.t[i][k],lv=d[2],W=DATA.w,j,sg='';
-  function f(id,ph,v){return '<input class="nm" id="'+id+'" type="text" maxlength="30" autocomplete="off" placeholder="'+ph+'" value="'+esc(v)+'">';}
+  var d=(k<0)?["","",1,3]:DATA.t[i][k],lv=d[2],sb=(d[3]===undefined?3:d[3]),W=DATA.w,j,sg='';
+  function f(id,ph,v){return '<input class="nm" id="'+id+'" type="text" maxlength="'+(id.length===2&&id.charAt(1)==='d'?90:30)+'" autocomplete="off" placeholder="'+ph+'" value="'+esc(v)+'">';}
   for(j=0;j<4;j++){sg+='<button type="button" data-l="'+j+'">'+LEVELS[j].n+'</button>';}
-  show(admTop("Annuler",THEMES[i].n)+'<h2>'+(k<0?'Nouveau duo':'Modifier le duo')+'</h2><div class="label">Personnage 1</div>'+f("a","Nom",d[0])+'<div style="height:8px"></div>'+f("aw","Œuvre ou univers",W[d[0]]||"")+'<div class="label">Personnage 2</div>'+f("b","Nom",d[1])+'<div style="height:8px"></div>'+f("bw","Œuvre ou univers",W[d[1]]||"")+'<div class="label">Difficulté</div><div class="seg" id="sg">'+sg+'</div><div class="rule" id="ld"></div><div class="rule warn" id="er"></div><button id="sv" type="button">Enregistrer</button>');
+  show(admTop("Annuler",THEMES[i].n)+'<h2>'+(k<0?'Nouveau duo':'Modifier le duo')+'</h2><div class="label">Personnage 1</div>'+f("a","Nom",d[0])+'<div style="height:8px"></div>'+f("aw","Œuvre ou univers",W[d[0]]||"")+(i<3?'<div style="height:8px"></div>'+f("ad","Description courte (sans le nom)",(DATA.d||{})[d[0]]||""):"")+'<div class="label">Personnage 2</div>'+f("b","Nom",d[1])+'<div style="height:8px"></div>'+f("bw","Œuvre ou univers",W[d[1]]||"")+(i<3?'<div style="height:8px"></div>'+f("bd","Description courte (sans le nom)",(DATA.d||{})[d[1]]||""):"")+'<div class="label">Difficulté</div><div class="seg" id="sg">'+sg+'</div>'+(i===4?'<div class="label">Type d’animaux</div><div class="seg s4" id="sbs"><button type="button" data-b="0">Terrestre</button><button type="button" data-b="1">Marin</button><button type="button" data-b="2">Aérien</button><button type="button" data-b="3">Mixte</button></div>':'')+'<div class="rule" id="ld"></div><div class="rule warn" id="er"></div><button id="sv" type="button">Enregistrer</button>');
   var g=function(id){return document.getElementById(id);};
-  function lvl(){each(g("sg").querySelectorAll("button"),function(b){b.className=(+b.getAttribute("data-l")===lv)?"on":"";});g("ld").textContent=LEVELS[lv].d;}
+  function lvl(){each(g("sg").querySelectorAll("button"),function(b){b.className=(+b.getAttribute("data-l")===lv)?"on":"";});g("ld").textContent=lvDesc(lv,i);}
   lvl();
   each(g("sg").querySelectorAll("button"),function(b){b.onclick=function(){lv=+b.getAttribute("data-l");lvl();};});
+  function sbl(){if(i!==4){return;}each(g("sbs").querySelectorAll("button"),function(b){b.className=(+b.getAttribute("data-b")===sb)?"on":"";});}
+  sbl();
+  if(i===4){each(g("sbs").querySelectorAll("button"),function(b){b.onclick=function(){sb=+b.getAttribute("data-b");sbl();};});}
   [["a","aw"],["b","bw"]].forEach(function(x){g(x[0]).onchange=function(){var n=g(x[0]).value.trim();if(n&&!g(x[1]).value&&W[n]){g(x[1]).value=W[n];}};});
   g("back").onclick=function(){admCat(i);};
   g("sv").onclick=function(){
@@ -756,7 +859,8 @@ function admEdit(i,k){
     if(a.toLowerCase()===b.toLowerCase()){er.textContent="Les deux personnages doivent être différents.";return;}
     if(k<0&&DATA.t[i].some(function(p){return (p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a);})){er.textContent="Ce duo existe déjà.";return;}
     W[a]=cl("aw");W[b]=cl("bw");
-    if(k<0){DATA.t[i].push([a,b,lv]);}else{DATA.t[i][k]=[a,b,lv];}
+    if(i<3){DATA.d=DATA.d||{};if(cl("ad")){DATA.d[a]=cl("ad");}else{delete DATA.d[a];}if(cl("bd")){DATA.d[b]=cl("bd");}else{delete DATA.d[b];}DESC=DATA.d;}
+    var np=(i===4)?[a,b,lv,sb]:[a,b,lv];if(k<0){DATA.t[i].push(np);}else{DATA.t[i][k]=np;}
     admSave();sfx("ok");admCat(i);
   };
 }
@@ -782,9 +886,55 @@ if(window.addEventListener){
 }
 
 /* réglages mémorisés */
-function saveCfg(){try{localStorage.setItem("und_cfg",JSON.stringify({n:N,cus:CUS,mp:MP,el:ELIM,mw:MW}));}catch(e){}}
-(function(){try{var c=JSON.parse(localStorage.getItem("und_cfg")||"null");if(c){if(c.n>=3&&c.n<=20){N=c.n|0;}CUS=!!c.cus;MP=!!c.mp;ELIM=c.el!==false;MW=!!c.mw;}}catch(e){}})();
+function saveCfg(){try{localStorage.setItem("und_cfg",JSON.stringify({n:N,cus:CUS,mp:MP,el:ELIM,mw:MW,sb:SUB}));}catch(e){}}
+(function(){try{var c=JSON.parse(localStorage.getItem("und_cfg")||"null");if(c){if(c.n>=3&&c.n<=20){N=c.n|0;}CUS=!!c.cus;MP=!!c.mp;ELIM=c.el!==false;MW=!!c.mw;if(c.sb>=0&&c.sb<=3){SUB=c.sb|0;}}}catch(e){}})();
 function sv(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+var SKINS=[{id:"cat",n:"Par catégorie"},{id:"red",n:"Rouge & noir",c:["#0a0508","#3f0b12","#d0121f"]},{id:"blue",n:"Bleu nuit",c:["#050816","#14246f","#3b82f6"]},{id:"green",n:"Émeraude",c:["#04140f","#0b5d45","#34d399"]},{id:"violet",n:"Violet néon",c:["#14072e","#5b21b6","#ec4899"]},{id:"gold",n:"Or & noir",c:["#0b0903","#52390a","#f59e0b"]},{id:"custom",n:"Perso"}];
+var SKIN={id:"cat",c:["#0a0508","#3f0b12","#d0121f"]};
+try{var sk0=JSON.parse(localStorage.getItem("und_skin")||"null");if(sk0&&typeof sk0.id==="string"&&Array.isArray(sk0.c)&&sk0.c.length===3&&sk0.c.every(function(x){return /^#[0-9a-fA-F]{6}$/.test(x);})&&SKINS.some(function(z){return z.id===sk0.id;})){SKIN=sk0;}}catch(e){}
+function rgb(h){return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)];}
+function hex(a){return "#"+a.map(function(v){v=Math.max(0,Math.min(255,Math.round(v)));return (v<16?"0":"")+v.toString(16);}).join("");}
+function lum(h){var a=rgb(h).map(function(v){v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);});return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2];}
+function clampL(h,mx){var a=rgb(h),i=0;while(lum(hex(a))>mx&&i<60){a=a.map(function(v){return v*0.92;});i++;}return hex(a);}
+function mixc(h1,h2,t){var a=rgb(h1),b=rgb(h2);return hex([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t]);}
+function cg(c){return "linear-gradient(160deg,"+c[0]+","+c[1]+" 55%,"+c[2]+")";}
+function skinCols(){if(SKIN.id==="custom"){return SKIN.c;}for(var i=0;i<SKINS.length;i++){if(SKINS[i].id===SKIN.id){return SKINS[i].c||null;}}return null;}
+function skinMeta(){var c=(SKIN.id==="cat")?null:skinCols();return c?clampL(c[0],0.2):null;}
+function skinSave(){try{localStorage.setItem("und_skin",JSON.stringify(SKIN));}catch(e){}}
+function applySkin(){try{applySkin0();}catch(e){}}
+function applySkin0(){
+  var b=document.body,st=b.style,P=["--s1","--s2","--s3","--a1","--a2","--ink","--card"],c=(SKIN.id==="cat")?null:skinCols();
+  if(!c){b.removeAttribute("data-skin");P.forEach(function(p){st.removeProperty(p);});}
+  else{
+    var s1=clampL(c[0],0.1),s2=clampL(c[1],0.25),s3=clampL(c[2],0.6),r=rgb(s1);
+    st.setProperty("--s1",s1);st.setProperty("--s2",s2);st.setProperty("--s3",s3);
+    st.setProperty("--a1",clampL(c[2],0.28));st.setProperty("--a2",clampL(mixc(c[1],c[2],0.55),0.2));
+    st.setProperty("--ink",clampL(c[1],0.06));st.setProperty("--card","rgba("+r[0]+","+r[1]+","+r[2]+",.55)");
+    b.setAttribute("data-skin",SKIN.id);
+  }
+  try{var m=document.querySelector('meta[name="theme-color"]');if(m&&c){m.setAttribute("content",skinMeta());}}catch(e){}
+}
+applySkin();
+function pickSkin(id){
+  if(id==="custom"){SKIN={id:"custom",c:(SKIN.id==="custom")?SKIN.c:(skinCols()||["#0a0508","#3f0b12","#d0121f"]).slice()};}
+  else{SKIN={id:id,c:SKIN.c};}
+  skinSave();applySkin();renderSkin();
+}
+function renderSkin(){
+  var bx=document.getElementById("r_skin");if(!bx){return;}
+  var h="";
+  SKINS.forEach(function(z){
+    var g=(z.id==="cat")?"linear-gradient(135deg,#7b3ff0,#f0509e 40%,#f59e0b 70%,#0891b2)":(z.id==="custom"?(SKIN.id==="custom"?cg(SKIN.c):"conic-gradient(#ff5d73,#ffd166,#06d6a0,#4cc9f0,#c084fc,#ff5d73)"):cg(z.c));
+    h+='<button type="button" class="skn'+(SKIN.id===z.id?' on':'')+'" data-k="'+z.id+'" style="--g:'+g+'">'+z.n+'</button>';
+  });
+  bx.innerHTML=h;
+  each(bx.querySelectorAll("button"),function(b){b.onclick=function(){pickSkin(b.getAttribute("data-k"));};});
+  var cu=document.getElementById("r_cus");if(!cu){return;}
+  if(SKIN.id==="custom"){
+    cu.innerHTML='<div class="cus">'+["Haut","Milieu","Bas"].map(function(n,i){return '<label>'+n+'<input type="color" data-i="'+i+'" value="'+SKIN.c[i]+'"></label>';}).join("")+'</div><div class="rule">Les couleurs trop claires sont assombries pour que le texte reste lisible.</div>';
+    each(cu.querySelectorAll("input"),function(inp){inp.oninput=function(){SKIN.c[+inp.getAttribute("data-i")]=inp.value;skinSave();applySkin();var cb=bx.querySelector('[data-k="custom"]');if(cb){cb.style.setProperty("--g",cg(SKIN.c));}};});
+  }else{cu.innerHTML="";}
+}
 function settings(){
   hm(true);setTheme(null);
   function row(l,id,opts,cur,cls){var h='<div class="label">'+l+'</div><div class="seg '+(cls||'')+'" id="'+id+'">';opts.forEach(function(o){h+='<button type="button" class="'+(o[0]===cur?'on':'')+'" data-v="'+o[0]+'">'+o[1]+'</button>';});return h+'</div>';}
@@ -794,11 +944,19 @@ function settings(){
     +row('Vibrations','r_vib',yn,VIBON?1:0)
     +row('Écran toujours allumé','r_awk',yn,AWAKE?1:0)
     +'<div class="rule">Évite que le téléphone se mette en veille pendant une partie.</div>'
+    +row('Animations','r_lite',[[0,'Complètes'],[1,'Réduites']],LITE?1:0)
+    +'<div class="rule">« Réduites » enlève les effets en mouvement : le jeu est plus fluide sur un téléphone ancien.</div>'
+    +row('Reconnexion automatique','r_rec',yn,REC?1:0)
+    +'<div class="rule">Au lancement, te remet directement dans ton salon en ligne s’il est encore ouvert.</div>'
+    +'<div class="label">Couleurs</div><div class="skg" id="r_skin"></div><div id="r_cus"></div>'
     +'<div class="label">Données</div><button class="sec" id="r_rst" type="button">Effacer pseudos et réglages de partie</button><button class="sec" id="r_upd" type="button">Mettre à jour le jeu</button><div class="rule" id="r_msg" role="status">Version '+VER+'</div>');
   document.getElementById("back").onclick=function(){goTo(menu);};
+  renderSkin();
   function bind(id,fn){each(document.querySelectorAll("#"+id+" button"),function(b){b.onclick=function(){var v=+b.getAttribute("data-v");fn(v);each(document.querySelectorAll("#"+id+" button"),function(x){x.className=(x===b)?"on":"";});};});}
   bind("r_snd",function(v){SOUND=!!v;sv("traitre_snd",v?"1":"0");sndIcon();if(SOUND){sfx("tick");}});
   bind("r_vib",function(v){VIBON=!!v;sv("und_vib",v?"1":"0");vib(30);});
+  bind("r_lite",function(v){LITE=!!v;sv("und_lite",v?"1":"0");applyLite();});
+  bind("r_rec",function(v){REC=!!v;sv("und_rec",v?"1":"0");});
   bind("r_awk",function(v){AWAKE=!!v;sv("und_awk",v?"1":"0");if(AWAKE){wake();}else{try{if(WL){WL.release();WL=null;}}catch(e){}}});
   document.getElementById("r_rst").onclick=function(){twice(this,function(){
     try{localStorage.removeItem("und_cfg");localStorage.removeItem("traitre_names");}catch(e){}
@@ -812,6 +970,19 @@ function settings(){
     go();
   };
 }
+var MAJ={"soon": [{"t": "Vote par éliminations en ligne", "d": "Comme en 1 téléphone : on continue la manche jusqu'à démasquer l'infiltré.", "s": "Prévu"}, {"t": "Défis du tour", "d": "Une règle au hasard à chaque manche, par exemple parler en 3 mots.", "s": "Prévu"}, {"t": "Nouvelles catégories", "d": "Séries, Disney, sport et plus encore.", "s": "Idée"}, {"t": "Ambiance sonore", "d": "Une musique de fond légère, avec un bouton pour la couper.", "s": "Idée"}], "news": [{"v": "2.7", "d": "Nouvelles couleurs pour les catégories : plus riches et plus harmonieuses."}, {"v": "2.6", "d": "Couleurs personnalisables : rouge et noir (logo), bleu nuit, émeraude, violet, or, ou tes propres couleurs."}, {"v": "2.5", "d": "Catégorie Animaux (terrestres, marins, aériens ou les 3) et catégorie Jeux vidéo remplie."}, {"v": "2.4", "d": "Nouvelle catégorie Histoire : 40 duos de personnages historiques."}, {"v": "2.2", "d": "Minuteur de débat choisi par l'hôte, avec compte à rebours partagé en ligne."}, {"v": "2.1", "d": "Écran Réglages : son, vibrations, écran allumé, effacement des données."}, {"v": "2.0", "d": "Mr White, classement de la soirée, avatars mémorisés, logo de l'application."}, {"v": "1.5", "d": "Vote par éliminations, règles du jeu, partage du code, relais d'hôte en ligne."}, {"v": "1.0", "d": "Mode en ligne avec tchat et émotes, code hors ligne, mode admin, application installable."}]};
+function validMaj(d){return !!(d&&Array.isArray(d.soon)&&Array.isArray(d.news));}
+function maj(tab){
+  hm(true);setTheme(null);tab=tab||"soon";
+  var h='<div class="topbar"><button class="back" id="back" type="button">‹ Retour</button><div class="chip">Infos</div></div><h2>Mises à jour</h2><div class="seg mj"><button type="button" class="'+(tab==="soon"?'on':'')+'" data-t="soon">À venir</button><button type="button" class="'+(tab==="news"?'on':'')+'" data-t="news">Déjà fait</button></div><div class="mjl">';
+  if(tab==="soon"){MAJ.soon.forEach(function(x){h+='<div class="mji"><div class="mjh"><b>'+esc(x.t)+'</b><span class="mjs s'+({"En cours":1,"Prévu":2}[x.s]||3)+'">'+esc(x.s||"Idée")+'</span></div><div class="mjd">'+esc(x.d||"")+'</div></div>';});}
+  else{MAJ.news.forEach(function(x){h+='<div class="mji"><div class="mjh"><b>Version '+esc(x.v)+'</b></div><div class="mjd">'+esc(x.d||"")+'</div></div>';});}
+  h+='</div><div class="rule">Une idée ? Dis-la à celui qui gère le jeu.</div>';
+  show(h);
+  document.getElementById("back").onclick=function(){goTo(menu);};
+  each(app.querySelectorAll(".mj button"),function(b){b.onclick=function(){maj(b.getAttribute("data-t"));};});
+}
+(function(){if(window.fetch){fetch("maj.json?v="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(d){if(validMaj(d)){MAJ=d;}}).catch(function(){});}})();
 function rules(){
   hm(true);
   show('<div class="topbar"><button class="back" id="back" type="button">‹ Retour</button><div class="chip">Règles</div></div><h2>Comment jouer ?</h2><ol class="rl"><li>Chaque joueur découvre <b>en secret</b> un personnage. Les <b>Civils</b> ont tous le même. <b>L’Undercover</b> en a un autre, proche, et il ne sait pas qu’il est l’Undercover.</li><li>À tour de rôle, chacun dit <b>un mot ou une courte phrase</b> sur son personnage, sans jamais le nommer.</li><li>On discute, puis on <b>vote</b> pour désigner l’Undercover.</li><li>Les Civils gagnent s’ils le démasquent. Sinon le joueur désigné est éliminé (mode éliminations) et on recommence, jusqu’à ce qu’il reste 2 joueurs : l’Undercover gagne.</li></ol><div class="label">Trois façons de jouer</div><div class="rule"><b>1 téléphone</b> : on se passe l’écran. <b>En ligne</b> : un salon, chacun sur son téléphone, avec tchat et émotes. <b>Code hors ligne</b> : chacun son téléphone, sans internet, avec un code de partie.</div><div class="label">Astuce</div><div class="rule">Sois assez précis pour que les tiens te reconnaissent, mais assez vague pour ne pas t’exposer.</div>');
@@ -833,8 +1004,8 @@ intro();
 </script>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import {getAuth,signInAnonymously} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {getDatabase,ref,get,set,update,remove,onValue,push,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+import {getAuth,signInAnonymously,onAuthStateChanged,EmailAuthProvider,linkWithCredential,signInWithEmailAndPassword,signOut,deleteUser} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getDatabase,ref,get,set,update,remove,onValue,push,serverTimestamp,query,orderByChild,limitToLast,limitToFirst,equalTo,onDisconnect} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
 const cfg={
   apiKey:"AIzaSyAiymqdSSEzn7npSMFHRlvqI1cUGTyLMMI",
@@ -848,6 +1019,7 @@ const cfg={
 const fb=initializeApp(cfg),auth=getAuth(fb),db=getDatabase(fb);
 const app=document.getElementById("app");
 const TH=THEMES.map(t=>t.n);
+const SUBN=["Terrestres","Marins","Aériens","Les 3"];
 const COL=["#ff5d73","#4cc9f0","#ffd166","#06d6a0","#c084fc","#fb923c","#f472b6","#a3e635","#38bdf8","#facc15"];
 let emoTimes=[],emoLock=0,emoTimer=null,lastSig="",chatOn=false,chatOpen=false,seen=null,lastSend=0,chatMounted=false,active=false,uid=null,code=null,room=null,role=null,offs=[],shown=false,lastRound=-1,key="";
 let myName="";try{myName=localStorage.getItem("ud_name")||"";}catch(e){}
@@ -871,7 +1043,7 @@ function show(html,k){
 function err(m){const e=$("err");if(e){e.textContent=m||"";}}
 const ids=()=>Object.keys(room.players).sort((a,b)=>room.players[a].t-room.players[b].t);
 const nm=i=>{const a=ava(i);return (a?a+" ":"")+esc((room.players[i]||{}).name||"?");};
-const chip=()=>`<div class="chip">${TH[room.theme]} · ${LEVELS[room.level].n} · ${ids().length} joueurs</div>`;
+const chip=()=>`<div class="chip">${TH[room.theme]}${room.theme===4?' · '+SUBN[room.sub==null?3:room.sub]:''} · ${LEVELS[room.level].n} · ${ids().length} joueurs</div>`;
 
 function home(pre,msg){
   show(`<div class="chip">En ligne</div><h1>Undercover</h1><div class="sub">Chacun joue sur son appareil.</div>
@@ -881,7 +1053,10 @@ function home(pre,msg){
 <div class="label">Ou rejoindre un salon</div>
 <input class="nm" id="cd" maxlength="4" placeholder="CODE" value="${esc(pre||"")}" style="text-transform:uppercase;text-align:center;letter-spacing:.3em">
 <button class="sec" data-a="jn">Rejoindre</button>
-<div class="rule warn" id="err" role="alert">${esc(msg||"")}</div>`,"home");
+<div class="rule warn" id="err" role="alert">${esc(msg||"")}</div>
+<div class="label">Classement</div>
+<button class="sec" data-a="rk">🏆 Classement mondial et par pays</button>
+<button class="sec" data-a="acc">${logged()&&acct?"👤 "+esc(acct.n)+" · "+acct.p+" pt"+(acct.p>1?"s":""):"👤 Compte (facultatif)"}</button>`,"home");
 }
 function readName(){
   const n=($("nm").value||"").trim();
@@ -896,7 +1071,7 @@ async function createRoom(){
     let c="";for(let k=0;k<4;k++){c+=L[rnd(L.length)];}
     const r=ref(db,"rooms/"+c);
     if((await get(r)).exists()){continue;}
-    await set(r,{host:uid,status:"lobby",theme:0,level:1,round:0,createdAt:serverTimestamp(),players:{[uid]:{name,av:AV[myAv],t:Date.now()}},mw:false,tm:60});
+    await set(r,{host:uid,status:"lobby",theme:Math.max(0,DATA.t.findIndex(a=>a.length>0)),level:1,round:0,createdAt:serverTimestamp(),players:{[uid]:{name,av:AV[myAv],t:Date.now()}},mw:false,sub:3,tm:60});
     enter(c);return;
   }
   err("Impossible de créer un salon, réessaie.");
@@ -915,19 +1090,21 @@ async function joinRoom(){
   await set(ref(db,`rooms/${c}/players/${uid}`),{name,av:AV[myAv],t:(pl[uid]&&pl[uid].t)||Date.now()});
   enter(c);
 }
+let prevSk=null,prevN=null,doneSnd=-1,histOpen=false,lastTk=-1,netUp=true,netT=null,netDown=false,recCancel=false;
 function stop(){offs.forEach(f=>f());offs=[];clearInterval(tmI);tmI=null;chatShow(false);}
 function enter(c){
-  stop();code=c;key="";lastSig="";seen=null;mountChat();chatShow(true);
-  try{localStorage.setItem("ud_room",c);history.replaceState(null,"","#"+c);}catch(e){}
+  stop();code=c;key="";lastSig="";seen=null;prevSk=null;prevN=null;histOpen=false;mountChat();chatShow(true);
+  try{localStorage.setItem("ud_room",c);localStorage.setItem("ud_roomT",String(Date.now()));history.replaceState(null,"","#"+c);}catch(e){}
   offs.push(onValue(ref(db,"rooms/"+c),s=>{
     if(!s.exists()){exit("Le salon a été fermé.");return;}
     room=s.val();
     if(!room.players||!room.players[uid]){exit("Tu n’es plus dans ce salon.");return;}
     if(room.round!==lastRound){lastRound=room.round;shown=false;}
+    try{const n=Object.keys(room.players).length;if(prevN!==null&&n>prevN&&room.status==="lobby"){snd("join");}prevN=n;localStorage.setItem("ud_roomT",String(Date.now()));}catch(e){}
     const rest=Object.assign({},room);delete rest.chat;const sg=JSON.stringify(rest);if(sg!==lastSig){lastSig=sg;render();}
     chatUpdate();
   },()=>exit("Connexion perdue.")));
-  offs.push(onValue(ref(db,`roles/${c}/${uid}`),s=>{role=s.val();render();}));
+  let rsig="";offs.push(onValue(ref(db,`roles/${c}/${uid}`),s=>{const v=s.val(),sg=JSON.stringify(v);if(sg===rsig&&role!==undefined){return;}rsig=sg;role=v;render();}));
 }
 function exit(msg){
   stop();code=null;room=null;role=null;
@@ -953,6 +1130,9 @@ async function quit(){
 function render(){
   if(!room||!code){return;}
   const s=room.status;
+  const sk=s+":"+room.round;
+  if(prevSk&&prevSk!==sk){if(s==="play"){snd("start");}else if(s==="vote"){snd("vote");}else if(s==="guess"){snd("reveal");}}
+  prevSk=sk;
   if(s==="lobby"){lobby();}else if(s==="play"){play();}else if(s==="vote"){vote();}else if(s==="guess"){guess();}else if(s==="done"){done();}
 }
 function lobby(){
@@ -964,18 +1144,19 @@ function lobby(){
   h+=`<div class="label">Ton avatar</div><div class="avs">${avPicker()}</div>`;
   if(host){
     h+=`<div class="label">Thème</div><div class="seg">`+TH.map((t,i)=>`<button type="button" data-a="theme" data-v="${i}" class="${room.theme===i?'on':''}">${t}</button>`).join("")+`</div><div class="label">Difficulté</div><div class="levels">`;
-    h+=LEVELS.map((l,i)=>{let p="";for(let k=0;k<4;k++){p+=`<span class="pip${k<=i?' on':''}"></span>`;}return `<button type="button" class="lv c${i}" data-a="level" data-v="${i}" style="${room.level===i?'border-color:var(--text)':''}"><span class="pips">${p}</span><span class="t">${l.n}</span><span class="d">${l.d}</span></button>`;}).join("")+`</div>`;
+    h+=LEVELS.map((l,i)=>{let p="";for(let k=0;k<4;k++){p+=`<span class="pip${k<=i?' on':''}"></span>`;}return `<button type="button" class="lv c${i}" data-a="level" data-v="${i}" style="${room.level===i?'border-color:var(--text)':''}"><span class="pips">${p}</span><span class="t">${l.n}</span><span class="d">${lvDesc(i,room.theme)}</span></button>`;}).join("")+`</div>`;
+    if(room.theme===4){h+=`<div class="label">Type d’animaux</div><div class="seg s4 sbt">`+SUBN.map((n,i)=>`<button type="button" data-a="sub" data-v="${i}" class="${(room.sub==null?3:room.sub)===i?'on':''}">${n}</button>`).join("")+`</div>`;}
     h+=`<div class="label">Mr White</div><div class="seg"><button type="button" data-a="mw" data-v="0" class="${!room.mw?'on':''}">Non</button><button type="button" data-a="mw" data-v="1" class="${room.mw?'on':''}">Oui</button></div><div class="rule">${room.mw?(list.length>=5?'Un joueur n’aura aucun personnage et devra bluffer.':'Mr White : il faut 5 joueurs, sinon il est ignoré.'):'Option : un joueur sans personnage qui doit bluffer (à partir de 5 joueurs).'}</div>`;
     h+=`<div class="label">Minuteur de débat</div><div class="seg s5">`+[[30,"30 s"],[60,"60 s"],[90,"90 s"],[120,"2 min"],[0,"Aucun"]].map(o=>`<button type="button" data-a="tm" data-v="${o[0]}" class="${(room.tm==null?60:room.tm)===o[0]?'on':''}">${o[1]}</button>`).join("")+`</div>`;
     h+=`<button data-a="start" style="margin-top:18px">Lancer la partie</button>`;
   }else{
-    h+=`<div class="sub" style="margin-top:16px">${TH[room.theme]} · ${LEVELS[room.level].n}${room.mw?' · Mr White':''}. En attente de l’hôte…</div>`;
+    h+=`<div class="sub" style="margin-top:16px">${TH[room.theme]}${room.theme===4?' · '+SUBN[room.sub==null?3:room.sub]:''} · ${LEVELS[room.level].n}${room.mw?' · Mr White':''}. En attente de l’hôte…</div>`;
   }
   h+=`<div class="rule warn" id="err" role="alert"></div><button class="sec" data-a="quit">${host?'Fermer le salon':'Quitter'}</button>`;
   show(h,"lobby");
 }
 function pickPair(){
-  const base=DATA.t[room.theme]||[];
+  let base=DATA.t[room.theme]||[];if(room.theme===4&&room.sub!=null&&room.sub<3){base=base.filter(p=>p[3]===room.sub);}
   let all=base.filter(p=>p[2]===room.level);if(!all.length){all=base;}
   if(!all.length){return null;}
   const rc=room.recent||[];
@@ -996,6 +1177,7 @@ async function startRound(){
   const b=`rooms/${code}/`;
   u[b+"status"]="play";u[b+"round"]=rd;u[b+"order"]=shuf(list);u[b+"votes"]=null;u[b+"solution"]=null;u[b+"guess"]=null;u[b+"tEnd"]=null;u[b+"rw"]=rw;u[b+"lastT"]=t;
   u[b+"recent"]=(room.recent||[]).concat([WORK[p[0]]||"",WORK[p[1]]||""]).slice(-6);
+  Object.keys(room.chat||{}).sort().slice(0,-40).forEach(k=>{u[b+"chat/"+k]=null;});
   await update(ref(db),u);
 }
 function tmSync(){
@@ -1004,8 +1186,8 @@ function tmSync(){
   const upd=()=>{
     const e=$("tmv");if(!e||!room||!room.tEnd){clearInterval(tmI);tmI=null;return;}
     const r=Math.ceil((room.tEnd-srvNow())/1000);
-    if(r>0){e.textContent=fmt(r);e.className=r<=10?"tmv low":"tmv";}
-    else{e.textContent="Temps écoulé !";e.className="tmv end";clearInterval(tmI);tmI=null;if(lastBuz!==room.tEnd){lastBuz=room.tEnd;try{navigator.vibrate&&navigator.vibrate([60,40,60]);}catch(x){}}}
+    if(r>0){e.textContent=fmt(r);e.className=r<=10?"tmv low":"tmv";if(r<=5&&lastTk!==r){lastTk=r;sfx("cd");vib(10);}}
+    else{e.textContent="Temps écoulé !";e.className="tmv end";clearInterval(tmI);tmI=null;if(lastBuz!==room.tEnd){lastBuz=room.tEnd;snd("end");}}
   };
   upd();tmI=setInterval(upd,500);
 }
@@ -1015,7 +1197,7 @@ function play(){
   let h=chip()+`<div class="label">Ton personnage</div><div class="reveal">`;
   if(!my){h+=`<div class="tag">Chargement…</div>`;}
   else if(shown&&my.w){h+=`<div class="big">Mr White</div><p class="work">Tu n’as pas de personnage. Écoute les autres et bluffe pour ne pas te faire repérer.</p>`;}
-  else if(shown){h+=`<div class="big">${esc(my.ch)}</div><p class="work">${esc(my.work)}</p>`;}
+  else if(shown){h+=`<div class="big">${esc(my.ch)}</div><p class="work">${esc(my.work)}</p>${dsc(my.ch)}`;}
   else{h+=`<div class="tag">Caché</div><div class="big">• • •</div>`;}
   h+=`</div><button data-a="tog">${shown?'Cacher':'Voir mon personnage'}</button>
 <div class="label">Ordre de parole</div>`+ord.map((i,k)=>`<div class="ol"><span class="tag">${k+1}</span>${nm(i)}</div>`).join("");
@@ -1053,7 +1235,8 @@ async function finishRound(d,des,found){
     else if(i===d.trId||i===d.wId){add(i,2);}
   });
   const pn=i=>(room.players[i]||{}).name||"?";
-  await update(ref(db,"rooms/"+code),{status:"done",guess:null,scores:sc,solution:{civil:d.civil,civilWork:d.civilWork,tr:d.tr,trWork:d.trWork,trId:d.trId,trName:pn(d.trId),wId:d.wId||null,wName:d.wId?pn(d.wId):null,win,des:des||null}});
+  const g=[],gu={};ids().forEach(i=>{const dv=(sc[i]||0)-((room.scores||{})[i]||0);if(dv>0){g.push([pn(i),dv]);gu[i]=dv;}});
+  await update(ref(db,"rooms/"+code),{["hist/"+room.round]:{n:room.round,c:d.civil,t:d.tr,tn:pn(d.trId),wn:d.wId?pn(d.wId):null,w:win,g:g,gu:gu},status:"done",guess:null,scores:sc,solution:{civil:d.civil,civilWork:d.civilWork,tr:d.tr,trWork:d.trWork,trId:d.trId,trName:pn(d.trId),wId:d.wId||null,wName:d.wId?pn(d.wId):null,win,des:des||null}});
 }
 async function revealRound(){
   if(busy){return;}busy=true;
@@ -1084,6 +1267,7 @@ function done(){
   const rows=ids().sort((a,b)=>(cnt[b]||0)-(cnt[a]||0));
   let win=s.win;
   if(!win){const top=cnt[rows[0]]||0,tie=rows.filter(i=>(cnt[i]||0)===top).length>1;win=(!tie&&top>0&&rows[0]===s.trId)?"civ":"bad";}
+  if(doneSnd!==room.round){doneSnd=room.round;bank();const bad=uid===s.trId||uid===s.wId;const mine=win==="civ"?!bad:(win==="w"?uid===s.wId:bad);snd(mine?"win":"lose");if(mine&&window.confetti){try{confetti();}catch(e){}}}
   const title=win==="civ"?"Les Civils gagnent":(win==="w"?"Mr White gagne":(s.wId?"L’Undercover et Mr White gagnent":"L’Undercover gagne"));
   let h=chip()+`<h1>${title}</h1>`;
   if(win==="w"){h+=`<div class="sub">${esc(s.wName||"?")} a trouvé le personnage des Civils.</div>`;}
@@ -1097,10 +1281,15 @@ function done(){
     let r=0,prev=-1;
     h+=`<div class="label">Classement de la soirée</div>`+lb.map((i,j)=>{const v=sc[i]||0;if(v!==prev){r=j;prev=v;}return `<div class="ol lb"><span class="rk">${r<3&&v>0?M[r]:r+1}</span><span class="lbn">${nm(i)}</span><span class="tag">${v} pt${v>1?"s":""}</span></div>`;}).join("");
   }
+  const H=room.hist?Object.keys(room.hist).map(k=>room.hist[k]).filter(x=>x&&x.n!=null).sort((a,b)=>a.n-b.n):[];
+  if(H.length){
+    h+=`<button class="sec" data-a="hist" style="margin-top:14px">${histOpen?"Masquer":"Historique de la soirée"} (${H.length})</button>`;
+    if(histOpen){h+=H.map(x=>{const who=x.w==="civ"?"Civils":(x.w==="w"?"Mr White":(x.wn?"Undercover + White":"Undercover"));const gp=(x.g||[]).map(p=>esc(p[0])+" +"+p[1]).join(", ");return `<div class="ol hi"><span class="rk">#${x.n}</span><span class="lbn"><b>${esc(x.c)}</b> contre <b>${esc(x.t)}</b><small>Undercover : ${esc(x.tn||"?")}${x.wn?" · Mr White : "+esc(x.wn):""}</small>${gp?`<small>${gp}</small>`:""}</span><span class="tag">${who}</span></div>`;}).join("");}
+  }
   h+=host?`<button data-a="again" style="margin-top:16px">Nouvelle manche</button>`:`<div class="sub" style="margin-top:14px">L’hôte peut lancer une nouvelle manche.</div>`;
   if(host&&lb.some(i=>sc[i]>0)){h+=`<button class="sec" data-a="rz">Remettre le classement à zéro</button>`;}
   h+=`<div class="rule warn" id="err" role="alert"></div><button class="sec" data-a="quit">Quitter</button>`;
-  show(h,"done"+room.round);
+  show(h,"done"+room.round+(histOpen?"h":""));
 }
 
 /* ===== tchat du salon ===== */
@@ -1148,7 +1337,7 @@ function chatUpdate(){
   if(!chatOn){return;}
   const list=chatList();
   if(seen===null){seen=list.length;}
-  else if(!chatOpen&&list.length>seen&&list[list.length-1].u!==uid&&window.sfx){sfx("tick");}
+  else if(!chatOpen&&list.length>seen&&list[list.length-1].u!==uid&&window.sfx){snd("msg");}
   if(chatOpen){seen=list.length;chatRender();}
   chatBadge();
 }
@@ -1232,8 +1421,146 @@ async function emoSend(i){
   const me=room.players&&room.players[uid];
   try{await push(ref(db,`rooms/${code}/chat`),{u:uid,n:(me&&me.name)||myName||"?",t:now,m:"",e:i});}catch(e){}
 }
+
+/* ===== comptes facultatifs et classement ===== */
+const CTY=[["FR","France"],["BE","Belgique"],["CH","Suisse"],["CA","Canada"],["LU","Luxembourg"],["MC","Monaco"],["MA","Maroc"],["DZ","Algérie"],["TN","Tunisie"],["SN","Sénégal"],["CI","Côte d’Ivoire"],["CM","Cameroun"],["CD","RD Congo"],["MG","Madagascar"],["HT","Haïti"],["RE","La Réunion"],["GP","Guadeloupe"],["MQ","Martinique"],["GF","Guyane"],["NC","Nouvelle-Calédonie"],["PF","Polynésie française"],["ES","Espagne"],["PT","Portugal"],["IT","Italie"],["DE","Allemagne"],["GB","Royaume-Uni"],["NL","Pays-Bas"],["US","États-Unis"],["BR","Brésil"],["TR","Turquie"],["JP","Japon"],["ZZ","Autre pays"]];
+const flag=c=>c==="ZZ"||!c||c.length!==2?"🌍":String.fromCodePoint.apply(null,c.toUpperCase().split("").map(x=>127397+x.charCodeAt(0)));
+const ctyName=c=>{const f=CTY.filter(x=>x[0]===c)[0];return f?f[1]:"Autre pays";};
+const detectCc=()=>{try{const l=(navigator.languages&&navigator.languages[0])||navigator.language||"";const m=/[-_]([A-Za-z]{2})$/.exec(l);const c=m?m[1].toUpperCase():"";return CTY.some(x=>x[0]===c)?c:"FR";}catch(e){return "FR";}};
+const ctySel=(id,v)=>`<select class="nm" id="${id}">`+CTY.map(x=>`<option value="${x[0]}"${x[0]===v?" selected":""}>${flag(x[0])} ${x[1]}</option>`).join("")+`</select>`;
+let acct=null,rkTab="w",rkCc="",rkTok=0,accTab="new",delArm=false;
+const logged=()=>!!(auth&&auth.currentUser&&!auth.currentUser.isAnonymous);
+const cleanName=v=>String(v||"").replace(/[<>]/g,"").trim().slice(0,14);
+const mail=n=>n.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9_]/g,"")+"@undercover-game.app";
+const authMsg=e=>{const c=(e&&e.code)||"";
+  if(c==="auth/email-already-in-use"||c==="auth/credential-already-in-use"){return "Ce pseudo est déjà pris.";}
+  if(c==="auth/invalid-credential"||c==="auth/user-not-found"||c==="auth/wrong-password"||c==="auth/invalid-email"){return "Pseudo ou mot de passe incorrect.";}
+  if(c==="auth/weak-password"){return "Mot de passe trop court (6 caractères minimum).";}
+  if(c==="auth/operation-not-allowed"){return "Les comptes ne sont pas activés dans Firebase (Authentication, Sign-in method, E-mail/Mot de passe).";}
+  if(c==="auth/network-request-failed"){return "Pas de connexion internet.";}
+  if(c==="auth/too-many-requests"){return "Trop d’essais, réessaie dans un moment.";}
+  if(c==="auth/requires-recent-login"){return "Déconnecte-toi, reconnecte-toi puis réessaie.";}
+  if(c==="PERMISSION_DENIED"||/permission/i.test(c)){return "Le classement n’est pas autorisé par les règles Firebase.";}
+  return "Erreur : "+(c||"réseau")+".";};
+async function loadAcct(){
+  acct=null;if(!logged()){return;}
+  const s=await get(ref(db,"lb/"+uid));
+  if(s.exists()){acct=s.val();}
+  else{const n=cleanName(myName)||"Joueur";const o={n,a:AV[myAv],c:detectCc(),p:0,g:0,w:0};try{await set(ref(db,"lb/"+uid),o);acct=o;}catch(e){acct=null;}}
+  if(acct){myName=acct.n;const i=AV.indexOf(acct.a);if(i>=0){myAv=i;}try{localStorage.setItem("ud_name",myName);localStorage.setItem("ud_av",String(myAv));}catch(e){}}
+}
+async function bank(){
+  try{
+    if(!logged()||!room||!code){return;}
+    const k=code+":"+room.round;let last="";try{last=localStorage.getItem("ud_bank")||"";}catch(e){}
+    if(last===k){return;}
+    const h=room.hist&&room.hist[room.round];if(!h){return;}
+    try{localStorage.setItem("ud_bank",k);}catch(e){}
+    if(!acct){await loadAcct();if(!acct){return;}}
+    const gain=(h.gu&&h.gu[uid])||0;
+    const o={p:(acct.p||0)+gain,g:(acct.g||0)+1,w:(acct.w||0)+(gain>0?1:0)};
+    await update(ref(db,"lb/"+uid),o);
+    Object.assign(acct,o);
+  }catch(e){}
+}
+async function ranking(){
+  if(!rkCc){rkCc=(acct&&acct.c)||detectCc();}
+  const tok=++rkTok;
+  show(`<div class="topbar"><button class="back" data-a="back" type="button">‹ Retour</button><div class="chip">Classement</div></div><h2>Classement</h2><div class="sub">Chargement…</div>`,"rk");
+  let list=[],fail=false;
+  try{
+    const q=rkTab==="w"?query(ref(db,"lb"),orderByChild("p"),limitToLast(50)):query(ref(db,"lb"),orderByChild("c"),equalTo(rkCc));
+    const v=(await get(q)).val()||{};
+    list=Object.keys(v).map(k=>Object.assign({id:k},v[k]));
+  }catch(e){fail=true;}
+  if(tok!==rkTok||!active||code){return;}
+  if(rkTab==="c"){list=list.filter(x=>x.c===rkCc);}
+  list.sort((a,b)=>(b.p||0)-(a.p||0)||(b.w||0)-(a.w||0));list=list.slice(0,50);
+  const M=["🥇","🥈","🥉"];let r=0,prev=-1;
+  let h=`<div class="topbar"><button class="back" data-a="back" type="button">‹ Retour</button><div class="chip">Classement</div></div><h2>Classement</h2>
+<div class="seg"><button type="button" data-a="rktab" data-v="w" class="${rkTab==="w"?"on":""}">🌍 Monde</button><button type="button" data-a="rktab" data-v="c" class="${rkTab==="c"?"on":""}">${flag(rkCc)} Pays</button></div>`;
+  if(rkTab==="c"){h+=`<div class="label">Pays</div>${ctySel("rkc",rkCc)}`;}
+  if(fail){h+=`<div class="rule warn">Impossible de charger le classement. Vérifie ta connexion et les règles Firebase.</div>`;}
+  else if(!list.length){h+=`<div class="rule">Personne dans ce classement pour l’instant. Crée un compte, joue en ligne et tu seras le premier.</div>`;}
+  else{h+=list.map((x,j)=>{const v=x.p||0;if(v!==prev){r=j;prev=v;}return `<div class="ol lb${x.id===uid?" me":""}"><span class="rk">${r<3&&v>0?M[r]:r+1}</span><span class="lbn">${esc(x.a||"")} ${esc(x.n||"?")} <small>${flag(x.c)}</small></span><span class="tag">${v} pt${v>1?"s":""}</span></div>`;}).join("");}
+  h+=`<div class="rule">Les points viennent des manches jouées en ligne : +1 pour chaque Civil qui gagne, +2 pour l’Undercover et Mr White, +3 si Mr White trouve le personnage. Seuls les joueurs avec un compte apparaissent.</div><button class="sec" data-a="rkrf">Actualiser</button>`;
+  show(h,"rk");
+}
+function account(){
+  rkTok++;
+  const top=`<div class="topbar"><button class="back" data-a="back" type="button">‹ Retour</button><div class="chip">Compte</div></div>`;
+  if(logged()&&acct){
+    const a=acct,pc=a.g?Math.round(100*(a.w||0)/a.g)+" %":"0 %";
+    show(top+`<h2>${esc(a.a||"")} ${esc(a.n)}</h2><div class="st3"><div><b>${a.p||0}</b><span>points</span></div><div><b>${a.g||0}</b><span>parties</span></div><div><b>${pc}</b><span>victoires</span></div></div>
+<div class="label">Mon pays</div>${ctySel("acc",a.c)}
+<div class="rule">Ton pseudo, ton avatar, ton pays et tes points sont visibles dans le classement. Pour changer de pseudo, il faut créer un autre compte.</div>
+<div class="rule warn" id="err" role="alert"></div>
+<button class="sec" data-a="rk">🏆 Voir le classement</button><button class="sec" data-a="acout">Se déconnecter</button><button class="sec" data-a="acdel">Supprimer mon compte</button>`,"acc");
+  }else if(logged()){
+    show(top+`<h2>Compte</h2><div class="rule warn">Ton profil de classement n’a pas pu être chargé (règles Firebase ?).</div><button class="sec" data-a="acout">Se déconnecter</button>`,"acc");
+  }else{
+    const nw=accTab==="new";
+    show(top+`<h2>Compte</h2><div class="sub">Facultatif. Un compte garde tes points et te place dans le classement mondial et dans celui de ton pays.</div>
+<div class="seg"><button type="button" data-a="acmode" data-v="new" class="${nw?"on":""}">Créer</button><button type="button" data-a="acmode" data-v="in" class="${nw?"":"on"}">Se connecter</button></div>
+<div class="label">Pseudo</div><input class="nm" id="ap" maxlength="14" placeholder="Pseudo" autocomplete="username" value="${esc(myName)}">
+<div class="label">Mot de passe</div><input class="nm" id="apw" type="password" maxlength="40" placeholder="6 caractères minimum" autocomplete="${nw?"new-password":"current-password"}">
+${nw?`<div class="label">Ton pays</div>${ctySel("acc",detectCc())}<div class="rule">Il n’y a pas d’e-mail : si tu oublies ton mot de passe, il ne peut pas être récupéré. Ton pseudo, ton avatar, ton pays et tes points seront visibles dans le classement.</div>`:""}
+<div class="rule warn" id="err" role="alert"></div>
+<button data-a="${nw?"acnew":"acin"}" style="margin-top:6px">${nw?"Créer mon compte":"Me connecter"}</button>`,"acc"+accTab);
+  }
+}
+async function acAct(a,b){
+  if(a==="rk"){rkTab="w";await ranking();}
+  else if(a==="rktab"){rkTab=b.dataset.v;await ranking();}
+  else if(a==="rkrf"){await ranking();}
+  else if(a==="back"){rkTok++;home();}
+  else if(a==="acc"){account();}
+  else if(a==="acmode"){accTab=b.dataset.v;account();}
+  else if(a==="acnew"){
+    const n=cleanName($("ap").value),pw=$("apw").value,cc=($("acc")&&$("acc").value)||"FR";
+    if(n.length<3||mail(n).split("@")[0].length<3){err("Pseudo : 3 caractères minimum (lettres ou chiffres).");return;}
+    if(pw.length<6){err("Mot de passe : 6 caractères minimum.");return;}
+    err("Création…");
+    try{await linkWithCredential(auth.currentUser,EmailAuthProvider.credential(mail(n),pw));}catch(e){err(authMsg(e));return;}
+    uid=auth.currentUser.uid;presOn();myName=n;try{localStorage.setItem("ud_name",n);}catch(e){}
+    const o={n,a:AV[myAv],c:cc,p:0,g:0,w:0};
+    try{await set(ref(db,"lb/"+uid),o);acct=o;}catch(e){acct=null;}
+    account();
+  }
+  else if(a==="acin"){
+    const n=cleanName($("ap").value),pw=$("apw").value;
+    if(!n||!pw){err("Entre ton pseudo et ton mot de passe.");return;}
+    err("Connexion…");
+    try{await signInWithEmailAndPassword(auth,mail(n),pw);}catch(e){err(authMsg(e));return;}
+    uid=auth.currentUser.uid;presOn();try{localStorage.removeItem("ud_room");}catch(e){}
+    try{await loadAcct();}catch(e){}
+    account();
+  }
+  else if(a==="acout"){
+    try{await signOut(auth);const c=await signInAnonymously(auth);uid=(c&&c.user&&c.user.uid)||(auth.currentUser&&auth.currentUser.uid);presOn();}catch(e){}
+    acct=null;try{localStorage.removeItem("ud_room");}catch(e){}
+    home();
+  }
+  else if(a==="acdel"){
+    if(!delArm){delArm=true;b.textContent="Confirmer la suppression ?";setTimeout(()=>{delArm=false;if(b){b.textContent="Supprimer mon compte";}},3000);return;}
+    delArm=false;
+    try{await remove(ref(db,"lb/"+uid));await deleteUser(auth.currentUser);}catch(e){err(authMsg(e));return;}
+    try{const c=await signInAnonymously(auth);uid=c.user.uid;presOn();}catch(e){}
+    acct=null;try{localStorage.removeItem("ud_room");}catch(e){}
+    home("","Compte supprimé.");
+  }
+}
+app.addEventListener("change",e=>{
+  const t=e&&e.target;if(!t){return;}
+  if(t.id==="rkc"){rkCc=t.value;ranking();}
+  else if(t.id==="acc"&&logged()&&acct){
+    const c=t.value;update(ref(db,"lb/"+uid),{c}).then(()=>{acct.c=c;err("Pays mis à jour.");}).catch(x=>err(authMsg(x)));
+  }
+});
+
 async function act(a,b){
   const host=room&&room.host===uid;
+  if(!code&&["rk","rktab","rkrf","back","acc","acmode","acnew","acin","acout","acdel"].indexOf(a)>=0){await acAct(a,b);return;}
   if(a==="mk"){await createRoom();}
   else if(a==="jn"){await joinRoom();}
   else if(a==="copy"){
@@ -1247,11 +1574,14 @@ async function act(a,b){
   else if(a==="start"&&host){await startRound();}
   else if(a==="again"&&host){await startRound();}
   else if(a==="tog"){shown=!shown;render();}
+  else if(a==="hist"){histOpen=!histOpen;snd("tick","tap");render();}
+  else if(a==="cancelrec"){recCancel=true;active=false;stop();snd("back");hm(false);menu();}
   else if(a==="tovote"&&host){await update(ref(db,"rooms/"+code),{status:"vote",votes:null});}
-  else if(a==="vote"){await set(ref(db,`rooms/${code}/votes/${uid}`),b.dataset.id);}
+  else if(a==="vote"){snd("tick","tap");await set(ref(db,`rooms/${code}/votes/${uid}`),b.dataset.id);}
   else if(a==="reveal"&&host){await revealRound();}
   else if(a==="gy"&&host){await judgeGuess(true);}
   else if(a==="gn"&&host){await judgeGuess(false);}
+  else if(a==="sub"&&host){await update(ref(db,"rooms/"+code),{sub:+b.dataset.v});}
   else if(a==="tm"&&host){await update(ref(db,"rooms/"+code),{tm:+b.dataset.v});}
   else if(a==="tgo"&&host){await update(ref(db,"rooms/"+code),{tEnd:srvNow()+(room.tm==null?60:room.tm)*1000});}
   else if(a==="mw"&&host){await update(ref(db,"rooms/"+code),{mw:b.dataset.v==="1"});}
@@ -1262,7 +1592,7 @@ async function act(a,b){
   }
   else if(a==="rz"&&host){
     if(!rzArm){rzArm=true;b.textContent="Confirmer ?";setTimeout(()=>{rzArm=false;if(b){b.textContent="Remettre le classement à zéro";}},2500);return;}
-    rzArm=false;await update(ref(db,"rooms/"+code),{scores:null});
+    rzArm=false;await update(ref(db,"rooms/"+code),{scores:null,hist:null});
   }
   else if(a==="quit"){await quit();}
 }
@@ -1271,27 +1601,89 @@ app.addEventListener("click",e=>{
   act(b.dataset.a,b).catch(x=>{err("Erreur : "+(x&&x.code?x.code:"réseau")+".");});
 });
 
-window.startOnline=function(pre){
-active=true;key="";if(window.hm){hm(true);}
-show(`<div class="chip">En ligne</div><h1>Undercover</h1><div class="sub">Connexion…</div>`,"load");
-signInAnonymously(auth).then(async c=>{
-  uid=c.user.uid;
+function netUI(){
+  let e=$("net");if(!e){e=document.createElement("div");e.id="net";e.setAttribute("role","status");document.body.appendChild(e);}
+  clearTimeout(netT);
+  if(netUp){
+    if(netDown&&code){netDown=false;e.textContent="Reconnecté ✓";e.className="on ok";snd("join");netT=setTimeout(()=>{e.className="";},1600);}
+    else{e.className="";}
+  }else if(code){
+    netT=setTimeout(()=>{if(!netUp&&code){netDown=true;e.textContent="Connexion perdue… reconnexion";e.className="on";}},1500);
+  }
+}
+
+/* ===== joueurs actifs (présence) ===== */
+let pUid=null,pcT="";
+function pcShow(n){
+  let e=$("pc");if(!e){e=document.createElement("div");e.id="pc";e.setAttribute("role","status");document.body.appendChild(e);}
+  if(n<1){e.className="";return;}
+  const t=(n>=100?"100+":String(n))+" en ligne";
+  if(pcT!==t){pcT=t;e.innerHTML='<i></i>'+t;e.setAttribute("aria-label",t+" actuellement");}
+  e.className="on";
+}
+function presOn(){
+  try{
+    const u=auth.currentUser;if(!u||document.hidden){return;}
+    if(pUid&&pUid!==u.uid){remove(ref(db,"presence/"+pUid)).catch(()=>{});}
+    pUid=u.uid;const r=ref(db,"presence/"+pUid);
+    onDisconnect(r).remove();set(r,{t:Date.now()}).catch(()=>{});
+  }catch(e){}
+}
+function presOff(){try{if(pUid){remove(ref(db,"presence/"+pUid)).catch(()=>{});}}catch(e){}}
+async function initPresence(){
+  try{
+    await getUser();
+    onValue(ref(db,".info/connected"),s=>{if(s.val()){presOn();}});
+    onValue(query(ref(db,"presence"),limitToFirst(100)),s=>{pcShow(s.exists()?Object.keys(s.val()).length:0);},()=>{});
+    document.addEventListener("visibilitychange",()=>{if(document.hidden){presOff();}else{presOn();}});
+  }catch(e){}
+}
+let uP=null;
+function getUser(){
+  if(uP){return uP;}
+  uP=(async()=>{
+    let cu=null;
+    try{cu=await new Promise(r=>{let fin=false,un=null;const f=u=>{if(fin){return;}fin=true;try{if(un){un();}}catch(e){}r(u);};un=onAuthStateChanged(auth,f);setTimeout(()=>f(auth.currentUser||null),4000);});}catch(e){cu=null;}
+    if(cu){return cu;}
+    const c=await signInAnonymously(auth);return c.user;
+  })();
+  uP.then(()=>{uP=null;},()=>{uP=null;});
+  return uP;
+}
+window.startOnline=function(pre,auto){
+active=true;key="";recCancel=false;if(window.hm){hm(true);}
+let last=null,lt=0;try{last=localStorage.getItem("ud_room");}catch(e){}
+show(`<div class="chip">En ligne</div><h1>Undercover</h1><div class="sub">${auto&&last?"Reconnexion au salon "+esc(last)+"…":"Connexion…"}</div>${auto?'<button class="sec" data-a="cancelrec" style="margin-top:14px">Annuler</button>':""}`,"load");
+const toMenu=()=>{if(recCancel){return;}active=false;stop();try{localStorage.removeItem("ud_room");}catch(e){}if(window.hm){hm(false);}menu();};
+const guard=auto?setTimeout(()=>{if(!code){toMenu();}},9000):0;
+getUser().then(async user=>{
+  if(recCancel){return;}
+  uid=user.uid;
+  if(!user.isAnonymous){try{await loadAcct();}catch(e){}}
   try{onValue(ref(db,".info/serverTimeOffset"),s=>{srvOff=+s.val()||0;});}catch(e){}
+  try{onValue(ref(db,".info/connected"),s=>{netUp=!!s.val();netUI();});}catch(e){}
   const hash=(pre||location.hash.replace("#","")).toUpperCase().slice(0,4);
-  let last=null;try{last=localStorage.getItem("ud_room");}catch(e){}
   if(last&&(!hash||hash===last)){
     try{
       const s=await get(ref(db,"rooms/"+last));
-      if(s.exists()&&s.val().players&&s.val().players[uid]){enter(last);return;}
+      if(recCancel){return;}
+      if(s.exists()&&s.val().players&&s.val().players[uid]){clearTimeout(guard);enter(last);return;}
     }catch(e){}
   }
+  clearTimeout(guard);
+  if(auto){toMenu();return;}
   home(hash);
 }).catch(e=>{
+  clearTimeout(guard);
+  if(auto){toMenu();return;}
   show(`<div class="chip">Erreur</div><h1>Connexion impossible</h1><div class="sub">${esc(e&&e.code||"")}. Vérifie que la connexion anonyme est activée dans Firebase (Authentication, Sign-in method).</div>`,"fail");
 });
 };
 window.onlineStop=function(){active=false;stop();};
-(function(){var h=location.hash.replace("#","").toUpperCase();if(/^[A-Z]{4}$/.test(h)){if(window.skipIntro){skipIntro();}window.startOnline(h);}})();
+initPresence();
+(function(){var h=location.hash.replace("#","").toUpperCase();if(/^[A-Z]{4}$/.test(h)){if(window.skipIntro){skipIntro();}window.startOnline(h);return;}
+  try{var r=localStorage.getItem("ud_room"),t=+localStorage.getItem("ud_roomT")||0;
+    if(window.REC!==false&&/^[A-Z]{4}$/.test(r||"")&&Date.now()-t<10*3600*1000){if(window.skipIntro){skipIntro();}window.startOnline("",true);}}catch(e){}})();
 </script>
 </body>
 </html>
