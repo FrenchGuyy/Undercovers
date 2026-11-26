@@ -292,6 +292,19 @@ button:focus-visible,.nm:focus-visible{outline:2px solid #fff;outline-offset:3px
 .rl{text-align:left;margin:12px 0 0;padding-left:22px;line-height:1.5;font-size:.93rem}
 .rl li{margin:9px 0}
 .rl b,.rule b{color:#fff}
+
+.avs{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:6px}
+.avs button{margin:0;padding:5px 0;font-size:1.3rem;line-height:1.35;background:rgba(255,255,255,.12);border:2px solid transparent;border-radius:12px;box-shadow:none;color:#fff;text-shadow:none}
+.avs button.on{border-color:#fff;background:rgba(255,255,255,.3)}
+.lb .rk{width:30px;text-align:center;font-size:1.15rem;flex:none}
+.lb .lbn{flex:1;font-weight:700}
+.seg button.off{opacity:.45}
+.seg.s4{grid-template-columns:repeat(4,1fr)}
+.seg.s5{grid-template-columns:repeat(5,1fr)}
+.seg.s5 button{padding:11px 2px;font-size:.85rem}
+.tmv{font-family:var(--mono);font-size:2.2rem;font-weight:800;text-align:center;margin:6px 0 10px}
+.tmv.low{color:#ffd166}.tmv.end{color:#ff9a9a}
+.seg.s4 button{padding:11px 2px}
 </style>
 </head>
 <body>
@@ -323,7 +336,7 @@ function level(p){return p[2];}
 function pairs(){return DATA.t[THEME]||[];}
 function levelOld(p){var k=p[0]+"|"+p[1];if(EXT[k]){return 3;}if(WORK[p[0]]===WORK[p[1]]){return 2;}return FAC[k]?0:1;}
 var LEVELS=[{n:"Facile",d:"Univers très différents"},{n:"Moyen",d:"Œuvres différentes, même genre"},{n:"Difficile",d:"Même œuvre, personnages différents"},{n:"Extrême",d:"Même œuvre, personnages très proches"}];
-var NB='\u00a0',ELIM=true,mode=0,bag=[],lastT=-1,recent=[],SC=Z(),tmr=0,lt=0,CUS=false,GAMES=[],MP=false,MPG=null;function Z(){var a=[],i;for(i=0;i<20;i++){a.push(0);}return a;}
+var NB='\u00a0',ELIM=true,MW=false,mode=0,bag=[],lastT=-1,recent=[],SC=Z(),tmr=0,lt=0,CUS=false,GAMES=[],MP=false,MPG=null;function Z(){var a=[],i;for(i=0;i<20;i++){a.push(0);}return a;}
 var N=4, app=document.getElementById("app"), game=null, lastPair=-1;
 
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
@@ -337,6 +350,9 @@ function saveNames(){try{localStorage.setItem("traitre_names",JSON.stringify(NAM
 
 /* son et vibrations */
 var SOUND=true;try{SOUND=localStorage.getItem("traitre_snd")!=="0";}catch(e){}
+var VER="2.2",VIBON=true,AWAKE=true,TMS=60;
+try{VIBON=localStorage.getItem("und_vib")!=="0";AWAKE=localStorage.getItem("und_awk")!=="0";var tt=parseInt(localStorage.getItem("und_tmr"),10);if(tt===0||tt===30||tt===60||tt===90||tt===120){TMS=tt;}}catch(e){}
+function fm(t){return Math.floor(t/60)+":"+(t%60<10?"0":"")+(t%60);}
 var AC=null,picking=false;
 function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){AC=null;}}if(AC&&AC.state==="suspended"){try{AC.resume();}catch(e){}}return AC;}
 function tone(f,d,t0,type,vol){
@@ -350,7 +366,7 @@ function sfx(k){
   else if(k==="win"){tone(523,.12,0,"triangle",.1);tone(659,.12,.1,"triangle",.1);tone(784,.25,.2,"triangle",.1);}
   else if(k==="lose"){tone(392,.16,0,"triangle",.1);tone(294,.3,.14,"triangle",.1);}
 }
-function vib(n){try{if(navigator.vibrate){navigator.vibrate(n);}}catch(e){}}
+function vib(n){try{if(VIBON&&navigator.vibrate){navigator.vibrate(n);}}catch(e){}}
 
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function dots(i){var s='<div class="dots">';for(var k=0;k<N;k++){s+='<span class="dot'+(k===i?' on':(k<i?' done':''))+'"></span>';}return s+'</div>';}
@@ -397,8 +413,9 @@ function menu0(){
   var T=DATA.t,dz=function(n){return n+(n>1?" duos":" duo");},meta=[{n:"Animé",s:dz(T[0].length)},{n:"Films",s:"Marvel · "+dz(T[1].length)},{n:"Jeux vidéo",s:T[2].length?dz(T[2].length):"Bientôt"}];
   var h="";
   meta.forEach(function(m,i){h+='<button type="button" class="tile t'+i+'" data-t="'+i+'"><span class="idx">0'+(i+1)+'</span><span class="ln"></span><span class="tn">'+m.n+'</span><span class="ts">'+m.s+'</span></button>';});
-  show('<div class="chip">Nouvelle partie</div><h2>Choisis une catégorie</h2><div class="sub">Quel univers pour cette partie ?</div><div class="tiles" id="tiles">'+h+'</div><button id="ol" type="button">Jouer en ligne</button><button class="sec" id="jn" type="button">Rejoindre un code hors ligne</button><button class="sec" id="rl" type="button">Comment jouer ?</button>');document.getElementById("jn").onclick=function(){goTo(joinScreen);};
+  show('<div class="chip">Nouvelle partie</div><h2>Choisis une catégorie</h2><div class="sub">Quel univers pour cette partie ?</div><div class="tiles" id="tiles">'+h+'</div><button id="ol" type="button">Jouer en ligne</button><button class="sec" id="jn" type="button">Rejoindre un code hors ligne</button><button class="sec" id="rl" type="button">Comment jouer ?</button><button class="sec" id="st" type="button">Réglages</button>');document.getElementById("jn").onclick=function(){goTo(joinScreen);};
   document.getElementById("rl").onclick=function(){goTo(rules);};
+  document.getElementById("st").onclick=function(){goTo(settings);};
   document.getElementById("ol").onclick=function(){goTo(function(){if(window.startOnline){startOnline();}else{hm(true);show('<div class="chip">En ligne</div><h2>Connexion impossible</h2><div class="sub">Le mode en ligne a besoin d’internet. Vérifie ta connexion puis réessaie.</div>');}});};
   document.querySelector("#app h2").onclick=function(){var n=Date.now();adm5=(n-adm5t>3000)?1:adm5+1;adm5t=n;if(adm5>=5){adm5=0;goTo(admPin);}};
   each(app.querySelectorAll(".tile"),function(b){b.onclick=function(){pick(+b.getAttribute("data-t"),b);};});
@@ -421,12 +438,17 @@ function fillPlayers(){
   [3,4,5,6].forEach(function(n){h+='<button type="button" class="'+(!cus&&N===n?'on':'')+'" data-n="'+n+'">'+n+'</button>';});
   h+='<button type="button" class="'+(cus?'on':'')+'" data-c="1">Perso</button></div>';
   if(cus){h+='<div class="step"><button type="button" class="sb" data-d="-1" aria-label="Moins de joueurs">−</button><div class="sv">'+N+'</div><button type="button" class="sb" data-d="1" aria-label="Plus de joueurs">+</button></div>';}
-  h+='<div class="rule">'+(N-1)+' Civils ont le même personnage, 1 Undercover en a un autre.</div>';
-  if(!MP){h+='<div class="label">Vote</div><div class="seg el"><button type="button" class="'+(!ELIM?'on':'')+'" data-e="0">Un seul tour</button><button type="button" class="'+(ELIM?'on':'')+'" data-e="1">Éliminations</button></div><div class="rule">'+(ELIM?'Si le groupe se trompe, le joueur désigné est éliminé et la partie continue jusqu’à ce qu’il reste 2 joueurs.':'Un seul vote décide de la partie.')+'</div>';h+='<div class="label">Pseudos (facultatif)</div><div class="names">';
+  var mwOk=N>=5,mwOn=MW&&mwOk;
+  h+='<div class="rule">'+(N-1-(mwOn?1:0))+' Civils ont le même personnage, 1 Undercover en a un autre'+(mwOn?', et 1 Mr White n’a aucun personnage.':'.')+'</div>';
+  h+='<div class="label">Mr White</div><div class="seg mw"><button type="button" class="'+(!mwOn?'on':'')+'" data-mw="0">Non</button><button type="button" class="'+(mwOn?'on':'')+(mwOk?'':' off')+'" data-mw="1">Oui</button></div><div class="rule">'+(mwOk?(mwOn?'Il doit bluffer sans personnage. S’il est désigné, il a une dernière chance de deviner celui des Civils. Le vote se fait par éliminations.':'Option : un joueur n’a aucun personnage et doit bluffer.'):'Mr White se joue à partir de 5 joueurs.')+'</div>';
+  if(!MP){if(!mwOn){h+='<div class="label">Vote</div><div class="seg el"><button type="button" class="'+(!ELIM?'on':'')+'" data-e="0">Un seul tour</button><button type="button" class="'+(ELIM?'on':'')+'" data-e="1">Éliminations</button></div><div class="rule">'+(ELIM?'Si le groupe se trompe, le joueur désigné est éliminé et la partie continue jusqu’à ce qu’il reste 2 joueurs.':'Un seul vote décide de la partie.')+'</div>';}h+='<div class="label">Minuteur de débat</div><div class="seg s5 tm">'+[[30,'30 s'],[60,'60 s'],[90,'90 s'],[120,'2 min'],[0,'Aucun']].map(function(o){return '<button type="button" class="'+(TMS===o[0]?'on':'')+'" data-tm="'+o[0]+'">'+o[1]+'</button>';}).join('')+'</div>';
+  h+='<div class="label">Pseudos (facultatif)</div><div class="names">';
   for(var k=0;k<N;k++){h+='<input class="nm" type="text" maxlength="14" autocomplete="off" data-i="'+k+'" placeholder="Joueur '+(k+1)+'" value="'+esc(NAMES[k]||"")+'">';}
   h+='</div>';}
   box.innerHTML=h;
   function setN(v){if(v!==N){N=v;bag=[];lastT=-1;SC=Z();}saveCfg();fillPlayers();}
+  each(box.querySelectorAll(".tm button"),function(b){b.onclick=function(){TMS=+b.getAttribute("data-tm");sv("und_tmr",String(TMS));fillPlayers();};});
+  each(box.querySelectorAll(".mw button"),function(b){b.onclick=function(){var on=b.getAttribute("data-mw")==="1";if(on&&N<5){vib(40);return;}MW=on;saveCfg();fillPlayers();};});
   each(box.querySelectorAll(".el button"),function(b){b.onclick=function(){ELIM=b.getAttribute("data-e")==="1";saveCfg();fillPlayers();};});
   each(box.querySelectorAll(".pl button"),function(b){b.onclick=function(){if(b.getAttribute("data-c")){CUS=true;saveCfg();fillPlayers();}else{CUS=false;setN(+b.getAttribute("data-n"));}};});
   each(box.querySelectorAll(".sb"),function(b){b.onclick=function(){setN(Math.max(3,Math.min(20,N+(+b.getAttribute("data-d")))));};});
@@ -466,7 +488,8 @@ function start(){
   if(Math.random()<0.5){pair.reverse();}
   if(!bag.length){bag=[];for(var q=0;q<N;q++){bag.push(q);}shuffle(bag);if(bag[bag.length-1]===lastT){bag.reverse();}}
   var traitor=bag.pop();lastT=traitor;
-  game={civil:pair[0],traitor:pair[1],t:traitor,i:0,out:[]};
+  var w=-1;if(MW&&N>=5){do{w=Math.floor(Math.random()*N);}while(w===traitor);}
+  game={civil:pair[0],traitor:pair[1],t:traitor,w:w,i:0,out:[]};
   cover();
 }
 
@@ -476,9 +499,9 @@ function cover(){
 }
 
 function reveal(){
-  var ch=(game.i===game.t)?game.traitor:game.civil;
+  var ch=(game.i===game.t)?game.traitor:game.civil,isW=(game.i===game.w),big=isW?'Mr White':ch,wk=isW?'Tu n’as pas de personnage. Écoute les autres et bluffe pour ne pas te faire repérer.':WORK[ch];
   sfx("ok");vib(12);
-  show(chip()+dots(game.i)+'<div class="sub" style="margin-bottom:0"><b style="color:'+PCOL[game.i%12]+'">'+nm(game.i)+'</b>, ton personnage :</div><div class="reveal flip"><div class="big">'+ch+'</div><p class="work">'+WORK[ch]+'</p></div><div class="sub">Mémorise-le, puis cache l’écran.</div><button id="hide" type="button">Cacher et passer</button>');
+  show(chip()+dots(game.i)+'<div class="sub" style="margin-bottom:0"><b style="color:'+PCOL[game.i%12]+'">'+nm(game.i)+'</b>, ton personnage :</div><div class="reveal flip"><div class="big">'+big+'</div><p class="work">'+wk+'</p></div><div class="sub">'+(isW?'Retiens bien ce que diront les autres, puis cache l’écran.':'Mémorise-le, puis cache l’écran.')+'</div><button id="hide" type="button">Cacher et passer</button>');
   document.getElementById("hide").onclick=function(){
     game.i++;
     if(game.i>=N){ready();}else{cover();}
@@ -490,52 +513,79 @@ function ready(f){
   var al=alive(),first=(f===undefined||al.indexOf(f)<0)?al[Math.floor(Math.random()*al.length)]:f,ord='',k,c=0,q,nx=game.out.length>0;
   game.first=first;
   for(k=0;k<N;k++){q=(first+k)%N;if(game.out.indexOf(q)>=0){continue;}c++;ord+='<span class="oc" style="--pc:'+PCOL[q%12]+'">'+c+' · '+nm(q)+'</span>';}
-  show(chip()+(nx?'<div class="tag" style="margin-bottom:6px">Manche '+(game.out.length+1)+' · '+al.length+' joueurs en jeu</div>':'')+'<h1>Que le bluff '+(nx?'continue':'commence')+'</h1><div class="sub">À tour de rôle, dites un mot ou une courte phrase sur votre personnage, sans le nommer.</div><div class="reveal"><div class="tag">Ordre de parole</div><div class="ord">'+ord+'</div></div><button id="vote" type="button">Passer au vote</button><button class="sec" id="tm" type="button">Minuteur de débat · 60 s</button><button class="sec" id="end" type="button">Révéler sans voter</button>');
+  show(chip()+(nx?'<div class="tag" style="margin-bottom:6px">Manche '+(game.out.length+1)+' · '+al.length+' joueurs en jeu</div>':'')+'<h1>Que le bluff '+(nx?'continue':'commence')+'</h1><div class="sub">À tour de rôle, dites un mot ou une courte phrase sur votre personnage, sans le nommer.</div><div class="reveal"><div class="tag">Ordre de parole</div><div class="ord">'+ord+'</div></div><button id="vote" type="button">Passer au vote</button>'+(TMS>0?'<button class="sec" id="tm" type="button">Minuteur de débat · '+TMS+' s</button>':'')+'<button class="sec" id="end" type="button">Révéler sans voter</button>');
   document.getElementById("vote").onclick=vote;
   document.getElementById("end").onclick=solution;
-  document.getElementById("tm").onclick=function(){
-    var b=this,t=60;clearInterval(tmr);sfx("ok");b.textContent="Débat · 1:00";
+  if(TMS>0){document.getElementById("tm").onclick=function(){
+    var b=this,t=TMS;clearInterval(tmr);sfx("ok");b.textContent="Débat · "+fm(t);
     tmr=setInterval(function(){
-      t--;b.textContent=t>0?"Débat · 0:"+(t<10?"0":"")+t:"Temps écoulé !";
+      t--;b.textContent=t>0?"Débat · "+fm(t):"Temps écoulé !";
       if(t<=0){clearInterval(tmr);sfx("pick");vib([60,40,60]);}else if(t<=5){sfx("tick");}
     },1000);
-  };
+  };}
 }
 
 function vote(){
   var h='',k;
   for(k=0;k<N;k++){if(game.out.indexOf(k)>=0){continue;}h+='<button type="button" class="pv" data-i="'+k+'" style="--pc:'+PCOL[k%12]+'"><span class="av2">'+ini(k)+'</span>'+nm(k)+'</button>';}
-  show(chip()+'<h2>Qui est l’Undercover'+NB+'?</h2><div class="sub">Le groupe désigne le suspect le plus voté.</div><div class="pvs">'+h+'</div><button class="sec" id="vb" type="button">‹ Retour</button>');
+  show(chip()+'<h2>'+(game.w>=0?'Qui est un infiltré'+NB+'?':'Qui est l’Undercover'+NB+'?')+'</h2><div class="sub">'+(game.w>=0?'Undercover ou Mr White : le groupe désigne le suspect le plus voté.':'Le groupe désigne le suspect le plus voté.')+'</div><div class="pvs">'+h+'</div><button class="sec" id="vb" type="button">‹ Retour</button>');
   document.getElementById("vb").onclick=function(){ready(game.first);};
   each(app.querySelectorAll(".pv"),function(b){b.onclick=function(){verdict(+b.getAttribute("data-i"));};});
 }
 
 function verdict(i){
-  var ok=(i===game.t),k;
-  if(!ok&&ELIM){
-    game.out.push(i);
-    if(alive().length>2){
-      sfx("lose");vib([40,40]);
-      show(chip()+'<div class="tag">Raté</div><h1>'+nm(i)+' était un Civil</h1><div class="sub">Il est éliminé. L’Undercover est toujours parmi vous : '+alive().length+' joueurs restent en jeu.</div><button id="nx" type="button">Continuer la partie</button>');
-      document.getElementById("nx").onclick=function(){ready();};
-      return;
-    }
+  if(i===game.w){
+    sfx("ok");vib([20,30]);
+    show(chip()+'<div class="tag">'+nm(i)+' est désigné</div><h1>C’était Mr White</h1><div class="sub">Dernière chance : il annonce à voix haute le personnage des Civils. Le groupe vérifie.</div><button id="gy" type="button">Il a trouvé</button><button class="sec" id="gn" type="button">Raté</button>');
+    document.getElementById("gy").onclick=function(){finish("w",i);};
+    document.getElementById("gn").onclick=function(){out(i);};
+    return;
   }
-  for(k=0;k<N;k++){SC[k]+=ok?(k===game.t?0:1):(k===game.t?2:0);}
-  sfx(ok?"win":"lose");vib(ok?[30,40,60]:[80]);if(ok){confetti();}
-  show(chip()+'<div class="tag">'+nm(i)+' est désigné</div><h1 style="color:'+(ok?'#9dffcf':'#ffc9c9')+'">'+(ok?'Les Civils gagnent'+NB+'!':'L’Undercover gagne'+NB+'!')+'</h1><div class="sub">'+nm(game.t)+(ok?' était bien l’Undercover.':' était l’Undercover et gagne la partie.')+'</div><button id="sol" type="button">Voir les personnages</button>');
+  if(!ELIM&&game.w<0){finish(i===game.t?"civ":"bad",i);return;}
+  out(i);
+}
+function out(i){
+  game.out.push(i);
+  var al=alive(),uA=game.out.indexOf(game.t)<0,wA=game.w>=0&&game.out.indexOf(game.w)<0;
+  if(!uA&&!wA){finish("civ",i);return;}
+  if(al.length<=2){finish("bad",i);return;}
+  var who=i===game.t?'était l’Undercover':(i===game.w?'était Mr White':'était un Civil'),
+      more=(uA&&wA)?'L’Undercover et Mr White sont toujours parmi vous.':(uA?'L’Undercover est toujours parmi vous.':'Mr White est toujours en jeu.'),
+      good=(i===game.t||i===game.w);
+  sfx(good?"ok":"lose");vib([40,40]);
+  show(chip()+'<div class="tag">'+(good?'Bien vu':'Raté')+'</div><h1>'+nm(i)+' '+who+'</h1><div class="sub">Il est éliminé. '+more+' '+al.length+' joueurs restent en jeu.</div><button id="nx" type="button">Continuer la partie</button>');
+  document.getElementById("nx").onclick=function(){ready();};
+}
+function finish(kind,i){
+  var k,uA=game.out.indexOf(game.t)<0,wA=game.w>=0&&game.out.indexOf(game.w)<0,ok=(kind==="civ"),t,sub;
+  for(k=0;k<N;k++){
+    if(kind==="civ"){if(k!==game.t&&k!==game.w){SC[k]+=1;}}
+    else if(kind==="w"){if(k===game.w){SC[k]+=3;}}
+    else if((k===game.t&&uA)||(k===game.w&&wA)){SC[k]+=2;}
+  }
+  if(kind==="civ"){t='Les Civils gagnent'+NB+'!';sub=game.w>=0?'L’Undercover et Mr White sont démasqués.':nm(game.t)+' était bien l’Undercover.';}
+  else if(kind==="w"){t='Mr White gagne'+NB+'!';sub=nm(game.w)+' a trouvé le personnage des Civils.';}
+  else if(uA&&wA){t='L’Undercover et Mr White gagnent'+NB+'!';sub=nm(game.t)+' (Undercover) et '+nm(game.w)+' (Mr White) gagnent la partie.';}
+  else if(wA){t='Mr White gagne'+NB+'!';sub=nm(game.w)+' était Mr White et gagne la partie.';}
+  else{t='L’Undercover gagne'+NB+'!';sub=nm(game.t)+' était l’Undercover et gagne la partie.';}
+  sfx(ok||kind==="w"?"win":"lose");vib(ok?[30,40,60]:[80]);if(ok){confetti();}
+  show(chip()+'<div class="tag">'+nm(i)+(kind==="w"?' est Mr White':' est désigné')+'</div><h1 style="color:'+(ok?'#9dffcf':'#ffc9c9')+'">'+t+'</h1><div class="sub">'+sub+'</div><button id="sol" type="button">Voir les personnages</button>');
   document.getElementById("sol").onclick=solution;
 }
-
+function hasSc(){var k;for(k=0;k<N;k++){if(SC[k]>0){return true;}}return false;}
 function scores(){
-  var h='',k,any=false;
-  for(k=0;k<N;k++){if(SC[k]>0){any=true;}h+='<span class="oc" style="--pc:'+PCOL[k%12]+'">'+nm(k)+' · '+SC[k]+'</span>';}
-  return any?'<div class="tag" style="margin:2px 0 8px">Scores</div><div class="ord" style="margin-bottom:16px">'+h+'</div>':'';
+  if(!hasSc()){return '';}
+  var o=[],k,h='',M=['🥇','🥈','🥉'],r=0,prev=-1;
+  for(k=0;k<N;k++){o.push(k);}
+  o.sort(function(a,b){return SC[b]-SC[a]||a-b;});
+  o.forEach(function(q,j){if(SC[q]!==prev){r=j;prev=SC[q];}h+='<div class="ol lb"><span class="rk">'+(r<3&&SC[q]>0?M[r]:(r+1))+'</span><span class="lbn" style="color:'+PCOL[q%12]+'">'+nm(q)+'</span><span class="tag">'+SC[q]+' pt'+(SC[q]>1?'s':'')+'</span></div>';});
+  return '<div class="label">Classement de la soirée</div>'+h+'<div style="height:14px"></div>';
 }
 
 function solution(){
-  show(chip()+'<h1>Le verdict</h1><div class="reveal"><div class="tag">Civils ('+(N-1)+')</div><div class="big">'+game.civil+'</div><p class="work">'+WORK[game.civil]+'</p></div><div class="reveal bad lock" id="trt"><div class="tag warn">Undercover · '+nm(game.t)+'</div><div class="big">'+game.traitor+'</div><p class="work">'+WORK[game.traitor]+'</p></div>'+scores()+'<button id="again" type="button">Nouvelle partie</button><button class="sec" id="menu" type="button">Changer de catégorie</button>');
+  show(chip()+'<h1>Le verdict</h1><div class="reveal"><div class="tag">Civils ('+(N-1-(game.w>=0?1:0))+')</div><div class="big">'+game.civil+'</div><p class="work">'+WORK[game.civil]+'</p></div><div class="reveal bad lock" id="trt"><div class="tag warn">Undercover · '+nm(game.t)+'</div><div class="big">'+game.traitor+'</div><p class="work">'+WORK[game.traitor]+'</p></div>'+(game.w>=0?'<div class="reveal bad"><div class="tag warn">Mr White · '+nm(game.w)+'</div><div class="big">Aucun personnage</div></div>':'')+scores()+'<button id="again" type="button">Nouvelle partie</button><button class="sec" id="menu" type="button">Changer de catégorie</button>'+(hasSc()?'<button class="sec" id="rz" type="button">Remettre le classement à zéro</button>':''));
   document.getElementById("again").onclick=start;
+  if(document.getElementById("rz")){document.getElementById("rz").onclick=function(){twice(this,function(){SC=Z();solution();},"Confirmer ?");};}
   document.getElementById("menu").onclick=menu;
   vib(15);
   setTimeout(function(){
@@ -547,12 +597,12 @@ function solution(){
 
 /* ===== mode : chacun son téléphone (code de partie) ===== */
 var AL="23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-function enc(th,lv,n,sd){var v=th|(lv<<2)|((n-3)<<4)|(sd<<9),c="",i;for(i=0;i<5;i++){c=AL.charAt(v%32)+c;v=Math.floor(v/32);}return c;}
+function enc(th,lv,n,mw,sd){var v=th|(lv<<2)|((n-3)<<4)|((mw?1:0)<<9)|(sd<<10),c="",i;for(i=0;i<5;i++){c=AL.charAt(v%32)+c;v=Math.floor(v/32);}return c;}
 function dec(c){
   c=String(c).toUpperCase().replace(/[^2-9A-HJ-NP-Z]/g,"");
   if(c.length!==5){return null;}
   var v=0,i;for(i=0;i<5;i++){v=v*32+AL.indexOf(c.charAt(i));}
-  var g={th:v&3,lv:(v>>2)&3,n:((v>>4)&31)+3,sd:v>>9};
+  var g={th:v&3,lv:(v>>2)&3,n:((v>>4)&31)+3,mw:((v>>9)&1)===1,sd:v>>10};
   return (g.th>2||g.n>20)?null:g;
 }
 function rng(sd){var a=(sd*2654435761+12345)>>>0;return function(){a=(a+0x6D2B79F5)>>>0;var t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;};}
@@ -562,7 +612,9 @@ function deal(g){
   L.forEach(function(p,k){if(level(p)===g.lv){all.push(k);}});
   var p=L[all[Math.floor(R()*all.length)]].slice(0,2);
   if(R()<0.5){p.reverse();}
-  return {civil:p[0],traitor:p[1],t:Math.floor(R()*g.n),first:Math.floor(R()*g.n)};
+  var t=Math.floor(R()*g.n),f=Math.floor(R()*g.n),w=-1;
+  if(g.mw&&g.n>=5){w=Math.floor(R()*(g.n-1));if(w>=t){w++;}}
+  return {civil:p[0],traitor:p[1],t:t,first:f,w:w};
 }
 function okPairs(g){THEME=g.th;return pairs().some(function(p){return level(p)===g.lv;});}
 function mpSet(g){MPG=g;THEME=g.th;mode=g.lv;N=g.n;setTheme(g.th);}
@@ -573,10 +625,10 @@ function mdSet(){
   });
 }
 function host(){
-  mpSet({th:THEME,lv:mode,n:N,sd:Math.floor(Math.random()*65536)});
-  MPG.code=enc(MPG.th,MPG.lv,MPG.n,MPG.sd);
+  mpSet({th:THEME,lv:mode,n:N,mw:MW&&N>=5,sd:Math.floor(Math.random()*32768)});
+  MPG.code=enc(MPG.th,MPG.lv,MPG.n,MPG.mw,MPG.sd);
   hm(true);sfx("ok");vib(15);
-  show(chip()+'<h2>Partie créée</h2><div class="sub">Les autres appuient sur « Rejoindre une partie » dans le menu et tapent ce code.</div><div class="reveal"><div class="tag">Code de la partie</div><div class="big code">'+MPG.code.split("").join(" ")+'</div></div>'+(DRAFT?'<div class="rule warn">⚠ Brouillon admin actif : les autres joueurs n’ont pas tes modifications.</div>':'')+'<button id="go" type="button">Choisir mon numéro</button><button class="sec" id="shc" type="button">Partager le code</button>');
+  show(chip()+'<h2>Partie créée</h2><div class="sub">Les autres appuient sur « Rejoindre une partie » dans le menu et tapent ce code.</div><div class="reveal"><div class="tag">Code de la partie</div><div class="big code">'+MPG.code.split("").join(" ")+'</div></div>'+(MPG.mw?'<div class="rule">Mr White est activé dans cette partie.</div>':'')+(DRAFT?'<div class="rule warn">⚠ Brouillon admin actif : les autres joueurs n’ont pas tes modifications.</div>':'')+'<button id="go" type="button">Choisir mon numéro</button><button class="sec" id="shc" type="button">Partager le code</button>');
   document.getElementById("go").onclick=seats;
   document.getElementById("shc").onclick=function(){
     var b=this,t="Rejoins ma partie d’Undercover : ouvre le jeu, touche « Rejoindre un code hors ligne » et entre le code "+MPG.code+".",u=location.href.split("#")[0];
@@ -593,7 +645,7 @@ function joinScreen(){
   document.getElementById("jgo").onclick=function(){
     var g=dec(ip.value);
     if(!g||!okPairs(g)){document.getElementById("er").textContent="Code invalide, vérifie les 5 caractères.";vib(40);return;}
-    mpSet({th:g.th,lv:g.lv,n:g.n,sd:g.sd,code:ip.value.toUpperCase()});
+    mpSet({th:g.th,lv:g.lv,n:g.n,mw:g.mw,sd:g.sd,code:ip.value.toUpperCase()});
     sfx("ok");seats();
   };
 }
@@ -612,14 +664,14 @@ function mpCover(s){
   document.getElementById("sl").onclick=mpSol;
 }
 function mpReveal(s){
-  var d=deal(MPG),ch=(s===d.t)?d.traitor:d.civil;
+  var d=deal(MPG),ch=(s===d.t)?d.traitor:d.civil,isW=(s===d.w);
   sfx("ok");vib(12);
-  show(chip()+'<div class="sub" style="margin-bottom:0"><b style="color:'+PCOL[s%12]+'">Joueur '+(s+1)+'</b>, ton personnage :</div><div class="reveal flip"><div class="big">'+ch+'</div><p class="work">'+WORK[ch]+'</p></div><div class="sub">Premier à parler : <b>Joueur '+(d.first+1)+'</b></div><button id="hide" type="button">Cacher</button>');
+  show(chip()+'<div class="sub" style="margin-bottom:0"><b style="color:'+PCOL[s%12]+'">Joueur '+(s+1)+'</b>, ton personnage :</div><div class="reveal flip"><div class="big">'+(isW?'Mr White':ch)+'</div><p class="work">'+(isW?'Tu n’as pas de personnage. Écoute les autres et bluffe pour ne pas te faire repérer.':WORK[ch])+'</p></div><div class="sub">Premier à parler : <b>Joueur '+(d.first+1)+'</b></div><button id="hide" type="button">Cacher</button>');
   document.getElementById("hide").onclick=function(){mpCover(s);};
 }
 function mpSol(){
   var d=deal(MPG);
-  show(chip()+'<h1>Le verdict</h1><div class="reveal"><div class="tag">Civils ('+(N-1)+')</div><div class="big">'+d.civil+'</div><p class="work">'+WORK[d.civil]+'</p></div><div class="reveal bad"><div class="tag warn">Undercover · Joueur '+(d.t+1)+'</div><div class="big">'+d.traitor+'</div><p class="work">'+WORK[d.traitor]+'</p></div><button id="nr" type="button">Nouvelle manche (je crée le code)</button><button class="sec" id="nc" type="button">Entrer un nouveau code</button>');
+  show(chip()+'<h1>Le verdict</h1><div class="reveal"><div class="tag">Civils ('+(N-1-(d.w>=0?1:0))+')</div><div class="big">'+d.civil+'</div><p class="work">'+WORK[d.civil]+'</p></div><div class="reveal bad"><div class="tag warn">Undercover · Joueur '+(d.t+1)+'</div><div class="big">'+d.traitor+'</div><p class="work">'+WORK[d.traitor]+'</p></div>'+(d.w>=0?'<div class="reveal bad"><div class="tag warn">Mr White · Joueur '+(d.w+1)+'</div><div class="big">Aucun personnage</div></div>':'')+'<button id="nr" type="button">Nouvelle manche (je crée le code)</button><button class="sec" id="nc" type="button">Entrer un nouveau code</button>');
   document.getElementById("nr").onclick=host;
   document.getElementById("nc").onclick=joinScreen;
   confetti();sfx("ok");vib([30,40,60]);
@@ -730,8 +782,36 @@ if(window.addEventListener){
 }
 
 /* réglages mémorisés */
-function saveCfg(){try{localStorage.setItem("und_cfg",JSON.stringify({n:N,cus:CUS,mp:MP,el:ELIM}));}catch(e){}}
-(function(){try{var c=JSON.parse(localStorage.getItem("und_cfg")||"null");if(c){if(c.n>=3&&c.n<=20){N=c.n|0;}CUS=!!c.cus;MP=!!c.mp;ELIM=c.el!==false;}}catch(e){}})();
+function saveCfg(){try{localStorage.setItem("und_cfg",JSON.stringify({n:N,cus:CUS,mp:MP,el:ELIM,mw:MW}));}catch(e){}}
+(function(){try{var c=JSON.parse(localStorage.getItem("und_cfg")||"null");if(c){if(c.n>=3&&c.n<=20){N=c.n|0;}CUS=!!c.cus;MP=!!c.mp;ELIM=c.el!==false;MW=!!c.mw;}}catch(e){}})();
+function sv(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function settings(){
+  hm(true);setTheme(null);
+  function row(l,id,opts,cur,cls){var h='<div class="label">'+l+'</div><div class="seg '+(cls||'')+'" id="'+id+'">';opts.forEach(function(o){h+='<button type="button" class="'+(o[0]===cur?'on':'')+'" data-v="'+o[0]+'">'+o[1]+'</button>';});return h+'</div>';}
+  var yn=[[1,'Oui'],[0,'Non']];
+  show('<div class="topbar"><button class="back" id="back" type="button">‹ Retour</button><div class="chip">Réglages</div></div><h2>Réglages</h2>'
+    +row('Son','r_snd',yn,SOUND?1:0)
+    +row('Vibrations','r_vib',yn,VIBON?1:0)
+    +row('Écran toujours allumé','r_awk',yn,AWAKE?1:0)
+    +'<div class="rule">Évite que le téléphone se mette en veille pendant une partie.</div>'
+    +'<div class="label">Données</div><button class="sec" id="r_rst" type="button">Effacer pseudos et réglages de partie</button><button class="sec" id="r_upd" type="button">Mettre à jour le jeu</button><div class="rule" id="r_msg" role="status">Version '+VER+'</div>');
+  document.getElementById("back").onclick=function(){goTo(menu);};
+  function bind(id,fn){each(document.querySelectorAll("#"+id+" button"),function(b){b.onclick=function(){var v=+b.getAttribute("data-v");fn(v);each(document.querySelectorAll("#"+id+" button"),function(x){x.className=(x===b)?"on":"";});};});}
+  bind("r_snd",function(v){SOUND=!!v;sv("traitre_snd",v?"1":"0");sndIcon();if(SOUND){sfx("tick");}});
+  bind("r_vib",function(v){VIBON=!!v;sv("und_vib",v?"1":"0");vib(30);});
+  bind("r_awk",function(v){AWAKE=!!v;sv("und_awk",v?"1":"0");if(AWAKE){wake();}else{try{if(WL){WL.release();WL=null;}}catch(e){}}});
+  document.getElementById("r_rst").onclick=function(){twice(this,function(){
+    try{localStorage.removeItem("und_cfg");localStorage.removeItem("traitre_names");}catch(e){}
+    NAMES=[];N=4;CUS=false;MP=false;ELIM=true;MW=false;SC=Z();bag=[];lastT=-1;
+    document.getElementById("r_msg").textContent="Pseudos et réglages de partie effacés.";
+  },"Confirmer ?");};
+  document.getElementById("r_upd").onclick=function(){
+    var m=document.getElementById("r_msg");m.textContent="Mise à jour…";
+    var go=function(){location.reload();};
+    try{if(window.caches){caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k);}));}).then(go,go);return;}}catch(e){}
+    go();
+  };
+}
 function rules(){
   hm(true);
   show('<div class="topbar"><button class="back" id="back" type="button">‹ Retour</button><div class="chip">Règles</div></div><h2>Comment jouer ?</h2><ol class="rl"><li>Chaque joueur découvre <b>en secret</b> un personnage. Les <b>Civils</b> ont tous le même. <b>L’Undercover</b> en a un autre, proche, et il ne sait pas qu’il est l’Undercover.</li><li>À tour de rôle, chacun dit <b>un mot ou une courte phrase</b> sur son personnage, sans jamais le nommer.</li><li>On discute, puis on <b>vote</b> pour désigner l’Undercover.</li><li>Les Civils gagnent s’ils le démasquent. Sinon le joueur désigné est éliminé (mode éliminations) et on recommence, jusqu’à ce qu’il reste 2 joueurs : l’Undercover gagne.</li></ol><div class="label">Trois façons de jouer</div><div class="rule"><b>1 téléphone</b> : on se passe l’écran. <b>En ligne</b> : un salon, chacun sur son téléphone, avec tchat et émotes. <b>Code hors ligne</b> : chacun son téléphone, sans internet, avec un code de partie.</div><div class="label">Astuce</div><div class="rule">Sois assez précis pour que les tiens te reconnaissent, mais assez vague pour ne pas t’exposer.</div>');
@@ -745,7 +825,7 @@ function sndIcon(){sb.innerHTML=SOUND?ICON_ON:ICON_OFF;}
 sb.onclick=function(){SOUND=!SOUND;try{localStorage.setItem("traitre_snd",SOUND?"1":"0");}catch(e){}sndIcon();if(SOUND){sfx("tick");}};
 sndIcon();
 if(app.addEventListener){app.addEventListener("click",function(e){var b=e.target&&e.target.closest?e.target.closest("button"):null;if(b&&b.id!=="start"){sfx("tick");}});}
-var WL=null;function wake(){try{if(navigator.wakeLock&&!WL){navigator.wakeLock.request("screen").then(function(l){WL=l;l.addEventListener("release",function(){WL=null;});}).catch(function(){});}}catch(e){}}
+var WL=null;function wake(){try{if(AWAKE&&navigator.wakeLock&&!WL){navigator.wakeLock.request("screen").then(function(l){WL=l;l.addEventListener("release",function(){WL=null;});}).catch(function(){});}}catch(e){}}
 document.addEventListener("visibilitychange",function(){if(!document.hidden){wake();}});
 document.addEventListener("pointerdown",function(){ac();wake();},{once:true,passive:true});
 document.getElementById("home").onclick=function(){if(window.onlineStop){onlineStop();}clearTimeout(lt);sfx("tick");goTo(menu);};
@@ -771,6 +851,13 @@ const TH=THEMES.map(t=>t.n);
 const COL=["#ff5d73","#4cc9f0","#ffd166","#06d6a0","#c084fc","#fb923c","#f472b6","#a3e635","#38bdf8","#facc15"];
 let emoTimes=[],emoLock=0,emoTimer=null,lastSig="",chatOn=false,chatOpen=false,seen=null,lastSend=0,chatMounted=false,active=false,uid=null,code=null,room=null,role=null,offs=[],shown=false,lastRound=-1,key="";
 let myName="";try{myName=localStorage.getItem("ud_name")||"";}catch(e){}
+const AV=["🦊","🐺","🐱","🦉","🐸","🐙","🦄","🐼","🐯","🦁","🐧","🦈","🐲","👻","🤖","🎃"];
+let myAv=-1,busy=false,rzArm=false,tmI=null,srvOff=0,lastBuz=0;
+const fmt=t=>Math.floor(t/60)+":"+String(t%60).padStart(2,"0");
+const srvNow=()=>Date.now()+srvOff;try{const a=parseInt(localStorage.getItem("ud_av"),10);if(a>=0&&a<AV.length){myAv=a;}}catch(e){}
+if(myAv<0){myAv=Math.floor(Math.random()*AV.length);try{localStorage.setItem("ud_av",String(myAv));}catch(e){}}
+const avPicker=()=>AV.map((a,i)=>`<button type="button" data-a="av" data-v="${i}" class="${i===myAv?'on':''}" aria-label="Avatar ${i+1}">${a}</button>`).join("");
+const ava=i=>{const a=((room&&room.players&&room.players[i])||{}).av;return AV.indexOf(a)>=0?a:"";};
 
 const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const $=id=>document.getElementById(id);
@@ -783,12 +870,13 @@ function show(html,k){
 }
 function err(m){const e=$("err");if(e){e.textContent=m||"";}}
 const ids=()=>Object.keys(room.players).sort((a,b)=>room.players[a].t-room.players[b].t);
-const nm=i=>esc((room.players[i]||{}).name||"?");
+const nm=i=>{const a=ava(i);return (a?a+" ":"")+esc((room.players[i]||{}).name||"?");};
 const chip=()=>`<div class="chip">${TH[room.theme]} · ${LEVELS[room.level].n} · ${ids().length} joueurs</div>`;
 
 function home(pre,msg){
   show(`<div class="chip">En ligne</div><h1>Undercover</h1><div class="sub">Chacun joue sur son appareil.</div>
 <div class="label">Ton pseudo</div><input class="nm" id="nm" maxlength="14" placeholder="Pseudo" value="${esc(myName)}">
+<div class="label">Ton avatar</div><div class="avs">${avPicker()}</div>
 <button data-a="mk" style="margin-top:14px">Créer un salon</button>
 <div class="label">Ou rejoindre un salon</div>
 <input class="nm" id="cd" maxlength="4" placeholder="CODE" value="${esc(pre||"")}" style="text-transform:uppercase;text-align:center;letter-spacing:.3em">
@@ -808,7 +896,7 @@ async function createRoom(){
     let c="";for(let k=0;k<4;k++){c+=L[rnd(L.length)];}
     const r=ref(db,"rooms/"+c);
     if((await get(r)).exists()){continue;}
-    await set(r,{host:uid,status:"lobby",theme:0,level:1,round:0,createdAt:serverTimestamp(),players:{[uid]:{name,t:Date.now()}}});
+    await set(r,{host:uid,status:"lobby",theme:0,level:1,round:0,createdAt:serverTimestamp(),players:{[uid]:{name,av:AV[myAv],t:Date.now()}},mw:false,tm:60});
     enter(c);return;
   }
   err("Impossible de créer un salon, réessaie.");
@@ -824,10 +912,10 @@ async function joinRoom(){
     if(r.status!=="lobby"&&r.status!=="done"){err("La partie a déjà commencé.");return;}
     if(Object.keys(pl).length>=10){err("Le salon est plein.");return;}
   }
-  await set(ref(db,`rooms/${c}/players/${uid}`),{name,t:(pl[uid]&&pl[uid].t)||Date.now()});
+  await set(ref(db,`rooms/${c}/players/${uid}`),{name,av:AV[myAv],t:(pl[uid]&&pl[uid].t)||Date.now()});
   enter(c);
 }
-function stop(){offs.forEach(f=>f());offs=[];chatShow(false);}
+function stop(){offs.forEach(f=>f());offs=[];clearInterval(tmI);tmI=null;chatShow(false);}
 function enter(c){
   stop();code=c;key="";lastSig="";seen=null;mountChat();chatShow(true);
   try{localStorage.setItem("ud_room",c);history.replaceState(null,"","#"+c);}catch(e){}
@@ -865,7 +953,7 @@ async function quit(){
 function render(){
   if(!room||!code){return;}
   const s=room.status;
-  if(s==="lobby"){lobby();}else if(s==="play"){play();}else if(s==="vote"){vote();}else if(s==="done"){done();}
+  if(s==="lobby"){lobby();}else if(s==="play"){play();}else if(s==="vote"){vote();}else if(s==="guess"){guess();}else if(s==="done"){done();}
 }
 function lobby(){
   const host=room.host===uid,list=ids();
@@ -873,12 +961,15 @@ function lobby(){
 <button class="sec" data-a="copy">Inviter des joueurs</button>
 <div class="label">Joueurs (${list.length}/10)</div>`;
   h+=list.map((i,k)=>`<div class="ol"><span class="od" style="background:${COL[k%10]}"></span>${nm(i)}${i===room.host?' <span class="tag">hôte</span>':''}${i===uid?' <span class="tag">toi</span>':''}${host&&i!==uid?`<button class="ox" data-a="kick" data-id="${i}" aria-label="Retirer">×</button>`:''}</div>`).join("");
+  h+=`<div class="label">Ton avatar</div><div class="avs">${avPicker()}</div>`;
   if(host){
     h+=`<div class="label">Thème</div><div class="seg">`+TH.map((t,i)=>`<button type="button" data-a="theme" data-v="${i}" class="${room.theme===i?'on':''}">${t}</button>`).join("")+`</div><div class="label">Difficulté</div><div class="levels">`;
     h+=LEVELS.map((l,i)=>{let p="";for(let k=0;k<4;k++){p+=`<span class="pip${k<=i?' on':''}"></span>`;}return `<button type="button" class="lv c${i}" data-a="level" data-v="${i}" style="${room.level===i?'border-color:var(--text)':''}"><span class="pips">${p}</span><span class="t">${l.n}</span><span class="d">${l.d}</span></button>`;}).join("")+`</div>`;
+    h+=`<div class="label">Mr White</div><div class="seg"><button type="button" data-a="mw" data-v="0" class="${!room.mw?'on':''}">Non</button><button type="button" data-a="mw" data-v="1" class="${room.mw?'on':''}">Oui</button></div><div class="rule">${room.mw?(list.length>=5?'Un joueur n’aura aucun personnage et devra bluffer.':'Mr White : il faut 5 joueurs, sinon il est ignoré.'):'Option : un joueur sans personnage qui doit bluffer (à partir de 5 joueurs).'}</div>`;
+    h+=`<div class="label">Minuteur de débat</div><div class="seg s5">`+[[30,"30 s"],[60,"60 s"],[90,"90 s"],[120,"2 min"],[0,"Aucun"]].map(o=>`<button type="button" data-a="tm" data-v="${o[0]}" class="${(room.tm==null?60:room.tm)===o[0]?'on':''}">${o[1]}</button>`).join("")+`</div>`;
     h+=`<button data-a="start" style="margin-top:18px">Lancer la partie</button>`;
   }else{
-    h+=`<div class="sub" style="margin-top:16px">${TH[room.theme]} · ${LEVELS[room.level].n}. En attente de l’hôte…</div>`;
+    h+=`<div class="sub" style="margin-top:16px">${TH[room.theme]} · ${LEVELS[room.level].n}${room.mw?' · Mr White':''}. En attente de l’hôte…</div>`;
   }
   h+=`<div class="rule warn" id="err" role="alert"></div><button class="sec" data-a="quit">${host?'Fermer le salon':'Quitter'}</button>`;
   show(h,"lobby");
@@ -898,50 +989,116 @@ async function startRound(){
   const p=pickPair();if(!p){err("Cette catégorie est vide.");return;}const rd=(room.round||0)+1;
   let cand=list.filter(i=>i!==room.lastT);if(!cand.length){cand=list;}
   const t=cand[rnd(cand.length)];
+  const rw=!!room.mw&&list.length>=5;let w=null;if(rw){const c2=list.filter(i=>i!==t);w=c2[rnd(c2.length)];}
   const u={};
-  list.forEach(i=>{const ch=i===t?p[1]:p[0];u[`roles/${code}/${i}`]={r:rd,ch,work:WORK[ch]||""};});
-  u[`hostdata/${code}`]={r:rd,civil:p[0],civilWork:WORK[p[0]]||"",tr:p[1],trWork:WORK[p[1]]||"",trId:t};
+  list.forEach(i=>{if(i===w){u[`roles/${code}/${i}`]={r:rd,ch:"",work:"",w:1};return;}const ch=i===t?p[1]:p[0];u[`roles/${code}/${i}`]={r:rd,ch,work:WORK[ch]||""};});
+  u[`hostdata/${code}`]={r:rd,civil:p[0],civilWork:WORK[p[0]]||"",tr:p[1],trWork:WORK[p[1]]||"",trId:t,wId:w};
   const b=`rooms/${code}/`;
-  u[b+"status"]="play";u[b+"round"]=rd;u[b+"order"]=shuf(list);u[b+"votes"]=null;u[b+"solution"]=null;u[b+"lastT"]=t;
+  u[b+"status"]="play";u[b+"round"]=rd;u[b+"order"]=shuf(list);u[b+"votes"]=null;u[b+"solution"]=null;u[b+"guess"]=null;u[b+"tEnd"]=null;u[b+"rw"]=rw;u[b+"lastT"]=t;
   u[b+"recent"]=(room.recent||[]).concat([WORK[p[0]]||"",WORK[p[1]]||""]).slice(-6);
   await update(ref(db),u);
+}
+function tmSync(){
+  clearInterval(tmI);tmI=null;
+  if(!room||!room.tEnd||!$("tmv")){return;}
+  const upd=()=>{
+    const e=$("tmv");if(!e||!room||!room.tEnd){clearInterval(tmI);tmI=null;return;}
+    const r=Math.ceil((room.tEnd-srvNow())/1000);
+    if(r>0){e.textContent=fmt(r);e.className=r<=10?"tmv low":"tmv";}
+    else{e.textContent="Temps écoulé !";e.className="tmv end";clearInterval(tmI);tmI=null;if(lastBuz!==room.tEnd){lastBuz=room.tEnd;try{navigator.vibrate&&navigator.vibrate([60,40,60]);}catch(x){}}}
+  };
+  upd();tmI=setInterval(upd,500);
 }
 function play(){
   const host=room.host===uid,my=role&&role.r===room.round?role:null;
   const ord=(room.order||[]).filter(i=>room.players[i]);
   let h=chip()+`<div class="label">Ton personnage</div><div class="reveal">`;
   if(!my){h+=`<div class="tag">Chargement…</div>`;}
+  else if(shown&&my.w){h+=`<div class="big">Mr White</div><p class="work">Tu n’as pas de personnage. Écoute les autres et bluffe pour ne pas te faire repérer.</p>`;}
   else if(shown){h+=`<div class="big">${esc(my.ch)}</div><p class="work">${esc(my.work)}</p>`;}
   else{h+=`<div class="tag">Caché</div><div class="big">• • •</div>`;}
   h+=`</div><button data-a="tog">${shown?'Cacher':'Voir mon personnage'}</button>
 <div class="label">Ordre de parole</div>`+ord.map((i,k)=>`<div class="ol"><span class="tag">${k+1}</span>${nm(i)}</div>`).join("");
   h+=`<div class="sub" style="margin-top:14px">À tour de rôle, dites un mot ou une courte phrase sur votre personnage, sans le nommer.</div>`;
+  const tm=room.tm==null?60:room.tm;
+  if(tm>0){h+=`<div class="label">Minuteur de débat</div>`+(room.tEnd?`<div class="tmv" id="tmv" role="timer"></div>`:(host?`<button class="sec" data-a="tgo">Lancer le minuteur · ${fmt(tm)}</button>`:`<div class="sub">L’hôte peut lancer le minuteur (${fmt(tm)}).</div>`));}
   h+=host?`<button data-a="tovote">Passer au vote</button>`:`<div class="sub">L’hôte lance le vote.</div>`;
   h+=`<div class="rule warn" id="err" role="alert"></div>`;
-  show(h,"play");
+  show(h,"play");tmSync();
 }
 function vote(){
   const host=room.host===uid,list=ids(),votes=room.votes||{},mine=votes[uid];
   const n=Object.keys(votes).filter(i=>room.players[i]).length;
-  let h=chip()+`<h1>Qui est l’Undercover ?</h1><div class="sub">${n}/${list.length} ont voté</div>`;
+  let h=chip()+`<h1>${room.rw?'Qui est un infiltré ?':'Qui est l’Undercover ?'}</h1><div class="sub">${room.rw?'Undercover ou Mr White. ':''}${n}/${list.length} ont voté</div>`;
   h+=list.filter(i=>i!==uid).map(i=>`<button class="sec" data-a="vote" data-id="${i}" style="${mine===i?'border-color:var(--text);color:var(--text)':''}">${mine===i?'✓ ':''}${nm(i)}</button>`).join("");
   h+=host?`<button data-a="reveal" style="margin-top:16px">Révéler la solution</button>`:`<div class="sub" style="margin-top:14px">L’hôte révélera la solution.</div>`;
   h+=`<div class="rule warn" id="err" role="alert"></div>`;
   show(h,"vote");
+}
+function guess(){
+  const g=room.guess;if(!g){return;}
+  const host=room.host===uid,me=g.w===uid;
+  let h=chip()+`<div class="tag">${nm(g.w)} est désigné</div><h1>C’était Mr White</h1><div class="sub">${me?'Dernière chance : annonce à voix haute le personnage des Civils.':'Dernière chance : il annonce à voix haute le personnage des Civils.'} ${host?'Tu valides sa réponse.':'L’hôte valide sa réponse.'}</div>`;
+  h+=host?`<button data-a="gy">Il a trouvé</button><button class="sec" data-a="gn">Raté</button>`:`<div class="sub" style="margin-top:14px">En attente de l’hôte…</div>`;
+  h+=`<div class="rule warn" id="err" role="alert"></div>`;
+  show(h,"guess");
+}
+async function finishRound(d,des,found){
+  const win=found===true?"w":((des&&(des===d.trId||des===d.wId))?"civ":"bad");
+  const sc=Object.assign({},room.scores||{});
+  const add=(i,v)=>{if(room.players[i]){sc[i]=(sc[i]||0)+v;}};
+  ids().forEach(i=>{
+    if(win==="civ"){if(i!==d.trId&&i!==d.wId){add(i,1);}}
+    else if(win==="w"){if(i===d.wId){add(i,3);}}
+    else if(i===d.trId||i===d.wId){add(i,2);}
+  });
+  const pn=i=>(room.players[i]||{}).name||"?";
+  await update(ref(db,"rooms/"+code),{status:"done",guess:null,scores:sc,solution:{civil:d.civil,civilWork:d.civilWork,tr:d.tr,trWork:d.trWork,trId:d.trId,trName:pn(d.trId),wId:d.wId||null,wName:d.wId?pn(d.wId):null,win,des:des||null}});
+}
+async function revealRound(){
+  if(busy){return;}busy=true;
+  try{
+    const d=(await get(ref(db,"hostdata/"+code))).val();
+    if(!d||d.r!==room.round){err("Données de la manche introuvables.");return;}
+    const votes=room.votes||{},cnt={};
+    Object.keys(votes).forEach(v=>{const t=votes[v];if(room.players[v]&&room.players[t]){cnt[t]=(cnt[t]||0)+1;}});
+    const rows=ids().sort((a,b)=>(cnt[b]||0)-(cnt[a]||0));
+    const top=cnt[rows[0]]||0,tie=rows.filter(i=>(cnt[i]||0)===top).length>1;
+    const des=(!tie&&top>0)?rows[0]:null;
+    if(room.rw&&des&&des===d.wId){await update(ref(db,"rooms/"+code),{status:"guess",guess:{w:des}});return;}
+    await finishRound(d,des,null);
+  }finally{busy=false;}
+}
+async function judgeGuess(found){
+  if(busy||!room||!room.guess){return;}busy=true;
+  try{
+    const d=(await get(ref(db,"hostdata/"+code))).val();
+    if(!d||d.r!==room.round){err("Données de la manche introuvables.");return;}
+    await finishRound(d,room.guess.w,!!found);
+  }finally{busy=false;}
 }
 function done(){
   const s=room.solution;if(!s){return;}
   const host=room.host===uid,votes=room.votes||{},cnt={};
   Object.keys(votes).forEach(v=>{const t=votes[v];if(room.players[t]){cnt[t]=(cnt[t]||0)+1;}});
   const rows=ids().sort((a,b)=>(cnt[b]||0)-(cnt[a]||0));
-  const top=cnt[rows[0]]||0,tie=rows.filter(i=>(cnt[i]||0)===top).length>1;
-  const win=!tie&&top>0&&rows[0]===s.trId;
-  let h=chip()+`<h1>${win?'Les Civils gagnent':'L’Undercover gagne'}</h1>
-<div class="reveal"><div class="tag">Civils</div><div class="big">${esc(s.civil)}</div><p class="work">${esc(s.civilWork)}</p></div>
-<div class="reveal bad"><div class="tag warn">Undercover · ${esc(s.trName)}</div><div class="big">${esc(s.tr)}</div><p class="work">${esc(s.trWork)}</p></div>
-<div class="label">Votes</div>`;
+  let win=s.win;
+  if(!win){const top=cnt[rows[0]]||0,tie=rows.filter(i=>(cnt[i]||0)===top).length>1;win=(!tie&&top>0&&rows[0]===s.trId)?"civ":"bad";}
+  const title=win==="civ"?"Les Civils gagnent":(win==="w"?"Mr White gagne":(s.wId?"L’Undercover et Mr White gagnent":"L’Undercover gagne"));
+  let h=chip()+`<h1>${title}</h1>`;
+  if(win==="w"){h+=`<div class="sub">${esc(s.wName||"?")} a trouvé le personnage des Civils.</div>`;}
+  h+=`<div class="reveal"><div class="tag">Civils</div><div class="big">${esc(s.civil)}</div><p class="work">${esc(s.civilWork)}</p></div>
+<div class="reveal bad"><div class="tag warn">Undercover · ${esc(s.trName)}</div><div class="big">${esc(s.tr)}</div><p class="work">${esc(s.trWork)}</p></div>`;
+  if(s.wId){h+=`<div class="reveal bad"><div class="tag warn">Mr White · ${esc(s.wName||"?")}</div><div class="big">Aucun personnage</div></div>`;}
+  h+=`<div class="label">Votes</div>`;
   h+=rows.map(i=>`<div class="ol">${nm(i)}<span class="tag" style="margin-left:auto">${cnt[i]||0}</span></div>`).join("");
+  const sc=room.scores||{},lb=ids().sort((a,b)=>(sc[b]||0)-(sc[a]||0)),M=["🥇","🥈","🥉"];
+  if(lb.some(i=>sc[i]>0)){
+    let r=0,prev=-1;
+    h+=`<div class="label">Classement de la soirée</div>`+lb.map((i,j)=>{const v=sc[i]||0;if(v!==prev){r=j;prev=v;}return `<div class="ol lb"><span class="rk">${r<3&&v>0?M[r]:r+1}</span><span class="lbn">${nm(i)}</span><span class="tag">${v} pt${v>1?"s":""}</span></div>`;}).join("");
+  }
   h+=host?`<button data-a="again" style="margin-top:16px">Nouvelle manche</button>`:`<div class="sub" style="margin-top:14px">L’hôte peut lancer une nouvelle manche.</div>`;
+  if(host&&lb.some(i=>sc[i]>0)){h+=`<button class="sec" data-a="rz">Remettre le classement à zéro</button>`;}
   h+=`<div class="rule warn" id="err" role="alert"></div><button class="sec" data-a="quit">Quitter</button>`;
   show(h,"done"+room.round);
 }
@@ -983,7 +1140,7 @@ function chatRender(){
   l.innerHTML=chatList().map(m=>{
     const me=m.u===uid,k=order.indexOf(m.u);
     const E=(typeof m.e==="number")?EMO[m.e]:null;
-    return `<div class="cm${me?' me':''}${E?' em':''}"><b style="color:${me?'inherit':(k>=0?COL[k%10]:'#ddd')}">${me?'Toi':esc(m.n||"?")}</b>${E?E.s:esc(m.m)}</div>`;
+    return `<div class="cm${me?' me':''}${E?' em':''}"><b style="color:${me?'inherit':(k>=0?COL[k%10]:'#ddd')}">${ava(m.u)?ava(m.u)+' ':''}${me?'Toi':esc(m.n||"?")}</b>${E?E.s:esc(m.m)}</div>`;
   }).join("")||`<div class="sub">Aucun message pour le moment.</div>`;
   l.scrollTop=l.scrollHeight;
 }
@@ -1092,10 +1249,20 @@ async function act(a,b){
   else if(a==="tog"){shown=!shown;render();}
   else if(a==="tovote"&&host){await update(ref(db,"rooms/"+code),{status:"vote",votes:null});}
   else if(a==="vote"){await set(ref(db,`rooms/${code}/votes/${uid}`),b.dataset.id);}
-  else if(a==="reveal"&&host){
-    const d=(await get(ref(db,"hostdata/"+code))).val();
-    if(!d||d.r!==room.round){err("Données de la manche introuvables.");return;}
-    await update(ref(db,"rooms/"+code),{status:"done",solution:{civil:d.civil,civilWork:d.civilWork,tr:d.tr,trWork:d.trWork,trId:d.trId,trName:(room.players[d.trId]||{}).name||"?"}});
+  else if(a==="reveal"&&host){await revealRound();}
+  else if(a==="gy"&&host){await judgeGuess(true);}
+  else if(a==="gn"&&host){await judgeGuess(false);}
+  else if(a==="tm"&&host){await update(ref(db,"rooms/"+code),{tm:+b.dataset.v});}
+  else if(a==="tgo"&&host){await update(ref(db,"rooms/"+code),{tEnd:srvNow()+(room.tm==null?60:room.tm)*1000});}
+  else if(a==="mw"&&host){await update(ref(db,"rooms/"+code),{mw:b.dataset.v==="1"});}
+  else if(a==="av"){
+    myAv=+b.dataset.v;try{localStorage.setItem("ud_av",String(myAv));}catch(e){}
+    if(room&&code&&room.players&&room.players[uid]){await set(ref(db,`rooms/${code}/players/${uid}/av`),AV[myAv]);}
+    else{let k=0;app.querySelectorAll(".avs button").forEach(x=>{x.className=(k++===myAv)?"on":"";});}
+  }
+  else if(a==="rz"&&host){
+    if(!rzArm){rzArm=true;b.textContent="Confirmer ?";setTimeout(()=>{rzArm=false;if(b){b.textContent="Remettre le classement à zéro";}},2500);return;}
+    rzArm=false;await update(ref(db,"rooms/"+code),{scores:null});
   }
   else if(a==="quit"){await quit();}
 }
@@ -1109,6 +1276,7 @@ active=true;key="";if(window.hm){hm(true);}
 show(`<div class="chip">En ligne</div><h1>Undercover</h1><div class="sub">Connexion…</div>`,"load");
 signInAnonymously(auth).then(async c=>{
   uid=c.user.uid;
+  try{onValue(ref(db,".info/serverTimeOffset"),s=>{srvOff=+s.val()||0;});}catch(e){}
   const hash=(pre||location.hash.replace("#","")).toUpperCase().slice(0,4);
   let last=null;try{last=localStorage.getItem("ud_room");}catch(e){}
   if(last&&(!hash||hash===last)){

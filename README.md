@@ -45,3 +45,16 @@ appartiennent à leurs ayants droit ; ce projet de fan n'est pas affilié aux s�
 - **Code hors ligne partageable** (bouton « Partager le code »).
 - **En ligne** : si l'hôte quitte, le salon passe au joueur suivant au lieu de se fermer.
 - Accessibilité : messages d'erreur et tchat annoncés aux lecteurs d'écran.
+
+## Mr White, classement, avatar
+- **Mr White** (à partir de 5 joueurs) : un joueur n'a aucun personnage et doit bluffer. S'il est désigné, il a une dernière chance de deviner le personnage des Civils. Réglable en 1 téléphone, en code hors ligne (le code l'inclut) et en ligne (bouton dans le salon, côté hôte).
+- **Points** : Civils qui gagnent +1, infiltrés (Undercover / Mr White) qui gagnent +2, Mr White qui devine +3.
+- **Classement de la soirée** : cumulé de manche en manche (1 téléphone et en ligne), avec remise à zéro.
+- **Avatar** : 16 animaux au choix, mémorisé avec le pseudo, affiché dans le salon, le vote et le tchat.
+- Les codes hors ligne de l'ancienne version ne sont plus valables : il faut en recréer un.
+
+## Réglages (menu principal)
+Son, vibrations, écran toujours allumé, effacement des pseudos et réglages de partie, bouton « Mettre à jour le jeu » et numéro de version.
+
+## Minuteur de débat
+Choisi par celui qui crée la partie (30 s, 60 s, 90 s, 2 min ou aucun) : dans les paramètres de la partie en 1 téléphone, dans le salon en ligne. En ligne, l'hôte lance le minuteur et le compte à rebours s'affiche en même temps chez tous les joueurs. Pas de minuteur en mode code hors ligne.
