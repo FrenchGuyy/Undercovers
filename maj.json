@@ -23,6 +23,14 @@
  ],
  "news": [
   {
+   "v": "2.16",
+   "d": "« Jouer en ligne » ouvre toujours l’accueil (compte, classement, créer ou rejoindre) ; un bouton permet de reprendre son salon en cours."
+  },
+  {
+   "v": "2.15",
+   "d": "Invitation par lien : un seul geste pour rejoindre (plus besoin de retaper le code). Le code reste disponible depuis l’accueil du mode en ligne."
+  },
+  {
    "v": "2.14",
    "d": "Nouvelle catégorie Animé : 99 duos (One Piece, Dragon Ball, Naruto, Bleach, Hunter x Hunter) avec descriptions. Les anciens codes hors-ligne Animé ne marchent plus."
   },

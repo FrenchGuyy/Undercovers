@@ -426,7 +426,7 @@ function saveNames(){try{localStorage.setItem("traitre_names",JSON.stringify(NAM
 
 /* son et vibrations */
 var SOUND=true;try{SOUND=localStorage.getItem("traitre_snd")!=="0";}catch(e){}
-var VER="2.14",VIBON=true,AWAKE=true,TMS=60,REC=true;
+var VER="2.16",VIBON=true,AWAKE=true,TMS=60,REC=true;
 try{VIBON=localStorage.getItem("und_vib")!=="0";AWAKE=localStorage.getItem("und_awk")!=="0";REC=localStorage.getItem("und_rec")!=="0";var tt=parseInt(localStorage.getItem("und_tmr"),10);if(tt===0||tt===30||tt===60||tt===90||tt===120){TMS=tt;}}catch(e){}
 function fm(t){return Math.floor(t/60)+":"+(t%60<10?"0":"")+(t%60);}
 var AC=null,picking=false;
@@ -1024,7 +1024,7 @@ const COL=["#ff5d73","#4cc9f0","#ffd166","#06d6a0","#c084fc","#fb923c","#f472b6"
 let emoTimes=[],emoLock=0,emoTimer=null,lastSig="",chatOn=false,chatOpen=false,seen=null,lastSend=0,chatMounted=false,active=false,uid=null,code=null,room=null,role=null,offs=[],shown=false,lastRound=-1,key="";
 let myName="";try{myName=localStorage.getItem("ud_name")||"";}catch(e){}
 const AV=["🦊","🐺","🐱","🦉","🐸","🐙","🦄","🐼","🐯","🦁","🐧","🦈","🐲","👻","🤖","🎃"];
-let myAv=-1,busy=false,rzArm=false,tmI=null,srvOff=0,lastBuz=0;
+let resumeCode=null,myAv=-1,busy=false,rzArm=false,tmI=null,srvOff=0,lastBuz=0;
 const fmt=t=>Math.floor(t/60)+":"+String(t%60).padStart(2,"0");
 const srvNow=()=>Date.now()+srvOff;try{const a=parseInt(localStorage.getItem("ud_av"),10);if(a>=0&&a<AV.length){myAv=a;}}catch(e){}
 if(myAv<0){myAv=Math.floor(Math.random()*AV.length);try{localStorage.setItem("ud_av",String(myAv));}catch(e){}}
@@ -1046,9 +1046,20 @@ const nm=i=>{const a=ava(i);return (a?a+" ":"")+esc((room.players[i]||{}).name||
 const chip=()=>`<div class="chip">${TH[room.theme]}${room.theme===4?' · '+SUBN[room.sub==null?3:room.sub]:''} · ${LEVELS[room.level].n} · ${ids().length} joueurs</div>`;
 
 function home(pre,msg){
+  if(/^[A-Z]{4}$/.test(pre||"")){
+    show(`<div class="chip">Invitation</div><h1>Undercover</h1><div class="sub">Tu es invité au salon <b>${esc(pre)}</b>.</div>
+<div class="label">Ton pseudo</div><input class="nm" id="nm" maxlength="14" placeholder="Pseudo" value="${esc(myName)}">
+<div class="label">Ton avatar</div><div class="avs">${avPicker()}</div>
+<input type="hidden" id="cd" value="${esc(pre)}">
+<button data-a="jn" style="margin-top:14px">Rejoindre le salon</button>
+<div class="rule warn" id="err" role="alert">${esc(msg||"")}</div>
+<button class="sec" data-a="oc">Autre salon ou créer le mien</button>`,"home");
+    return;
+  }
   show(`<div class="chip">En ligne</div><h1>Undercover</h1><div class="sub">Chacun joue sur son appareil.</div>
 <div class="label">Ton pseudo</div><input class="nm" id="nm" maxlength="14" placeholder="Pseudo" value="${esc(myName)}">
 <div class="label">Ton avatar</div><div class="avs">${avPicker()}</div>
+${resumeCode?`<button class="sec" data-a="resume" style="margin-top:14px">↩ Reprendre mon salon ${esc(resumeCode)}</button>`:""}
 <button data-a="mk" style="margin-top:14px">Créer un salon</button>
 <div class="label">Ou rejoindre un salon</div>
 <input class="nm" id="cd" maxlength="4" placeholder="CODE" value="${esc(pre||"")}" style="text-transform:uppercase;text-align:center;letter-spacing:.3em">
@@ -1563,6 +1574,8 @@ async function act(a,b){
   if(!code&&["rk","rktab","rkrf","back","acc","acmode","acnew","acin","acout","acdel"].indexOf(a)>=0){await acAct(a,b);return;}
   if(a==="mk"){await createRoom();}
   else if(a==="jn"){await joinRoom();}
+  else if(a==="resume"){const c=resumeCode;resumeCode=null;if(c){enter(c);}}
+  else if(a==="oc"){try{history.replaceState(null,"",location.pathname+location.search);}catch(e){}home("");}
   else if(a==="copy"){
     const url=location.origin+location.pathname+"#"+code;
     if(navigator.share){navigator.share({title:"Undercover",text:"Rejoins mon salon "+code,url}).catch(()=>{});}
@@ -1651,7 +1664,7 @@ function getUser(){
   return uP;
 }
 window.startOnline=function(pre,auto){
-active=true;key="";recCancel=false;if(window.hm){hm(true);}
+resumeCode=null;active=true;key="";recCancel=false;if(window.hm){hm(true);}
 let last=null,lt=0;try{last=localStorage.getItem("ud_room");}catch(e){}
 show(`<div class="chip">En ligne</div><h1>Undercover</h1><div class="sub">${auto&&last?"Reconnexion au salon "+esc(last)+"…":"Connexion…"}</div>${auto?'<button class="sec" data-a="cancelrec" style="margin-top:14px">Annuler</button>':""}`,"load");
 const toMenu=()=>{if(recCancel){return;}active=false;stop();try{localStorage.removeItem("ud_room");}catch(e){}if(window.hm){hm(false);}menu();};
@@ -1667,7 +1680,7 @@ getUser().then(async user=>{
     try{
       const s=await get(ref(db,"rooms/"+last));
       if(recCancel){return;}
-      if(s.exists()&&s.val().players&&s.val().players[uid]){clearTimeout(guard);enter(last);return;}
+      if(s.exists()&&s.val().players&&s.val().players[uid]){if(auto||hash===last){clearTimeout(guard);enter(last);return;}resumeCode=last;}
     }catch(e){}
   }
   clearTimeout(guard);
