@@ -1,8 +1,17 @@
+<div align="center">
+
+<img src="icon-512.png" alt="Logo Undercover" width="240">
+
 # Undercover
 
-Jeu de bluff inspiré d'Undercover, à jouer entre amis dans le navigateur (3 à 20 joueurs).
+**Un jeu de bluff et de déduction, à jouer entre amis directement dans le navigateur.**<br>
+Les Civils ont le même personnage, l'Undercover un personnage proche… décris sans nommer, puis votez ! (3 à 20 joueurs)
 
-👉 **Jouer** : https://frenchguyy.github.io/Undercovers/
+[▶️ **Jouer à Undercover**](https://frenchguyy.github.io/Undercovers/)
+
+</div>
+
+---
 
 ## Modes de jeu
 
