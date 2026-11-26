@@ -1,41 +1,26 @@
-# 🎭 Le Traître – Anime
+# Undercover
 
-Jeu de déduction inspiré d'Undercover, avec des personnages d'anime.
-Il se joue à 3 ou 4 sur un seul écran, directement dans le navigateur.
+Jeu de bluff inspiré d'Undercover, à jouer entre amis dans le navigateur (3 à 20 joueurs).
 
 👉 **Jouer** : https://frenchguyy.github.io/Undercovers/
 
-## Principe
+## Modes de jeu
 
-Chaque joueur découvre en secret un personnage d'anime :
-- Les **Civils** reçoivent tous le même personnage
-- 1 **Traître** reçoit un personnage différent
+- **1 téléphone** : on se passe l'écran, chacun découvre son personnage en secret.
+- **Jouer en ligne** : un salon avec un code à 4 lettres, chacun sur son téléphone, vote partagé et solution révélée par l'hôte (Firebase).
+- **Code hors ligne** : chacun sur son téléphone, sans internet, avec un code de partie.
 
-À tour de rôle, chacun décrit son personnage en un mot ou une courte phrase,
-sans le nommer. Ensuite, on discute et on vote pour éliminer le suspect.
-Les Civils gagnent s'ils démasquent le Traître.
+## Fichiers
 
-## Fonctionnalités
+- `index.html` : tout le jeu (un seul fichier).
+- `duos.json` : la liste des personnages. Le jeu la lit au lancement, pour le mode local comme pour le mode en ligne.
+- `online.html` : redirige vers `index.html` (ancien lien).
 
-- 3 ou 4 joueurs sur le même écran, avec révélation secrète entre chaque joueur
-- 4 niveaux de difficulté :
-  - **Facile** : univers très différents
-  - **Moyen** : séries différentes, même genre
-  - **Difficile** : même série, personnages différents
-  - **Extrême** : même série, personnages très proches
-- 80 paires de personnages, des classiques des années 80 aux séries récentes
-- Le Traître change à chaque partie, et les séries ne se répètent pas d'une partie à l'autre
-- Un seul fichier HTML, sans serveur, compte ni dépendance
+## Modifier les personnages
 
-## Lancer en local
-
-Télécharge `index.html` et ouvre-le dans ton navigateur.
-
-## Ajouter des personnages
-
-Dans `index.html`, ajoute une paire dans la liste `PAIRS` (ou `FACILE` pour le niveau facile)
-et l'œuvre de chaque personnage dans `WORK`. Pour le niveau Extrême,
-ajoute la paire sous la forme `"Perso A|Perso B"` dans `EXTREME`.
+1. Dans le jeu, appuyer 5 fois vite sur le titre du menu et entrer le code admin.
+2. Ajouter, modifier ou supprimer des duos, puis « Télécharger duos.json ».
+3. Remplacer `duos.json` dans ce dépôt. Tout le monde (local et en ligne) a la nouvelle liste.
 
 ## Licence
 
