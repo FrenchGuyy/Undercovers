@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le Traître – Anime</title>
+<style>
+:root{--bg:#f4f2fb;--card:#fff;--text:#1d1b2e;--muted:#6b6880;--soft:#f0ecff;--line:#e4e0f2;--accent:#6c4cf1;--accent-t:#fff;--danger:#e5484d;--c0:#22a06b;--c1:#d99a00;--c2:#ea6a1f;--c3:#e5484d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14121f;--card:#1f1c30;--text:#f1effa;--muted:#a19dbb;--soft:#2a2641;--line:#38335a;--accent:#8b72ff;--accent-t:#14121f}}
+:root[data-theme="dark"]{--bg:#14121f;--card:#1f1c30;--text:#f1effa;--muted:#a19dbb;--soft:#2a2641;--line:#38335a;--accent:#8b72ff;--accent-t:#14121f}
+*{box-sizing:border-box}
+html,body{min-height:100%;margin:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;min-height:100dvh;padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
+.card{background:var(--card);border-radius:24px;padding:26px 20px 22px;width:100%;max-width:440px;text-align:center;box-shadow:0 8px 30px rgba(40,20,120,.12)}
+h1{font-size:1.6rem;margin:0 0 6px;letter-spacing:-.01em}
+.logo{font-size:2.4rem;line-height:1;margin-bottom:8px}
+.sub{color:var(--muted);font-size:.95rem;line-height:1.45;margin:6px 0 16px}
+.label{text-align:left;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:20px 0 8px}
+.rule{font-size:.85rem;color:var(--muted);text-align:left;margin:10px 2px 0;line-height:1.4}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--soft);padding:4px;border-radius:14px}
+.seg button{margin:0;padding:11px;background:transparent;color:var(--muted);border-radius:10px}
+.seg button.on{background:var(--accent);color:var(--accent-t);box-shadow:0 2px 8px rgba(108,76,241,.35)}
+.levels{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lv{margin:0;padding:14px 12px;background:var(--card);color:var(--text);border:1.5px solid var(--line);border-radius:16px;text-align:left;display:flex;flex-direction:column;gap:4px;min-height:98px}
+.lv .t{font-size:1.05rem;font-weight:800}
+.lv .d{font-size:.78rem;font-weight:500;color:var(--muted);line-height:1.3}
+.pips{display:flex;gap:4px;margin-bottom:4px}
+.pip{width:16px;height:5px;border-radius:3px;background:var(--line)}
+.c0 .pip.on{background:var(--c0)}.c1 .pip.on{background:var(--c1)}.c2 .pip.on{background:var(--c2)}.c3 .pip.on{background:var(--c3)}
+.lv:active{transform:scale(.98);border-color:var(--accent)}
+@media (hover:hover){.lv:hover{border-color:var(--accent)}}
+button{width:100%;font:inherit;font-weight:700;padding:16px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-t);cursor:pointer;margin-top:10px}
+button.sec{background:transparent;color:var(--muted);border:1.5px solid var(--line);font-weight:600}
+.chip{display:inline-block;background:var(--soft);color:var(--accent);font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.dots{display:flex;gap:8px;justify-content:center;margin-bottom:18px}
+.dot{width:28px;height:6px;border-radius:3px;background:var(--line)}
+.dot.done{background:var(--accent);opacity:.4}
+.dot.on{background:var(--accent)}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--accent);color:var(--accent-t);font-size:2.6rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:6px auto 14px}
+.reveal{background:var(--soft);border-radius:18px;padding:22px 16px;margin:8px 0 16px}
+.reveal.bad{background:rgba(229,72,77,.1);border:1.5px solid rgba(229,72,77,.35)}
+.big{font-size:1.9rem;font-weight:800;margin:6px 0;color:var(--accent);word-break:break-word;line-height:1.15}
+.reveal.bad .big{color:var(--danger)}
+.work{font-size:.95rem;font-weight:600;color:var(--muted);margin:0}
+.tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.num{font-size:3.2rem;font-weight:800;color:var(--accent);line-height:1;margin:6px 0}
+.warn{color:var(--danger)}
+</style>
+</head>
+<body>
+<div class="card" id="app"></div>
+<script>
+var PAIRS=[["Naruto","Luffy"],["Goku","Saitama"],["Sasuke","Itachi"],["Light Yagami","L"],["Eren Jäger","Levi"],["Tanjiro","Zenitsu"],["Gojo Satoru","Sukuna"],["Deku","Bakugo"],["Vegeta","Piccolo"],["Zoro","Sanji"],["Edward Elric","Alphonse Elric"],["Natsu","Gray"],["Ichigo","Renji"],["Kirito","Asuna"],["Spike Spiegel","Lupin III"],["Pikachu","Évoli"],["Sailor Moon","Cardcaptor Sakura"],["Meliodas","Escanor"],["Asta","Yuno"],["Mikasa","Annie"],["Goku","Naruto"],["Kakashi","Gojo Satoru"],["Levi","Zoro"],["Gon","Killua"],["Hinata Shoyo","Kageyama"],["Lelouch","Suzaku"],["Shinji Ikari","Asuka"],["Jotaro Kujo","Dio Brando"],["Denji","Power"],["Anya Forger","Yor Forger"],["Kaneki","Touka"],["Okabe","Kurisu"],["Senku","Taiju"],["Frieren","Fern"],["Guts","Griffith"],["Chihiro","Haku"],["San","Ashitaka"],["Ash","Misty"],["Mob","Reigen"],["Gon","Naruto"],["Denji","Deku"],["Jotaro Kujo","Gojo Satoru"],["Lelouch","Light Yagami"],["Senku","L"],["Seiya de Pégase","Shiryu"],["Yugi Muto","Seto Kaiba"],["Kenshiro","Raoh"],["Tsubasa Ozora","Kojiro Hyuga"],["Ryo Saeba","Kaori Makimura"],["Yusuke Urameshi","Hiei"],["Himura Kenshin","Sanosuke"],["Inuyasha","Sesshomaru"],["Ranma Saotome","Akane Tendo"],["Tai Kamiya","Matt Ishida"],["Hanamichi Sakuragi","Kaede Rukawa"],["Actarus","Alcor"],["Amuro Ray","Char Aznable"],["Seiya de Pégase","Goku"],["Yugi Muto","Yusuke Urameshi"],["Himura Kenshin","Inuyasha"],["Kenshiro","Saitama"],["Ryo Saeba","Spike Spiegel"],["Actarus","Amuro Ray"],["Hanamichi Sakuragi","Hinata Shoyo"]];
+var AOT="L’Attaque des Titans",DB="Dragon Ball",OP="One Piece",DN="Death Note",DS="Demon Slayer",JJK="Jujutsu Kaisen",MHA="My Hero Academia",FMA="Fullmetal Alchemist",FT="Fairy Tail",BL="Bleach",SAO="Sword Art Online",PK="Pokémon",SDS="Seven Deadly Sins",BC="Black Clover",NA="Naruto";
+var WORK={"Seiya de Pégase":"Les Chevaliers du Zodiaque","Shiryu":"Les Chevaliers du Zodiaque","Yugi Muto":"Yu-Gi-Oh!","Seto Kaiba":"Yu-Gi-Oh!","Kenshiro":"Ken le Survivant","Raoh":"Ken le Survivant","Tsubasa Ozora":"Olive et Tom","Kojiro Hyuga":"Olive et Tom","Ryo Saeba":"Nicky Larson","Kaori Makimura":"Nicky Larson","Yusuke Urameshi":"Yu Yu Hakusho","Hiei":"Yu Yu Hakusho","Himura Kenshin":"Kenshin le vagabond","Sanosuke":"Kenshin le vagabond","Inuyasha":"Inuyasha","Sesshomaru":"Inuyasha","Ranma Saotome":"Ranma 1/2","Akane Tendo":"Ranma 1/2","Tai Kamiya":"Digimon","Matt Ishida":"Digimon","Hanamichi Sakuragi":"Slam Dunk","Kaede Rukawa":"Slam Dunk","Actarus":"Goldorak","Alcor":"Goldorak","Amuro Ray":"Mobile Suit Gundam","Char Aznable":"Mobile Suit Gundam","Gon":"Hunter x Hunter","Killua":"Hunter x Hunter","Hinata Shoyo":"Haikyuu!!","Kageyama":"Haikyuu!!","Lelouch":"Code Geass","Suzaku":"Code Geass","Shinji Ikari":"Evangelion","Asuka":"Evangelion","Jotaro Kujo":"JoJo’s Bizarre Adventure","Dio Brando":"JoJo’s Bizarre Adventure","Denji":"Chainsaw Man","Power":"Chainsaw Man","Anya Forger":"Spy x Family","Yor Forger":"Spy x Family","Kaneki":"Tokyo Ghoul","Touka":"Tokyo Ghoul","Okabe":"Steins;Gate","Kurisu":"Steins;Gate","Senku":"Dr. Stone","Taiju":"Dr. Stone","Frieren":"Frieren","Fern":"Frieren","Guts":"Berserk","Griffith":"Berserk","Chihiro":"Le Voyage de Chihiro","Haku":"Le Voyage de Chihiro","San":"Princesse Mononoké","Ashitaka":"Princesse Mononoké","Ash":PK,"Misty":PK,"Mob":"Mob Psycho 100","Reigen":"Mob Psycho 100","Kakashi":NA,"Naruto":NA,"Luffy":OP,"Goku":DB,"Saitama":"One Punch Man","Sasuke":NA,"Itachi":NA,"Light Yagami":DN,"L":DN,"Eren Jäger":AOT,"Levi":AOT,"Mikasa":AOT,"Annie":AOT,"Tanjiro":DS,"Zenitsu":DS,"Gojo Satoru":JJK,"Sukuna":JJK,"Deku":MHA,"Bakugo":MHA,"Vegeta":DB,"Piccolo":DB,"Zoro":OP,"Sanji":OP,"Edward Elric":FMA,"Alphonse Elric":FMA,"Natsu":FT,"Gray":FT,"Ichigo":BL,"Renji":BL,"Kirito":SAO,"Asuna":SAO,"Spike Spiegel":"Cowboy Bebop","Lupin III":"Lupin III","Pikachu":PK,"Évoli":PK,"Sailor Moon":"Sailor Moon","Cardcaptor Sakura":"Cardcaptor Sakura","Meliodas":SDS,"Escanor":SDS,"Asta":BC,"Yuno":BC};
+var FACILE=[["Pikachu","Guts"],["Luffy","Light Yagami"],["Goku","Anya Forger"],["Sailor Moon","Eren Jäger"],["Chihiro","Gojo Satoru"],["Saitama","Frieren"],["Naruto","Shinji Ikari"],["Ash","Dio Brando"],["Tanjiro","Spike Spiegel"],["Kenshiro","Cardcaptor Sakura"],["Mob","Escanor"],["Okabe","Zoro"],["Yor Forger","Pikachu"],["Deku","Kaneki"],["Hanamichi Sakuragi","Frieren"],["Actarus","Ranma Saotome"]];
+var EXTREME=["Sasuke|Itachi","Deku|Bakugo","Zoro|Sanji","Edward Elric|Alphonse Elric","Pikachu|Évoli","Asta|Yuno","Gon|Killua","Hinata Shoyo|Kageyama","Frieren|Fern","Seiya de Pégase|Shiryu","Inuyasha|Sesshomaru","Natsu|Gray","Tanjiro|Zenitsu","Mikasa|Annie"];
+var FAC={};FACILE.forEach(function(p){FAC[p[0]+"|"+p[1]]=1;});
+PAIRS=PAIRS.concat(FACILE);
+var EXT={};EXTREME.forEach(function(k){EXT[k]=1;});
+function level(p){var k=p[0]+"|"+p[1];if(EXT[k]){return 3;}if(WORK[p[0]]===WORK[p[1]]){return 2;}return FAC[k]?0:1;}
+var LEVELS=[{n:"Facile",d:"Univers très différents"},{n:"Moyen",d:"Séries différentes, même genre"},{n:"Difficile",d:"Même série, persos différents"},{n:"Extrême",d:"Même série, persos très proches"}];
+var mode=0,bag=[],lastT=-1,recent=[];
+var N=4, app=document.getElementById("app"), game=null, lastPair=-1;
+
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function dots(i){var s='<div class="dots">';for(var k=0;k<N;k++){s+='<span class="dot'+(k===i?' on':(k<i?' done':''))+'"></span>';}return s+'</div>';}
+function chip(){return '<div class="chip">'+LEVELS[mode].n+' · '+N+' joueurs</div>';}
+
+function home(){
+  var h='<div class="logo">🎭</div><h1>Le Traître – Anime</h1><div class="sub">Un seul écran, un seul Traître à démasquer.</div>';
+  h+='<div class="label">Nombre de joueurs</div><div class="seg">';
+  [3,4].forEach(function(n){h+='<button type="button" class="'+(N===n?'on':'')+'" data-n="'+n+'">'+n+' joueurs</button>';});
+  h+='</div><div class="rule">'+(N-1)+' Civils ont le même personnage, 1 Traître en a un autre.</div>';
+  h+='<div class="label">Difficulté</div><div class="levels">';
+  LEVELS.forEach(function(l,i){
+    var p='';for(var k=0;k<4;k++){p+='<span class="pip'+(k<=i?' on':'')+'"></span>';}
+    h+='<button type="button" class="lv c'+i+'" data-l="'+i+'"><span class="pips">'+p+'</span><span class="t">'+l.n+'</span><span class="d">'+l.d+'</span></button>';
+  });
+  h+='</div>';
+  app.innerHTML=h;
+  Array.prototype.forEach.call(app.querySelectorAll(".seg button"),function(b){b.onclick=function(){N=+b.getAttribute("data-n");bag=[];lastT=-1;home();};});
+  Array.prototype.forEach.call(app.querySelectorAll(".lv"),function(b){b.onclick=function(){mode=+b.getAttribute("data-l");start();};});
+}
+
+function start(){
+  var idx;
+  var all=[];PAIRS.forEach(function(p,k){if(level(p)===mode){all.push(k);}});
+  var pool=all.filter(function(k){return recent.indexOf(WORK[PAIRS[k][0]])<0&&recent.indexOf(WORK[PAIRS[k][1]])<0;});
+  if(!pool.length){pool=all;}
+  do{idx=pool[Math.floor(Math.random()*pool.length)];}while(idx===lastPair&&pool.length>1);
+  lastPair=idx;recent.push(WORK[PAIRS[idx][0]],WORK[PAIRS[idx][1]]);recent=recent.slice(-6);
+  var pair=PAIRS[idx].slice();
+  if(Math.random()<0.5){pair.reverse();}
+  if(!bag.length){bag=[];for(var q=0;q<N;q++){bag.push(q);}shuffle(bag);if(bag[bag.length-1]===lastT){bag.reverse();}}
+  var traitor=bag.pop();lastT=traitor;
+  game={civil:pair[0],traitor:pair[1],t:traitor,i:0};
+  cover();
+}
+
+function cover(){
+  app.innerHTML=chip()+dots(game.i)+'<div class="sub" style="margin-bottom:6px">Passe l’écran à</div><div class="avatar">'+(game.i+1)+'</div><h1>Joueur '+(game.i+1)+'</h1><div class="sub">Les autres, détournez les yeux !</div><button id="see">Voir mon personnage</button>';
+  document.getElementById("see").onclick=reveal;
+}
+
+function reveal(){
+  var ch=(game.i===game.t)?game.traitor:game.civil;
+  app.innerHTML=chip()+dots(game.i)+'<div class="sub" style="margin-bottom:0">Joueur '+(game.i+1)+', ton personnage :</div><div class="reveal"><div class="big">'+ch+'</div><p class="work">'+WORK[ch]+'</p></div><div class="sub">Mémorise-le, puis cache l’écran.</div><button id="hide">Cacher et passer</button>';
+  document.getElementById("hide").onclick=function(){
+    game.i++;
+    if(game.i>=N){ready();}else{cover();}
+  };
+}
+
+function ready(){
+  var first=Math.floor(Math.random()*N)+1;
+  app.innerHTML=chip()+'<h1>Tout le monde est prêt</h1><div class="sub">À tour de rôle, donnez un mot ou une courte phrase qui décrit votre personnage, sans le nommer. Puis discutez et votez pour éliminer le suspect.</div><div class="reveal"><div class="tag">Le Joueur</div><div class="num">'+first+'</div><div class="tag">commence</div></div><button id="end">Révéler la solution</button><button class="sec" id="again">Nouvelle partie</button>';
+  document.getElementById("end").onclick=solution;
+  document.getElementById("again").onclick=start;
+}
+
+function solution(){
+  app.innerHTML=chip()+'<h1>Solution</h1><div class="reveal"><div class="tag">Civils ('+(N-1)+')</div><div class="big">'+game.civil+'</div><p class="work">'+WORK[game.civil]+'</p></div><div class="reveal bad"><div class="tag warn">Traître · Joueur '+(game.t+1)+'</div><div class="big">'+game.traitor+'</div><p class="work">'+WORK[game.traitor]+'</p></div><button id="again">Nouvelle partie</button><button class="sec" id="menu">Changer de mode</button>';
+  document.getElementById("again").onclick=start;
+  document.getElementById("menu").onclick=home;
+}
+home();
+</script>
+</body>
+</html>
